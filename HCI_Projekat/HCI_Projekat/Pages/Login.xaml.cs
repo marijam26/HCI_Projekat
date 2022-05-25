@@ -65,6 +65,18 @@ namespace HCI_Projekat.Pages
                 ClientHomepage ch = new ClientHomepage();
                 window.Content = ch;
             }
+            else
+            {
+                Registration r = new Registration(this.dataBase);
+                window.Content = r;
+            }
+        }
+
+        private void btn_register_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            Registration r = new Registration(this.dataBase);
+            window.Content = r;
         }
     }
 }

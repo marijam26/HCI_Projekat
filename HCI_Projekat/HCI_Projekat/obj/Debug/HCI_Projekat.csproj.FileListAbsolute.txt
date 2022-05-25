@@ -33,3 +33,5 @@ C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\HCI
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\HCI_Projekat.csproj.SuggestedBindingRedirects.cache
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ClientHomepage.g.cs
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ClientHomepage.baml
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\Registration.g.cs
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\Registration.baml
