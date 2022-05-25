@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HCI_Projekat.Model;
+using HCI_Projekat.Pages;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
+
 namespace HCI_Projekat
 {
     /// <summary>
@@ -20,9 +24,16 @@ namespace HCI_Projekat
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Data dataBase { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            Uri uri = new Uri("../../Images/icon.png", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(uri);
+            dataBase = new Data();
+            Login p = new Login(dataBase);
+            this.Content = p;
         }
     }
 }
