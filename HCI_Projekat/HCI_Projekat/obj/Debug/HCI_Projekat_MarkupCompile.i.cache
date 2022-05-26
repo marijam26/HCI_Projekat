@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\App.xaml
-41452105068
+7-1203909926
 
-111707058839
+171097617917
 13-1310406943
-MainWindow.xaml;Pages\ClientHomepage.xaml;Pages\Login.xaml;Pages\Registration.xaml;
+MainWindow.xaml;Pages\ClientHomepage.xaml;Pages\Login.xaml;Pages\ManagerHomepage.xaml;Pages\ManagerNavbar.xaml;Pages\Registration.xaml;Pages\TrainCRUD.xaml;
 
-False
+True
 

@@ -35,3 +35,10 @@ C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pag
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ClientHomepage.baml
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\Registration.g.cs
 C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\Registration.baml
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ManagerHomepage.g.cs
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ManagerHomepage.baml
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ManagerNavbar.g.cs
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\ManagerNavbar.baml
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\TrainCRUD.g.cs
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\TrainCRUD.baml
+C:\Users\Marija\Desktop\HCI\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\GeneratedInternalTypeHelper.g.cs

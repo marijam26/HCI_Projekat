@@ -34,6 +34,7 @@ namespace HCI_Projekat
             dataBase = new Data();
             Login p = new Login(dataBase);
             this.Content = p;
+
         }
     }
 }

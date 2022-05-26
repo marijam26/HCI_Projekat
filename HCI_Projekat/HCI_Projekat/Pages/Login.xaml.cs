@@ -67,8 +67,8 @@ namespace HCI_Projekat.Pages
             }
             else
             {
-                Registration r = new Registration(this.dataBase);
-                window.Content = r;
+                ManagerHomepage mh = new ManagerHomepage(this.dataBase);
+                window.Content = mh;
             }
         }
 

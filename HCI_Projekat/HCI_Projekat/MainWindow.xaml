@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:HCI_Projekat"
         mc:Ignorable="d"
         Title="Train station" Height="650" Width="1200" >
+    <Window.Resources>
+        <Style x:Key="fontstyle" TargetType="Label">
+            <Setter Property="FontFamily" Value="Century Gothic"></Setter>
+        </Style>
+        
+    </Window.Resources>
     <Grid>
         
     </Grid>
