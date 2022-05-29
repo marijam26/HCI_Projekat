@@ -8,10 +8,29 @@
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TrainCRUD">
 
+    <Page.Resources>
+        <Style TargetType="Border" x:Key="radius">
+            <Setter Property="CornerRadius" Value="5"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="MyButton">
+            <Setter Property="Background" Value="DarkCyan" />
+            <Setter Property="Foreground" Value="White" />
+            
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="Gray"></Setter>
+                    <Setter Property="Foreground" Value="DarkGray"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
             <RowDefinition></RowDefinition>
+            
             <RowDefinition Height="0.1*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -26,22 +45,65 @@
 
         <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
+        <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
-        <DataGrid x:Name="train_table" Grid.Row="1" ItemsSource="{Binding dataBase.trains}" Grid.ColumnSpan="2" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="25" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="DarkCyan"/>
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                </Style>
-            </DataGrid.Resources>
-        </DataGrid>
+            <Grid.Resources>
+                
+            </Grid.Resources>
+            
+            <Grid.RowDefinitions>
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.7*"></ColumnDefinition>
+                <ColumnDefinition Width="0.5*"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" DataContext="{Binding ElementName=train_table,Path=SelectedItem}">
+            <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="25" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged">
+                <DataGrid.Resources>
+                    <Style TargetType="{x:Type DataGridColumnHeader}">
+                        <Setter Property="Background" Value="White"/>
+                        <Setter Property="Foreground" Value="DarkCyan"/>
+                        <Setter Property="Height" Value="25"/>
+                        <Setter Property="FontWeight" Value="SemiBold"/>
+                        <Setter Property="BorderBrush" Value="Black"/>
+                        <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                    </Style>
+                </DataGrid.Resources>
+            </DataGrid>
+
+            <Button x:Name="btn_delete" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="btn_add" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="btn_edit" Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </Grid>
+
+        
+
+        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" >
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -56,10 +118,10 @@
             </Grid.ColumnDefinitions>
 
             <Label Grid.Column="0" Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,10,0">Name:</Label>
-            <TextBox Grid.Column="1" Grid.Row="1" Width="220" FontSize="20" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text="{Binding Path=name}"></TextBox>
+            <TextBox x:Name="tb_name" Grid.Column="1" Grid.Row="1" Width="220" FontSize="20" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text=""></TextBox>
 
             <Label Grid.Column="0" Grid.Row="2" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,10,0">Capacity:</Label>
-            <TextBox Grid.Column="1" Grid.Row="2" Width="70" FontSize="20" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text="{Binding Path=capacity}"></TextBox>
+            <TextBox x:Name="tb_capacity" Grid.Column="1" Grid.Row="2" Width="70" FontSize="20" Height="35" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text=""></TextBox>
 
             <Label Grid.Column="0" Grid.Row="3" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,10,0">Rang:</Label>
 
@@ -71,13 +133,15 @@
                 <RadioButton x:Name="rb_obican" Grid.Column="1" Content="Obican"  Margin="0,5,70,5"  GroupName="rang" ></RadioButton>
             </Viewbox>
 
-            <Button x:Name="btn_save" Grid.Row="4" Grid.Column="2" Margin="15" Width="120" Height="40" FontSize="20" Background="DarkCyan" Foreground="White" Content="Save" >
+            <Button x:Name="btn_save" Grid.Row="4" Grid.Column="2" Margin="15" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Save" Click="btn_save_Click" >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
                     </Style>
                 </Button.Resources>
             </Button>
+
+
 
 
         </Grid>
