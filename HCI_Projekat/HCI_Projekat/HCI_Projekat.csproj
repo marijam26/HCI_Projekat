@@ -93,6 +93,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Data.cs" />
     <Compile Include="Model\Timetable.cs" />
     <Compile Include="Model\Train.cs" />
