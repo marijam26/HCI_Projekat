@@ -1,0 +1,85 @@
+﻿<Page x:Class="HCI_Projekat.Pages.Stations"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
+      Title="Stations">
+    <Page.Resources>
+        <Style TargetType="Border" x:Key="radius">
+            <Setter Property="CornerRadius" Value="5"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="MyButton">
+            <Setter Property="Background" Value="DarkCyan" />
+            <Setter Property="Foreground" Value="White" />
+
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="Gray"></Setter>
+                    <Setter Property="Foreground" Value="DarkGray"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+            <Menu Grid.ColumnSpan="2" Height="40" FontSize="22" Background="DarkGoldenrod" Foreground="White">
+            <MenuItem Header="Train">
+            </MenuItem>
+            <MenuItem Header="Train line"></MenuItem>
+            </Menu>
+
+
+        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
+
+        <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
+
+        <DataGrid x:Name="station_table" Grid.Row="1" ItemsSource="{Binding stationsList}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="DarkCyan"/>
+                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Time (min)" Width="*" Binding="{Binding time}"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btn_back" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Margin="0,0,100,0" Width="100" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Back" Click="btn_back_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+
+    </Grid>
+</Page>

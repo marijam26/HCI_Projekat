@@ -14,6 +14,8 @@ namespace HCI_Projekat.Model
 
         public int capacity { get; set; }
 
+        public List<Wagon> wagons { get; set; }
+
         public Train() { }
 
         public Train(int id, string name, TrainRang rang, int capacity)
@@ -22,6 +24,7 @@ namespace HCI_Projekat.Model
             this.name = name;
             this.rang = rang;
             this.capacity = capacity;
+            this.wagons = new List<Wagon>();
         }
 
 
@@ -31,5 +34,40 @@ namespace HCI_Projekat.Model
     {
         Soko,
         Obican
+    }
+
+    public class Wagon
+    {
+        public int id { get; set; }
+
+        public int classNum;
+
+        public List<Seat> seats;
+
+        public Wagon() { }
+
+        public Wagon(int id,int classNum)
+        {
+            this.id = id;
+            this.classNum = classNum;
+            this.seats = new List<Seat>();
+        }
+    }
+
+    public class Seat
+    {
+        public int id { get; set; }
+
+        public int seatNum;
+
+        public bool isAvailable;
+
+        public Seat() { }
+        public Seat(int id,int seatNum, bool isAvailable)
+        {
+            this.id=id;
+            this.seatNum = seatNum;
+            this.isAvailable = true;
+        }
     }
 }

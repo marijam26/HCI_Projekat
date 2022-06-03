@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCI_Projekat.Model
 {
-    internal class Timetable
+    public class Timetable
     {
         public int id { get; set; }
 
@@ -16,15 +16,18 @@ namespace HCI_Projekat.Model
 
         public DateTime endDateTime { get; set; }
 
+        public Train train { get; set; }
+
 
         public Timetable() { }
 
-        public Timetable(int id, TrainLine line, DateTime startDateTime, DateTime endDateTime)
+        public Timetable(int id, TrainLine line, DateTime startDateTime, DateTime endDateTime, Train train)
         {
             this.id = id;
             this.line = line;
             this.startDateTime = startDateTime;
             this.endDateTime = endDateTime;
+            this.train = train;
         }
     }
 }

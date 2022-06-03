@@ -1,0 +1,105 @@
+﻿<Page x:Class="HCI_Projekat.Pages.TimetableCRUD"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
+      Title="TimetableCRUD">
+    <Page.Resources>
+        <Style TargetType="Border" x:Key="radius">
+            <Setter Property="CornerRadius" Value="5"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="MyButton">
+            <Setter Property="Background" Value="DarkCyan" />
+            <Setter Property="Foreground" Value="White" />
+
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="Gray"></Setter>
+                    <Setter Property="Foreground" Value="DarkGray"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <local:ManagerNavbar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"></local:ManagerNavbar>
+
+        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
+
+        <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
+
+        <DataGrid x:Name="timetable_table" Grid.Row="1" ItemsSource="{Binding dataBase.timetables}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="100,0,100,0" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
+            <DataGrid.Resources>
+                <Style TargetType="{x:Type DataGridColumnHeader}">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Foreground" Value="DarkCyan"/>
+                    <Setter Property="Height" Value="25"/>
+                    <Setter Property="FontWeight" Value="SemiBold"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="From" Width="1.3*" Binding="{Binding line.from.name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Start date" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="To" Width="1.3*" Binding="{Binding line.to.name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="End date" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Line" Width="0.7 *" Binding="{Binding line.id}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Train" Width="*" Binding="{Binding train.name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Rang" Width="*" Binding="{Binding train.rang}"></DataGridTextColumn>
+                <DataGridTemplateColumn Header="Stations" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="View" Style="{StaticResource ResourceKey=MyButton}" FontSize="15" >
+                                <Button.Resources>
+                                    <Style TargetType="Border">
+                                        <Setter Property="CornerRadius" Value="0"></Setter>
+                                    </Style>
+                                </Button.Resources>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <Button x:Name="btn_edit" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit"  >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Page>

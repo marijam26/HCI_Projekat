@@ -31,5 +31,21 @@ namespace HCI_Projekat.Pages
             TrainCRUD tc = new TrainCRUD(window.dataBase);
             window.Content = tc;
         }
+
+
+        private void bt_trainLines_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
+            window.Content = tc;
+        }
+
+
+        private void bt_timetable_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            TimetableCRUD tc = new TimetableCRUD(window.dataBase);
+            window.Content = tc;
+        }
     }
 }
