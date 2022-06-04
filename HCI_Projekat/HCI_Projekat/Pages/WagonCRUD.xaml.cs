@@ -1,0 +1,250 @@
+﻿using HCI_Projekat.Model;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+
+namespace HCI_Projekat.Pages
+{
+    /// <summary>
+    /// Interaction logic for WagonCRUD.xaml
+    /// </summary>
+    public partial class WagonCRUD : Page
+    {
+
+        public Data dataBase { get; set; }
+
+        public Train train { get; set; }
+
+        public string action { get; set; }
+
+        public WagonCRUD(Train t, Data dataBase, String action)
+        {
+            InitializeComponent();
+            this.dataBase = dataBase;
+            this.train = t;
+            this.action = action;
+            DataContext = this;
+            btn_save.IsEnabled = false;
+            if (action == "view")
+            {
+                btn_finish.Visibility = Visibility.Hidden;
+            }
+            else {
+                btn_finish.Visibility = Visibility.Visible;
+            }
+
+        }
+
+
+        private void trainWagons_table_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+
+
+        }
+
+        private void btn_add_Click(object sender, RoutedEventArgs e)
+        {
+            if (!checkInput())
+            {
+                return;
+            }
+
+
+            var Result = MessageBox.Show("Do you want to add new wagon?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                Wagon wagon = new Wagon();
+                wagon.capacity = int.Parse(tb_capacity.Text);
+                wagon.wagonClass = (bool)rb_first.IsChecked ? Wagon.WagonClass.first : Wagon.WagonClass.second;
+                int id = this.train.wagons.Max(x => x.id);
+                wagon.id = id + 1;
+
+                this.train.wagons.Add(wagon);
+                tb_capacity.Text = "";
+                trainWagons_table.ItemsSource = null;
+                trainWagons_table.ItemsSource = train.wagons;
+            }
+
+        }
+
+        private void btn_edit_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedCells = trainWagons_table.SelectedCells.Count();
+            if (selectedCells == 0)
+            {
+                MessageBox.Show("Must select wagon.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            btn_add.IsEnabled = false;
+            btn_edit.IsEnabled = false;
+            btn_delete.IsEnabled = false;
+            btn_save.IsEnabled = true;
+
+            Wagon t = (Wagon)trainWagons_table.SelectedItem;
+
+            if (t != null)
+            {
+                tb_capacity.Text = t.capacity.ToString();
+
+                if (t.wagonClass == Wagon.WagonClass.first)
+                {
+                    rb_first.IsChecked = true;
+                }
+                else
+                {
+                    rb_second.IsChecked = true;
+                }
+            }
+
+        }
+
+        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        {
+
+            int selectedCells = trainWagons_table.SelectedCells.Count();
+            if (selectedCells == 0)
+            {
+                MessageBox.Show("Must select wagon.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            if (train.wagons.Count == 1) {
+                MessageBox.Show("Can't delete wagon! Train must have at least one wagon.", "Failed", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var Result = MessageBox.Show("Do you want to delete wagon?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                Wagon t = (Wagon)trainWagons_table.SelectedItem;
+                this.train.wagons.Remove(t);
+                trainWagons_table.ItemsSource = null;
+                trainWagons_table.ItemsSource = train.wagons;
+            }
+
+        }
+
+        private bool checkInput()
+        {
+
+            int res;
+            bool num = int.TryParse(tb_capacity.Text, out res);
+            if (!num)
+            {
+                MessageBox.Show("Capacity must be number.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            if (rb_first.IsChecked == false && rb_second.IsChecked == false)
+            {
+                MessageBox.Show("Must choose class.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+            return true;
+        }
+
+
+        private void btn_save_Click(object sender, RoutedEventArgs e)
+        {
+            if (!checkInput())
+            {
+                return;
+            }
+            var Result = MessageBox.Show("Do you want to change wagons ?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+                Wagon t = (Wagon)trainWagons_table.SelectedItem;
+                foreach (Wagon w in train.wagons)
+                {
+                    if (w.id == t.id)
+                    {
+                        t.capacity = int.Parse(tb_capacity.Text);
+                        t.wagonClass = (bool)rb_first.IsChecked ? Wagon.WagonClass.first : Wagon.WagonClass.second;
+                    }
+                }
+                trainWagons_table.ItemsSource = null;
+                trainWagons_table.ItemsSource = train.wagons;
+                MessageBox.Show("Successfully changed wagon!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+            }
+
+            tb_capacity.Text = "";
+
+            btn_add.IsEnabled = true;
+            btn_edit.IsEnabled = true;
+            btn_delete.IsEnabled = true;
+            btn_save.IsEnabled = false;
+
+        }
+
+        private void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.action == "view")
+            {
+                MainWindow window = (MainWindow)Window.GetWindow(this);
+                TrainCRUD r = new TrainCRUD(this.dataBase);
+                window.Content = r;
+            }
+            else if (this.action == "edit")
+            {
+                MainWindow window = (MainWindow)Window.GetWindow(this);
+                EditTrain r = new EditTrain(this.dataBase, this.train);
+                window.Content = r;
+            }
+            else {
+                MainWindow window = (MainWindow)Window.GetWindow(this);
+                AddTrain r = new AddTrain(this.dataBase, this.train);
+                window.Content = r;
+            }
+        }
+
+        
+        
+        private void btn_finish_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.action == "add")
+            {
+                var Result = MessageBox.Show("Do you want to add train?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    this.dataBase.trains.Add(this.train);
+                    MessageBox.Show("Successfully added train!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else {
+                var Result = MessageBox.Show("Do you want to change train?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (Result == MessageBoxResult.Yes)
+                {
+                    foreach (Train t in dataBase.trains)
+                    {
+                        if (t.id == train.id)
+                        {
+                            t.name = train.name;
+                            t.rang = train.rang;
+                            t.wagons = train.wagons;
+                        }
+                    }
+                    MessageBox.Show("Successfully changed train!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            TrainCRUD r = new TrainCRUD(this.dataBase);
+            window.Content = r;
+        }
+
+
+
+    }
+}

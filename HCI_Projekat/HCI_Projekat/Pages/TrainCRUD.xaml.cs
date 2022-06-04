@@ -16,9 +16,8 @@ using System.Windows.Shapes;
 
 namespace HCI_Projekat.Pages
 {
-    /// <summary>
-    /// Interaction logic for TrainCRUD.xaml
-    /// </summary>
+
+
     public partial class TrainCRUD : Page
     {
         public Data dataBase { get; set; }
@@ -29,7 +28,6 @@ namespace HCI_Projekat.Pages
             InitializeComponent();
             this.dataBase = database;
             DataContext = this;
-            btn_save.IsEnabled = false;
         }
 
         private void train_table_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -39,41 +37,16 @@ namespace HCI_Projekat.Pages
 
         }
 
-        private void btn_save_Click(object sender, RoutedEventArgs e)
-        {
-            if (!checkInput())
-            {
-                return;
-            }
-            var Result = MessageBox.Show("Do you want to change train?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(Result == MessageBoxResult.Yes)
-            {
-                Train t = (Train)train_table.SelectedItem;
-                foreach(Train train in dataBase.trains)
-                {
-                    if(train.id == t.id)
-                    {
-                        train.name = tb_name.Text;
-                        train.capacity = int.Parse(tb_capacity.Text);
-                        train.rang = (bool)rb_soko.IsChecked ? TrainRang.Soko : TrainRang.Obican;
-                    }
-                }
-                train_table.ItemsSource = null;
-                train_table.ItemsSource = dataBase.trains;
-                MessageBox.Show("Successfully changed train!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
-            }
-
-            tb_name.Text = "";
-            tb_capacity.Text = "";
-
-            btn_add.IsEnabled = true;
-            btn_edit.IsEnabled = true;
-            btn_delete.IsEnabled = true;
-            btn_save.IsEnabled = false;
-
+        private void Show_Wagons(object sender,RoutedEventArgs e) {
+            Train t = (Train)train_table.SelectedItem;
+            WagonCRUD wagons = new WagonCRUD(t,dataBase,"view");
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            window.Content = wagons;
+        
         }
 
+        
         private void btn_edit_Click(object sender, RoutedEventArgs e)
         {
             int selectedCells = train_table.SelectedCells.Count();
@@ -82,28 +55,12 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("Must select train.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-
-            btn_add.IsEnabled = false;
-            btn_edit.IsEnabled = false;
-            btn_delete.IsEnabled = false;
-            btn_save.IsEnabled = true;
-
+          
             Train t = (Train)train_table.SelectedItem;
 
-            if (t != null)
-            {
-                tb_name.Text = t.name;
-                tb_capacity.Text = t.capacity.ToString();
-
-                if (t.rang == TrainRang.Soko)
-                {
-                    rb_soko.IsChecked = true;
-                }
-                else
-                {
-                    rb_obican.IsChecked = true;
-                }
-            }
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            EditTrain r = new EditTrain(this.dataBase,t);
+            window.Content = r;
 
         }
 
@@ -130,34 +87,15 @@ namespace HCI_Projekat.Pages
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            if(!checkInput())
-            {
-                return;
-            }
-            
-
-            var Result = MessageBox.Show("Do you want to add train?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if (Result == MessageBoxResult.Yes)
-            {
-                Train train = new Train();
-                train.name = tb_name.Text;
-                train.capacity = int.Parse(tb_capacity.Text);
-                train.rang = (bool)rb_soko.IsChecked ? TrainRang.Soko : TrainRang.Obican;
-                int id = this.dataBase.trains.Max(x => x.id);
-                train.id = id+1;
-
-                this.dataBase.trains.Add(train);
-                tb_name.Text = "";
-                tb_capacity.Text = "";
-                train_table.ItemsSource = null;
-                train_table.ItemsSource = dataBase.trains;
-            }
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            AddTrain r = new AddTrain(this.dataBase);
+            window.Content = r;
 
         }
 
         private bool checkInput()
         {
-            if (tb_name.Text == "")
+            /*if (tb_name.Text == "")
             {
                 MessageBox.Show("Must enter name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
@@ -173,7 +111,7 @@ namespace HCI_Projekat.Pages
             {
                 MessageBox.Show("Must choose range.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
-            }
+            }*/
             return true;
         }
     }

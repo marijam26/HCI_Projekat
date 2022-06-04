@@ -26,3 +26,11 @@ C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug
 C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\HCI_Projekat.csproj.CoreCompileInputs.cache
 C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\HCI_Projekat.exe
 C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\HCI_Projekat.pdb
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\TrainLineCRUD.g.cs
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\TrainLineCRUD.baml
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\WagonCRUD.g.cs
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\WagonCRUD.baml
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\AddTrain.g.cs
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\AddTrain.baml
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\EditTrain.g.cs
+C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\obj\Debug\Pages\EditTrain.baml

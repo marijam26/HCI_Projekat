@@ -31,8 +31,7 @@ namespace HCI_Projekat.Pages
             TrainCRUD tc = new TrainCRUD(window.dataBase);
             window.Content = tc;
         }
-
-
+        
         private void bt_trainLines_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Window.GetWindow(this);

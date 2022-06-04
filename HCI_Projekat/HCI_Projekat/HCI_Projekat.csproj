@@ -67,7 +67,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddTrain.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ClientHomepage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditTrain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -91,6 +99,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TrainLineCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\WagonCRUD.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Address.cs" />
@@ -99,8 +115,15 @@
     <Compile Include="Model\Train.cs" />
     <Compile Include="Model\TrainLine.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="Model\Wagon.cs" />
+    <Compile Include="Pages\AddTrain.xaml.cs">
+      <DependentUpon>AddTrain.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ClientHomepage.xaml.cs">
       <DependentUpon>ClientHomepage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditTrain.xaml.cs">
+      <DependentUpon>EditTrain.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -116,6 +139,12 @@
     </Compile>
     <Compile Include="Pages\TrainCRUD.xaml.cs">
       <DependentUpon>TrainCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TrainLineCRUD.xaml.cs">
+      <DependentUpon>TrainLineCRUD.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WagonCRUD.xaml.cs">
+      <DependentUpon>WagonCRUD.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -156,6 +185,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\back4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\addTrain.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

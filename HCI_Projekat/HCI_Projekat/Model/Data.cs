@@ -23,15 +23,22 @@ namespace HCI_Projekat.Model
             users.Add(u1);
             users.Add(new User("coki", "c", "Coka", "Cokic", UserType.Client));
 
-            trains = new List<Train>();
-            Train train1 = new Train(1, "Soko1", TrainRang.Soko, 100);
-            trains.Add(train1);
-            Train train2 = new Train(2, "Soko2", TrainRang.Soko, 200);
-            trains.Add(train2);
-            trains.Add(new Train(3, "Jadan voz", TrainRang.Obican, 100));
-            trains.Add(new Train(4, "Jos jadniji voz", TrainRang.Obican, 50));
-            train1.wagons.Add(new Wagon());
+            List<Wagon> wagons1 = new List<Wagon>();
+            wagons1.Add(new Wagon(1,Wagon.WagonClass.first,50));
+            wagons1.Add(new Wagon(1, Wagon.WagonClass.second, 40));
+            wagons1.Add(new Wagon(1, Wagon.WagonClass.first, 55));
+            List<Wagon> wagons2 = new List<Wagon>();
+            wagons2.Add(new Wagon(1, Wagon.WagonClass.first, 50));
+            wagons2.Add(new Wagon(1, Wagon.WagonClass.second, 30));
+            wagons2.Add(new Wagon(1, Wagon.WagonClass.first, 25));
 
+            trains = new List<Train>();
+            Train train1 = new Train(1, "Soko1", Rang.Soko ,wagons1);
+            trains.Add(train1);
+            Train train2 = new Train(2, "Soko2",Rang.obicni, wagons2);
+            trains.Add(train2);
+            trains.Add(new Train(3, "Jadan voz", Rang.Soko, new List<Wagon> { new Wagon(3, Wagon.WagonClass.first, 15)}));
+            trains.Add(new Train(4, "Jos jadniji voz", Rang.Soko, new List<Wagon> { new Wagon(3, Wagon.WagonClass.second, 15) }));
 
             addresses = new List<Address>();
             Address address1 = new Address(1,"Novi Sad","Srbija","Puskinova");

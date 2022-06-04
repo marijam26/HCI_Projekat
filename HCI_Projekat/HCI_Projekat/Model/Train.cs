@@ -10,64 +10,33 @@ namespace HCI_Projekat.Model
     {
         public int id { get; set; }
         public string name { get; set; }
-        public TrainRang rang { get; set; }
-
-        public int capacity { get; set; }
-
+        public Rang rang { get; set; }
         public List<Wagon> wagons { get; set; }
 
-        public Train() { }
+        public Train()
+        {
+            this.wagons = new List<Wagon> { new Wagon(1, Wagon.WagonClass.first, 10) };
+        }
 
-        public Train(int id, string name, TrainRang rang, int capacity)
+
+        public Train(int id, string name, Rang rang, List<Wagon> wagons)
         {
             this.id = id;
             this.name = name;
             this.rang = rang;
-            this.capacity = capacity;
-            this.wagons = new List<Wagon>();
+            this.wagons = wagons;
+
         }
+
 
 
     }
 
-    public enum TrainRang
+
+    public enum Rang
     {
         Soko,
-        Obican
+        obicni
     }
 
-    public class Wagon
-    {
-        public int id { get; set; }
-
-        public int classNum;
-
-        public List<Seat> seats;
-
-        public Wagon() { }
-
-        public Wagon(int id,int classNum)
-        {
-            this.id = id;
-            this.classNum = classNum;
-            this.seats = new List<Seat>();
-        }
-    }
-
-    public class Seat
-    {
-        public int id { get; set; }
-
-        public int seatNum;
-
-        public bool isAvailable;
-
-        public Seat() { }
-        public Seat(int id,int seatNum, bool isAvailable)
-        {
-            this.id=id;
-            this.seatNum = seatNum;
-            this.isAvailable = true;
-        }
-    }
 }

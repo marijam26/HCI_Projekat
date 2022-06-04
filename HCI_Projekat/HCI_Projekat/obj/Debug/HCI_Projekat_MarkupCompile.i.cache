@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\I\Desktop\hci_projekat\HCI_Projekat\HCI_Projekat\HCI_Projekat\App.xaml
-7949064708
+11-1025896018
 
-18526329983
+23-2119022881
 13-1505183044
-MainWindow.xaml;Pages\ClientHomepage.xaml;Pages\Login.xaml;Pages\ManagerHomepage.xaml;Pages\ManagerNavbar.xaml;Pages\Registration.xaml;Pages\TrainCRUD.xaml;
+MainWindow.xaml;Pages\AddTrain.xaml;Pages\ClientHomepage.xaml;Pages\EditTrain.xaml;Pages\Login.xaml;Pages\ManagerHomepage.xaml;Pages\ManagerNavbar.xaml;Pages\Registration.xaml;Pages\TrainCRUD.xaml;Pages\TrainLineCRUD.xaml;Pages\WagonCRUD.xaml;
 
 True
 
