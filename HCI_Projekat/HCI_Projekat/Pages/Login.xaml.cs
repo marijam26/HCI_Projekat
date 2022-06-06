@@ -62,7 +62,7 @@ namespace HCI_Projekat.Pages
 
             if(dataBase.currentUser.type == UserType.Client)
             {
-                ClientHomepage ch = new ClientHomepage();
+                ClientHomepage ch = new ClientHomepage(dataBase);
                 window.Content = ch;
             }
             else
