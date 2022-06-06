@@ -33,21 +33,24 @@ namespace HCI_Projekat.Pages
             this.dataBase = database;
             DataContext = this;
             this.stationsList = new List<stationDto>();
-            for(int i = 0; i < tl.stations.Count; i++)
+            for(int i = 0; i < tl.stations.Count-1; i++)
             {
-                this.stationsList.Add(new stationDto(tl.stations[i].name, tl.time[i]));
+                this.stationsList.Add(new stationDto(tl.stations[i].name, tl.stations[i+1].name, tl.time[i]));
             }
         }
 
         public class stationDto
         {
-            public string name { get; set; }
+            public string from { get; set; }
+
+            public string to { get; set; }
             public int time { get; set; }
             public stationDto() { }
 
-            public stationDto(string name, int time)
+            public stationDto(string from,string to, int time)
             {
-                this.name = name;
+                this.from = from;
+                this.to = to;
                 this.time = time;
             }
         }
@@ -73,7 +76,7 @@ namespace HCI_Projekat.Pages
             {
                 stationDto sdto = (stationDto)station_table.SelectedItem;
                 this.stationsList.Remove(sdto);
-                Station s = this.tl.stations.Where(x => x.name == sdto.name).First();
+                Station s = this.tl.stations.Where(x => x.name == sdto.from).First();
                 this.tl.stations.Remove(s);
                 foreach(TrainLine t in this.dataBase.trainLines)
                 {

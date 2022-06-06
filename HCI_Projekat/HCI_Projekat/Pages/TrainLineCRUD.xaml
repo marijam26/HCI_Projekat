@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
       mc:Ignorable="d" 
+      TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TrainLineCRUD">
     <Page.Resources>
@@ -41,18 +42,8 @@
 
         <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
-        <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="DarkCyan"/>
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                </Style>
-            </DataGrid.Resources>
+        <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Style="{DynamicResource MaterialDesignDataGrid}" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Header="From" Width="*" Binding="{Binding from.name}"></DataGridTextColumn>
                 <DataGridTextColumn Header="To" Width="*" Binding="{Binding to.name}"></DataGridTextColumn>
@@ -80,7 +71,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add"  >
+        <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"  >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

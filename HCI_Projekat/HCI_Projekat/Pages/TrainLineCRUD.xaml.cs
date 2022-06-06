@@ -59,5 +59,13 @@ namespace HCI_Projekat.Pages
                 trainLine_table.ItemsSource = dataBase.trainLines;
             }
         }
+
+        private void btn_add_Click(object sender, RoutedEventArgs e)
+        {
+            TrainLine t = (TrainLine)trainLine_table.SelectedItem;
+            AddTrainLine s = new AddTrainLine(this.dataBase,t);
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            window.Content = s;
+        }
     }
 }

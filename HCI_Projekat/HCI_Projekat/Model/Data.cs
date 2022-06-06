@@ -48,9 +48,9 @@ namespace HCI_Projekat.Model
             addresses.Add(address2);
             addresses.Add(address3);
 
-            Station s1 = new Station(1, "Beograd");
-            Station s2 = new Station(2, "Nova Pazova");
-            Station s3 = new Station(3, "Novi Sad");
+            Station s1 = new Station(1, "Beograd", 44.818109449391756, 20.465894172199075);
+            Station s2 = new Station(2, "Nova Pazova",44.95983320985867, 20.23084652428375);
+            Station s3 = new Station(3, "Novi Sad", 45.27167160883285, 19.8209432003093);
 
          
 

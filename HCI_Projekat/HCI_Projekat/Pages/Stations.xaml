@@ -47,20 +47,11 @@
 
         <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
-        <DataGrid x:Name="station_table" Grid.Row="1" ItemsSource="{Binding stationsList}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="DarkCyan"/>
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                </Style>
-            </DataGrid.Resources>
+        <DataGrid x:Name="station_table" Grid.Row="1" ItemsSource="{Binding stationsList}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="300,0,300,0" Height="250" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
+ 
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
+                <DataGridTextColumn Header="From" Width="*" Binding="{Binding from}"></DataGridTextColumn>
+                <DataGridTextColumn Header="To" Width="*" Binding="{Binding to}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Time (min)" Width="*" Binding="{Binding time}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>

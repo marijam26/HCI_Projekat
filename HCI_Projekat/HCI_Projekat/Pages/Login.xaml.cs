@@ -33,7 +33,7 @@ namespace HCI_Projekat.Pages
         private void btn_login_Click(object sender, RoutedEventArgs e)
         {
             string username = tb_username.Text;
-            string password = tb_password.Text;
+            string password = tb_password.Password.ToString();
             bool found = false;
             MainWindow window = (MainWindow)Window.GetWindow(this);
 

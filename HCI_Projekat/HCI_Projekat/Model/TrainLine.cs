@@ -33,11 +33,15 @@ namespace HCI_Projekat.Model
     {
         public int id { get; set; }
         public string name { get; set; }
-        //koordinate
-        public Station(int id, string name)
+        public double longitude { get; set; }
+        public double latitude { get; set; }
+
+        public Station(int id, string name, double latitude, double longitude)
         {
             this.id = id;
             this.name = name;
+            this.longitude = longitude;
+            this.latitude = latitude;
         }
         public Station() { }
     }

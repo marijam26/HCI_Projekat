@@ -20,12 +20,10 @@
         <Border Grid.Row="0" Background="DarkGoldenrod" Grid.ColumnSpan="4"></Border>
 
 
-
-        <Button x:Name="bt_trains" Grid.Row="0" Grid.Column="0" Content="Trains" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" BorderBrush="Wheat" BorderThickness="3" Click="bt_trains_Click"></Button>
-        <Button x:Name="bt_trainLines" Grid.Row="0" Grid.Column="1" Content="Train Lines" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" BorderBrush="Wheat" BorderThickness="3" Click="bt_trainLines_Click"></Button>
-        <Button x:Name="bt_timetable" Grid.Row="0" Grid.Column="2" Content="Timetables" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" BorderBrush="Wheat" BorderThickness="3" Click="bt_timetable_Click"></Button>
-
-        <Button Grid.Row="0" Grid.Column="3" Content="Logout" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" BorderBrush="Wheat" BorderThickness="3"></Button>
+        <Button x:Name="bt_trains" Grid.Row="0" Grid.Column="0" Content="Trains" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" Click="bt_trains_Click" Height="53"></Button>
+        <Button x:Name="bt_trainLines" Grid.Row="0" Grid.Column="1" Content="Train Lines" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic"  Click="bt_trainLines_Click" Height="53"></Button>
+        <Button x:Name="bt_timetable" Grid.Row="0" Grid.Column="2" Content="Timetables" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" Height="53" Click="bt_timetable_Click"></Button>
+        <Button Grid.Row="0" Grid.Column="3" Content="Logout" Background="DarkGoldenrod" Foreground="White" FontSize="17" FontFamily="Century Gothic" Height="53"></Button>
 
 
 
