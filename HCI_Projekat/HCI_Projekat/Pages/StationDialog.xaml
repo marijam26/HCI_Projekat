@@ -1,0 +1,25 @@
+﻿<Window x:Class="HCI_Projekat.Pages.StationDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        TextElement.FontFamily="Century Gothic"
+        Title="StationDialog" Height="280" Width="350">
+    <materialDesign:Card Padding="20" FontFamily="Century Gothic" >
+        <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+            <RowDefinition Height="0.7*"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+            <TextBox x:Name="station_name" Grid.Row="0" materialDesign:HintAssist.Hint="Name" FontSize="23" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" />
+        <TextBox x:Name="time_before" Grid.Row="1" materialDesign:HintAssist.Hint="Time before (min)" FontSize="23" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" />
+        <TextBox x:Name="time_after" Grid.Row="2" materialDesign:HintAssist.Hint="Time after (min)" FontSize="23"  materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" ></TextBox>
+        <Button x:Name="btn_save" Grid.Row="3" Content="Save" Background="DarkCyan" Width="90" HorizontalAlignment="Right" FontSize="18" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Click="btn_save_Click"></Button>
+    </Grid>
+    </materialDesign:Card>
+    
+</Window>

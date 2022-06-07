@@ -50,20 +50,6 @@
             <Image x:Name="pin" Source="/Images/blue.png"  MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </materialDesign:Card>
 
-        <materialDesign:Card Grid.Row="2" Grid.Column="2" Margin="30,40,64,40" Padding="5">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <TextBox x:Name="station_name" Grid.Row="0" materialDesign:HintAssist.Hint="Name" FontSize="21" Padding="7" FontFamily="Century Gothic" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
-                <TextBox x:Name="time_before" Grid.Row="1" materialDesign:HintAssist.Hint="Time before (min)" FontSize="21" Padding="7" FontFamily="Century Gothic" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
-                <TextBox x:Name="time_after" Grid.Row="2" materialDesign:HintAssist.Hint="Time after (min)" FontSize="21" Padding="7" FontFamily="Century Gothic" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
-                <Button Grid.Row="3" Content="Save" Background="DarkCyan" Width="90" HorizontalAlignment="Right" Margin="0,0,10,0" FontSize="18" FontFamily="Century Gothic" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></Button>
-            </Grid>
-        </materialDesign:Card>
-
+      
     </Grid>
 </Page>

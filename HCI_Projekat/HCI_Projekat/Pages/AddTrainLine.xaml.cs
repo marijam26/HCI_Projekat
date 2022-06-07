@@ -44,6 +44,8 @@ namespace HCI_Projekat.Pages
             p.Background = new SolidColorBrush(Colors.Red);
             layerp.Children.Add(p);
             */
+            myMap.Children.Clear();
+
             this.polyline = new MapPolyline();
             this.polyline.Stroke = new System.Windows.Media.SolidColorBrush(System.Windows.Media.Colors.Blue);
             this.polyline.StrokeThickness = 5;
@@ -67,6 +69,7 @@ namespace HCI_Projekat.Pages
             }
 
             myMap.Children.Add(this.polyline);
+            
 
         }
 
@@ -103,48 +106,40 @@ namespace HCI_Projekat.Pages
 
         private void myMap_Drop(object sender, DragEventArgs e)
         {
-            e.Handled = true;
 
             Point mousePosition = e.GetPosition(myMap);
-
             Location pinLocation = myMap.ViewportPointToLocation(mousePosition);
-            var p = new Pushpin();
-            p.Location = pinLocation;
-            p.Background = new SolidColorBrush(Colors.Blue);
-            Location end = this.polyline.Locations.Last();
-            this.polyline.Locations.Remove(end);
 
-            this.polyline.Locations.Add(pinLocation);
-            this.polyline.Locations.Add(end);
+            StationDialog d = new StationDialog(this.dataBase,this.TrainLine,pinLocation);
+            d.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            d.ShowDialog();
 
-
-            //this.polyline.Locations.OrderByDescending(x => x.Latitude);
-            myMap.Children.Remove(this.polyline);
-            myMap.Children.Add(this.polyline);
-            myMap.Children.Add(p);
-
-
-        }
-
-        public void sortLocations()
-        {
-            LocationCollection n = new LocationCollection();
-            Location first = this.polyline.Locations.First();
-            Location second = this.polyline.Locations[1];
-            Location end = this.polyline.Locations.Last();
-            n.Add(first);
-            double min = Math.Abs(first.Latitude - second.Latitude);
-            for(int i = 2; i < this.polyline.Locations.Count-1; i++)
+            /*
+            if (d.isSaved)
             {
-                double min2 = Math.Abs(this.polyline.Locations[i].Latitude - first.Latitude);
-                if (min2 < min)
-                {
-                    min = min2;
+                e.Handled = true;
 
-                }
+                var p = new Pushpin();
+                p.Location = pinLocation;
+                p.Background = new SolidColorBrush(Colors.Blue);
+                Location end = this.polyline.Locations.Last();
+                this.polyline.Locations.Remove(end);
+
+                this.polyline.Locations.Add(pinLocation);
+                this.polyline.Locations.Add(end);
+
+
+                //this.polyline.Locations.OrderByDescending(x => x.Latitude);
+                myMap.Children.Remove(this.polyline);
+                myMap.Children.Add(this.polyline);
+                myMap.Children.Add(p);
             }
+            */
+          
 
         }
+
+
 
     }
 }

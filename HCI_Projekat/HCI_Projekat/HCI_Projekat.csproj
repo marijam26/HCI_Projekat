@@ -138,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\StationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\Stations.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -199,6 +203,9 @@
     </Compile>
     <Compile Include="Pages\ReserveBuyTicket.xaml.cs">
       <DependentUpon>ReserveBuyTicket.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\StationDialog.xaml.cs">
+      <DependentUpon>StationDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Stations.xaml.cs">
       <DependentUpon>Stations.xaml</DependentUpon>
