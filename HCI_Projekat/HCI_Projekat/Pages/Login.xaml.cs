@@ -22,6 +22,7 @@ namespace HCI_Projekat.Pages
     public partial class Login : Page
     {
         public Data dataBase { get; set; }
+        public User loggedUser { get; set; }
         public Login(Data dataBase)
         {
             InitializeComponent();
@@ -47,6 +48,7 @@ namespace HCI_Projekat.Pages
                 foreach(User u in dataBase.users){
                     if(u.username == username && u.password == password)
                     {
+                        loggedUser = u;
                         dataBase.currentUser = u;
                         found = true;
                         break;
@@ -62,7 +64,7 @@ namespace HCI_Projekat.Pages
 
             if(dataBase.currentUser.type == UserType.Client)
             {
-                ClientHomepage ch = new ClientHomepage(dataBase);
+                ClientHomepage ch = new ClientHomepage(dataBase, loggedUser);
                 window.Content = ch;
             }
             else

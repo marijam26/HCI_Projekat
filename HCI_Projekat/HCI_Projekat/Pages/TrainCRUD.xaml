@@ -60,18 +60,8 @@
                 <ColumnDefinition Width="479*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,111.979,250,111.978" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1">
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="White"/>
-                        <Setter Property="Foreground" Value="DarkCyan"/>
-                        <Setter Property="Height" Value="25"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="BorderBrush" Value="Black"/>
-                        <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                    </Style>
-                </DataGrid.Resources>
+            <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,111.979,250,111.978" Background="White" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1">
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Rang" Width="*" Binding="{Binding rang}"></DataGridTextColumn>

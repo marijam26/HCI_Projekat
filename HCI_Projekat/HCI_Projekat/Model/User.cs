@@ -16,6 +16,10 @@ namespace HCI_Projekat.Model
 
         public string surname { get; set; }
 
+        public List<Ticket> tickets { get; set; }
+
+        public List<Ticket> reservations { get; set; }
+
         public UserType type { get; set; }
 
         public User()
@@ -23,13 +27,25 @@ namespace HCI_Projekat.Model
 
         }
 
-        public User(string username, string password,string name,string suername,UserType userType)
+        public User(string username, string password,string name,string surname,UserType userType)
         {
             this.username = username;
             this.password = password;
             this.name = name;
             this.surname = surname;
             this.type = userType;
+            this.tickets = new List<Ticket>();
+            this.reservations = new List<Ticket>();
+        }
+        
+        public User(string username, string password,string name,string surname,UserType userType,List<Ticket> tickets)
+        {
+            this.username = username;
+            this.password = password;
+            this.name = name;
+            this.surname = surname;
+            this.type = userType;
+            this.tickets = tickets;
         }
 
     }

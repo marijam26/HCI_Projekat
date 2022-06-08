@@ -71,18 +71,8 @@
                 <ColumnDefinition Width="200*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="trainWagons_table" Grid.Row="0" ItemsSource="{Binding train.wagons}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="25,0,0,0" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="trainWagons_table_SelectionChanged" Grid.ColumnSpan="2">
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="White"/>
-                        <Setter Property="Foreground" Value="DarkCyan"/>
-                        <Setter Property="Height" Value="25"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="BorderBrush" Value="Black"/>
-                        <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                    </Style>
-                </DataGrid.Resources>
+            <DataGrid x:Name="trainWagons_table" Grid.Row="0" ItemsSource="{Binding train.wagons}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="25,0,0,0" Background="White" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="trainWagons_table_SelectionChanged" Grid.ColumnSpan="2">
+                
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Wagon number" Width="*" Binding="{Binding id}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Class" Width="*" Binding="{Binding wagonClass}"></DataGridTextColumn>

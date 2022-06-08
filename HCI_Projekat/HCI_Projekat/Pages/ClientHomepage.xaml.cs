@@ -23,9 +23,11 @@ namespace HCI_Projekat.Pages
     public partial class ClientHomepage : Page
     {
         public Data dataBase { get; set; }
+        public User loggedUser { get; set; }
 
-        public ClientHomepage(Data dataBase)
+        public ClientHomepage(Data dataBase,User u)
         {
+            loggedUser = u;
             InitializeComponent();
             this.dataBase = dataBase;
             DataContext = this;
@@ -75,7 +77,7 @@ namespace HCI_Projekat.Pages
         private void MenuItem_Click_reserve_buy(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ReserveBuyTicket r = new ReserveBuyTicket(this.dataBase);
+            ReserveBuyTicket r = new ReserveBuyTicket(this.dataBase,this.loggedUser);
             window.Content = r;
         }
 

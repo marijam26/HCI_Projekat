@@ -97,22 +97,11 @@
                 </Button.Resources>
             </Button>
             
-            <DataGrid x:Name="timetable_table" Grid.Row="2" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,0,250,111.978" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged"  Grid.Column="1">
-                <DataGrid.Resources>
-                    <Style TargetType="{x:Type DataGridColumnHeader}">
-                        <Setter Property="Background" Value="White"/>
-                        <Setter Property="Foreground" Value="DarkCyan"/>
-                        <Setter Property="Height" Value="25"/>
-                        <Setter Property="FontWeight" Value="SemiBold"/>
-                        <Setter Property="BorderBrush" Value="Black"/>
-                        <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                    </Style>
-                </DataGrid.Resources>
+            <DataGrid Background="White" x:Name="timetable_table" Grid.Row="2" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,0,250,111.978"  Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged"  Grid.Column="1">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="To" Width="*" Binding="{Binding endStation}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Start datetime" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Departure time" Width="2*" Binding="{Binding startTime}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
 
                 </DataGrid.Columns>

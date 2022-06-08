@@ -24,13 +24,13 @@ namespace HCI_Projekat.Model
             users.Add(new User("coki", "c", "Coka", "Cokic", UserType.Client));
 
             List<Wagon> wagons1 = new List<Wagon>();
-            wagons1.Add(new Wagon(1,Wagon.WagonClass.first,50));
-            wagons1.Add(new Wagon(1, Wagon.WagonClass.second, 40));
-            wagons1.Add(new Wagon(1, Wagon.WagonClass.first, 55));
+            wagons1.Add(new Wagon(1,Wagon.WagonClass.first,16));
+            wagons1.Add(new Wagon(2, Wagon.WagonClass.second, 24));
+            wagons1.Add(new Wagon(3, Wagon.WagonClass.first, 16));
             List<Wagon> wagons2 = new List<Wagon>();
-            wagons2.Add(new Wagon(1, Wagon.WagonClass.first, 50));
-            wagons2.Add(new Wagon(1, Wagon.WagonClass.second, 30));
-            wagons2.Add(new Wagon(1, Wagon.WagonClass.first, 25));
+            wagons2.Add(new Wagon(4, Wagon.WagonClass.first, 17));
+            wagons2.Add(new Wagon(5, Wagon.WagonClass.second, 8));
+            wagons2.Add(new Wagon(6, Wagon.WagonClass.first, 24));
 
             trains = new List<Train>();
             Train train1 = new Train(1, "Soko1", Rang.Soko ,wagons1);

@@ -7,12 +7,29 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
       Title="ChooseSeat">
+    <Page.Resources>
+        <Style TargetType="Border" x:Key="radius">
+            <Setter Property="CornerRadius" Value="5"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="MyButton">
+            <Setter Property="Background" Value="DarkCyan" />
+            <Setter Property="Foreground" Value="White" />
+
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Background" Value="Gray"></Setter>
+                    <Setter Property="Foreground" Value="DarkGray"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition Height="0.4*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
             
         </Grid.RowDefinitions>
@@ -32,11 +49,34 @@
             <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             </Grid>
         </DockPanel>
+        
 
+        <Button x:Name="btn_buy" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Background="DarkCyan"  HorizontalAlignment="Right" Margin="0,10,30,0" Width="90" Height="30" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Buy" Click="buy_ticket">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        <Button x:Name="btn_reserve" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Background="DarkCyan"  HorizontalAlignment="Right" Margin="0,10,135,0" Width="90" Height="30" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Reserve" Click="reserve_ticket">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+        
+        <Button x:Name="btn_back" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Background="DarkCyan"  HorizontalAlignment="Right" Margin="0,10,240,0" Width="90" Height="30" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Back" Click="back_Btn_Click">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
 
-        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="3"/>
+        <Border Grid.Row="4" Background="DarkCyan" Grid.ColumnSpan="3"/>
 
-        <Label Grid.Row="3" Margin="0,5,0,0" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
+        <Label Grid.Row="4" Margin="0,0,0,0" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
 
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -45,16 +85,39 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="1" Name="wagonsGrid"></Grid>
+            <Ellipse  Grid.Column="0" Grid.Row="1" Height="7" Width="7" Margin="35,35,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="DarkCyan" Offset="0" />
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label Grid.Row="1" FontSize="13" FontFamily="Arial" Margin="45,30,0,0" HorizontalAlignment="Left"  Grid.Column="0">Wagon of first class</Label>
+            
+            <Ellipse  Grid.Column="0" Grid.Row="1" Height="7" Width="7" Margin="35,60,0,0" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Ellipse.Fill>
+                    <RadialGradientBrush>
+                        <GradientStop Color="DarkGoldenrod" Offset="0" />
+                    </RadialGradientBrush>
+                </Ellipse.Fill>
+            </Ellipse>
+            <Label Grid.Row="1" FontSize="13" FontFamily="Arial" Margin="45,55,0,0" HorizontalAlignment="Left"  Grid.Column="0">Wagon of second class</Label>
         </Grid>
+
         
         <Grid Grid.Row="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"></ColumnDefinition>
                 <ColumnDefinition Width="75*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <GridSplitter Width="3" Height="200" Margin="200,0,0,0" Grid.Column="0" HorizontalAlignment="Stretch" />
 
-            <Grid Grid.Column="1" Margin="60,5,60,5" Name="seatGrid"></Grid>
+            <Label Grid.Row="1" FontSize="15" FontFamily="Arial" Margin="0,82,10,2" HorizontalAlignment="Center"  Grid.Column="0">Please,</Label>
+            <Label Grid.Row="1" FontSize="15" FontFamily="Arial" Margin="2,102,10,2" HorizontalAlignment="Center"  Grid.Column="0">choose wagon and seat !</Label>
+
+            <GridSplitter Width="3" Height="200" Margin="200,0,0,0" Grid.Column="0" HorizontalAlignment="Stretch" />
+            <Border x:Name="trainBorder" Margin="160,5,160,5" Grid.Row="1" Grid.Column="2" BorderBrush="#FF13655D" BorderThickness="2" CornerRadius="10">
+                <Grid Grid.Column="1" Margin="110,5,110,5" Name="seatGrid"></Grid>
+            </Border>
         </Grid>
 
 
