@@ -16,9 +16,7 @@ using System.Windows.Shapes;
 
 namespace HCI_Projekat.Pages
 {
-    /// <summary>
-    /// Interaction logic for TimetableCRUD.xaml
-    /// </summary>
+ 
     public partial class TimetableCRUD : Page
     {
         public Data dataBase { get; set; }
@@ -32,9 +30,8 @@ namespace HCI_Projekat.Pages
             this.timetableList = new List<TimetableDTO>();
             for(int i = 0; i < dataBase.timetables.Count; i++)
             {
-                //timetable.line.price, timetable.train, day, timetable.ValidFrom, timetable.ValidTo));
                 String day = database.timetables[i].isWeekday ? "Weekday" : "Weekend";
-                this.timetableList.Add(new TimetableDTO(database.timetables[i].start, database.timetables[i].line.stations[0].name,
+                this.timetableList.Add(new TimetableDTO(database.timetables[i].id, database.timetables[i].line, database.timetables[i].start, database.timetables[i].line.stations[0].name,
                      database.timetables[i].line.stations[database.timetables[i].line.stations.Count() - 1].name,
                       database.timetables[i].line.price, database.timetables[i].train, day, database.timetables[i].ValidFrom, database.timetables[i].ValidTo));
             }
@@ -75,7 +72,7 @@ namespace HCI_Projekat.Pages
                 return;
             }
 
-            Timetable t = (Timetable)timetable_table.SelectedItem;
+            TimetableDTO t = (TimetableDTO)timetable_table.SelectedItem;
 
             MainWindow window = (MainWindow)Window.GetWindow(this);
             EditTimetable et = new EditTimetable(this.dataBase, t);

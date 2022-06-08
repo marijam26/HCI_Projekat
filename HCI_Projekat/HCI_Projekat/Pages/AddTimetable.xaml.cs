@@ -126,7 +126,7 @@ namespace HCI_Projekat.Pages
 
         }
 
-        private Boolean checkInput()
+        private bool checkInput()
         {
             String from = fromPlace.Text.Trim().ToLower();
             if(from == "")
