@@ -12,21 +12,28 @@ namespace HCI_Projekat.Model
 
         public TrainLine line { get; set; }
 
-        public DateTime startDateTime { get; set; }
+        public DateTime start { get; set; }
 
-        public DateTime endDateTime { get; set; }
+        public DateTime ValidFrom { get; set; }    // od kada vazi red voznje
+
+        public DateTime ValidTo { get; set; }      // do kada vazi
+
+
+        public Boolean isWeekday { get; set; }
 
         public Train train { get; set; }
 
 
         public Timetable() { }
 
-        public Timetable(int id, TrainLine line, DateTime startDateTime, DateTime endDateTime, Train train)
+        public Timetable(int id, TrainLine line, DateTime start, Train train, Boolean isWeekday, DateTime validFrom, DateTime validTo)
         {
             this.id = id;
             this.line = line;
-            this.startDateTime = startDateTime;
-            this.endDateTime = endDateTime;
+            this.start = start;
+            this.ValidFrom = validFrom;
+            this.ValidTo = validTo;
+            this.isWeekday = isWeekday;
             this.train = train;
         }
     }

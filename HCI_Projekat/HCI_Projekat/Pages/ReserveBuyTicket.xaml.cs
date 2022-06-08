@@ -85,7 +85,8 @@ namespace HCI_Projekat.Pages
 
             foreach (Timetable timetable in dataBase.timetables) { 
                 if (timetable.line.stations[0].name.ToLower() == start) {
-                    timetables.Add(new TimetableDTO(timetable.startDateTime,timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count()-1].name,timetable.line.price,timetable.train));
+                    String day = timetable.isWeekday ? "Weekday" : "Weekend";
+                    timetables.Add(new TimetableDTO(timetable.start,timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count()-1].name,timetable.line.price,timetable.train, day, timetable.ValidFrom, timetable.ValidTo));
                  }
             }
             if (timetables.Count() == 0)
@@ -102,21 +103,34 @@ namespace HCI_Projekat.Pages
     }
 
 
-    public class TimetableDTO {
+    public class TimetableDTO { 
+
+        public String startTime {get; set;}
+
         public DateTime startDateTime { get; set; }
         public String startStation { get; set; }
         public String endStation { get; set; }
         public int price { get; set; }
         public Train train { get; set; }
 
+        public String day { get; set; }    // weekday ili weekend
+        public DateTime validFrom { get; set; }
+        public DateTime validTo { get; set; }
+
         public TimetableDTO() { }
 
-        public TimetableDTO(DateTime startDateTime, String startStation, String endStation, int price,Train train) {
+        public TimetableDTO(DateTime startDateTime, String startStation, String endStation, int price,Train train, string day, DateTime validFrom, DateTime validTo)
+        {
             this.startDateTime = startDateTime;
             this.endStation = endStation;
             this.startStation = startStation;
             this.price = price;
             this.train = train;
+            this.day = day;
+            this.validFrom = validFrom;
+            this.validTo = validTo;
+
+            startTime = startDateTime.ToString("HH:mm");
         }
     }
 }

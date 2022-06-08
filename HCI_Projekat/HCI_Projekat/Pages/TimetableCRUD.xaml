@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TimetableCRUD">
@@ -41,41 +41,64 @@
 
         <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
-        <DataGrid x:Name="timetable_table" Grid.Row="1" ItemsSource="{Binding dataBase.timetables}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="100,0,100,0" Background="Wheat" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
-            <DataGrid.Resources>
-                <Style TargetType="{x:Type DataGridColumnHeader}">
-                    <Setter Property="Background" Value="White"/>
-                    <Setter Property="Foreground" Value="DarkCyan"/>
-                    <Setter Property="Height" Value="25"/>
-                    <Setter Property="FontWeight" Value="SemiBold"/>
-                    <Setter Property="BorderBrush" Value="Black"/>
-                    <Setter Property="BorderThickness" Value="0 0 0 1"/>
-                    <Setter Property="HorizontalContentAlignment" Value="Left"/>
-                </Style>
-            </DataGrid.Resources>
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="From" Width="1.3*" Binding="{Binding line.from.name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Start date" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="To" Width="1.3*" Binding="{Binding line.to.name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="End date" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Line" Width="0.7 *" Binding="{Binding line.id}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Train" Width="*" Binding="{Binding train.name}"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rang" Width="*" Binding="{Binding train.rang}"></DataGridTextColumn>
-                <DataGridTemplateColumn Header="Stations" Width="*">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button Content="View" Style="{StaticResource ResourceKey=MyButton}" FontSize="15" >
-                                <Button.Resources>
-                                    <Style TargetType="Border">
-                                        <Setter Property="CornerRadius" Value="0"></Setter>
-                                    </Style>
-                                </Button.Resources>
-                            </Button>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-            </DataGrid.Columns>
-        </DataGrid>
+        <Grid Grid.Row="1" Grid.ColumnSpan="4">
+            <Grid.Resources>
+
+            </Grid.Resources>
+
+            <Grid.RowDefinitions>
+                <RowDefinition  Height="2*"></RowDefinition>
+                <RowDefinition  Height="0.5*"></RowDefinition>
+
+                <RowDefinition Height="7*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+
+                <ColumnDefinition Width="121*"></ColumnDefinition>
+                <ColumnDefinition Width="479*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0"  HorizontalAlignment="Left" Margin="110,30,0,20" Grid.RowSpan="1">From:</Label>
+            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" HorizontalAlignment="Left" Height="25" Width="180" FontSize="15" Margin="160,30,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+
+            <Label Grid.Row="0"  HorizontalAlignment="Left" Grid.Column="1" Margin="160,30,0,20" Grid.RowSpan="1">To:</Label>
+            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="210,30,0,0" Height="25" Width="180" FontSize="15" VerticalAlignment="Top"/>
+
+
+            <Viewbox Height="40" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="0,30,420,0"   HorizontalAlignment="Right">
+                <RadioButton x:Name="rb_weekday" Content="Weekday" Margin="0,5,0,8"  GroupName="class" ></RadioButton>
+            </Viewbox>
+
+            <Viewbox Height="40" Grid.Row="0" Grid.Column="1" Margin="0,30,280,0" VerticalAlignment="Top"  HorizontalAlignment="Right">
+                <RadioButton x:Name="rb_weekend" Grid.Column="1" Content="Weekend"  Margin="0,5,0,8"  GroupName="class" ></RadioButton>
+            </Viewbox>
+
+            <Button x:Name="btn_search" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,38,120,0"   Width="100" Height="25" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Search" Click="searchTimetable">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+
+            <DataGrid x:Name="timetable_table"  CanUserAddRows="False" Grid.Row="2" ItemsSource="{Binding timetableList}" Grid.ColumnSpan="3" IsReadOnly="False" ColumnWidth="*" FontSize="18" Margin="80,0,80,0"  Style="{DynamicResource MaterialDesignDataGrid}"  Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="From" Width="1.3*" Binding="{Binding startStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="To" Width="1.3*" Binding="{Binding endStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Time" Width="*" Binding="{Binding startTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Train" Width="*" Binding="{Binding train.name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Day" Width="1.3*" Binding="{Binding day}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Valid since" Width="2*" Binding="{Binding validFrom}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Valid until" Width="2*" Binding="{Binding validTo}"></DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
 
         <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click">
             <Button.Resources>
@@ -93,7 +116,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_edit" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit"  >
+        <Button x:Name="btn_edit" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

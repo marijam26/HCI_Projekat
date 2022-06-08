@@ -77,13 +77,13 @@ namespace HCI_Projekat.Model
 
 
             this.timetables = new List<Timetable>();
-            Timetable tt1 = new Timetable(1, tl1, new DateTime(2022,6,2,10,10,0), new DateTime(2022, 6, 2, 13, 10, 0), train1);
-            Timetable tt2 = new Timetable(1, tl1, new DateTime(2022, 6, 2, 15, 0, 0), new DateTime(2022, 6, 2, 17, 10, 0), train2);
-            Timetable tt3 = new Timetable(1, tl1, new DateTime(2022, 6, 3, 10, 10, 0), new DateTime(2022, 6, 3, 13, 10, 0), train1);
-            Timetable tt4 = new Timetable(1, tl1, new DateTime(2022, 6, 4, 10, 10, 0), new DateTime(2022, 6, 4, 13, 10, 0), train1);
+            Timetable tt1 = new Timetable(1, tl1, new DateTime(2022,6,2,10,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt2 = new Timetable(1, tl1, new DateTime(2022, 6, 2, 15, 0, 0), train2, false, new DateTime(2022, 6, 2, 17, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // valid
+            Timetable tt3 = new Timetable(1, tl1, new DateTime(2022, 6, 3, 16, 10, 0), train1, true, new DateTime(2022, 6, 15, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // nije jos validan
+            Timetable tt4 = new Timetable(1, tl1, new DateTime(2022, 6, 4, 17, 10, 0), train1, false, new DateTime(2022, 6, 4, 13, 10, 0), new DateTime(2022, 6, 6, 17, 10, 0));   // nije validan
 
-            Timetable tt5 = new Timetable(1, tl2, new DateTime(2022, 6, 2, 17, 10, 0), new DateTime(2022, 6, 2, 19, 10, 0), train2);
-            Timetable tt6 = new Timetable(1, tl2, new DateTime(2022, 6, 3, 10, 10, 0), new DateTime(2022, 6, 3, 13, 10, 0), train2);
+            Timetable tt5 = new Timetable(1, tl2, new DateTime(2022, 6, 2, 17, 10, 0), train2, true,  new DateTime(2022, 6, 2, 19, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));
+            Timetable tt6 = new Timetable(1, tl2, new DateTime(2022, 6, 3, 10, 10, 0), train2, false, new DateTime(2022, 6, 3, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));
             this.timetables.Add(tt1);
             this.timetables.Add(tt2);
             this.timetables.Add(tt3);

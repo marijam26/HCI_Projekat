@@ -22,14 +22,25 @@ namespace HCI_Projekat.Pages
     public partial class TimetableCRUD : Page
     {
         public Data dataBase { get; set; }
+        public List<TimetableDTO> timetableList { get; set; }
+
         public TimetableCRUD(Data database)
         {
             InitializeComponent();
             this.dataBase = database;
             DataContext = this;
+            this.timetableList = new List<TimetableDTO>();
+            for(int i = 0; i < dataBase.timetables.Count; i++)
+            {
+                //timetable.line.price, timetable.train, day, timetable.ValidFrom, timetable.ValidTo));
+                String day = database.timetables[i].isWeekday ? "Weekday" : "Weekend";
+                this.timetableList.Add(new TimetableDTO(database.timetables[i].start, database.timetables[i].line.stations[0].name,
+                     database.timetables[i].line.stations[database.timetables[i].line.stations.Count() - 1].name,
+                      database.timetables[i].line.price, database.timetables[i].train, day, database.timetables[i].ValidFrom, database.timetables[i].ValidTo));
+            }
         }
 
-        private void btn_delete_Click(object sender, RoutedEventArgs e)
+        private void btn_delete_Click(object sender, RoutedEventArgs e)  // promijeni tako da brise i iz dto i iz database
         {
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
@@ -48,11 +59,46 @@ namespace HCI_Projekat.Pages
             }
         }
 
-        private void btn_add_Click(object sender, RoutedEventArgs e)
+        private void btn_add_Click(object sender, RoutedEventArgs e)   // ici ce preko tabele
         {
             MainWindow window = (MainWindow)Window.GetWindow(this);
             AddTimetable tc = new AddTimetable(this.dataBase);
             window.Content = tc;
+        }
+
+        private void btn_edit_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedCells = timetable_table.SelectedCells.Count();
+            if (selectedCells == 0)
+            {
+                MessageBox.Show("You must select a timetable first.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            Timetable t = (Timetable)timetable_table.SelectedItem;
+
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            EditTimetable et = new EditTimetable(this.dataBase, t);
+            window.Content = et;
+        }
+
+        private void searchTimetable(object sender, RoutedEventArgs e)
+        {
+            String start = fromPlace.Text.Trim().ToLower();
+            String end = toPlace.Text.Trim().ToLower();
+            String day = (bool)rb_weekday.IsChecked ? "weekday" : "weekend";
+
+            List<TimetableDTO> timetables = new List<TimetableDTO>();
+
+
+            foreach (Timetable timetable in dataBase.timetables)
+            {
+                if (timetable.line.stations[0].name.ToLower() == start)
+                {
+                    //timetables.Add(new TimetableDTO(timetable.startDateTime, timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count() - 1].name, timetable.line.price, timetable.train));
+                }
+            }
+
         }
     }
 }
