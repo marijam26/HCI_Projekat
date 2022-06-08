@@ -48,7 +48,7 @@
 
             <Grid.RowDefinitions>
                 <RowDefinition  Height="2*"></RowDefinition>
-                <RowDefinition  Height="0.5*"></RowDefinition>
+                <RowDefinition  Height="0*"></RowDefinition>
 
                 <RowDefinition Height="7*"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -60,22 +60,22 @@
 
             </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0"  HorizontalAlignment="Left" Margin="110,30,0,20" Grid.RowSpan="1">From:</Label>
-            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" HorizontalAlignment="Left" Height="25" Width="180" FontSize="15" Margin="160,30,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
+            <Label Grid.Row="0"  HorizontalAlignment="Left" Margin="110,50,0,20" Grid.RowSpan="1" FontSize="15">From:</Label>
+            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" HorizontalAlignment="Left" Height="25" Width="180" FontSize="15" Margin="160,50,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" />
 
-            <Label Grid.Row="0"  HorizontalAlignment="Left" Grid.Column="1" Margin="160,30,0,20" Grid.RowSpan="1">To:</Label>
-            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="210,30,0,0" Height="25" Width="180" FontSize="15" VerticalAlignment="Top"/>
+            <Label Grid.Row="0"  HorizontalAlignment="Left" Grid.Column="1" Margin="160,50,0,20" Grid.RowSpan="1"  FontSize="15">To:</Label>
+            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Margin="210,50,0,0" Height="25" Width="180" FontSize="15" VerticalAlignment="Top"/>
 
 
-            <Viewbox Height="40" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="0,30,420,0"   HorizontalAlignment="Right">
-                <RadioButton x:Name="rb_weekday" Content="Weekday" Margin="0,5,0,8"  GroupName="class" ></RadioButton>
+            <Viewbox Height="40" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" Margin="450,50,0,0"   HorizontalAlignment="Left">
+                <RadioButton x:Name="rb_weekday" Grid.Column="1" Content="Weekday" Margin="0,5,0,8"  GroupName="class" ></RadioButton>
             </Viewbox>
 
-            <Viewbox Height="40" Grid.Row="0" Grid.Column="1" Margin="0,30,280,0" VerticalAlignment="Top"  HorizontalAlignment="Right">
+            <Viewbox Height="40" Grid.Row="0" Grid.Column="1" Margin="600,50,0,0" VerticalAlignment="Top"  HorizontalAlignment="Left">
                 <RadioButton x:Name="rb_weekend" Grid.Column="1" Content="Weekend"  Margin="0,5,0,8"  GroupName="class" ></RadioButton>
             </Viewbox>
 
-            <Button x:Name="btn_search" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,38,120,0"   Width="100" Height="25" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Search" Click="searchTimetable">
+            <Button x:Name="btn_search" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,55,120,0"   Width="100" Height="25" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Search" Click="searchTimetable">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
