@@ -88,11 +88,11 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="1.3*" Binding="{Binding startStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="To" Width="1.3*" Binding="{Binding endStation}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Time" Width="*" Binding="{Binding startTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Time" Width="0.8*" Binding="{Binding startTime}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Train" Width="*" Binding="{Binding train.name}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Day" Width="1.3*" Binding="{Binding day}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Valid since" Width="2*" Binding="{Binding validFrom}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Valid until" Width="2*" Binding="{Binding validTo}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Day" Width="1*" Binding="{Binding day}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Valid since" Width="*" Binding="{Binding validFrom, StringFormat=d}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Valid until" Width="*" Binding="{Binding validTo, StringFormat=d}"></DataGridTextColumn>
 
                 </DataGrid.Columns>
             </DataGrid>

@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,19 +23,39 @@ namespace HCI_Projekat.Pages
         public Data dataBase { get; set; }
         public List<TimetableDTO> timetableList { get; set; }
 
-        public TimetableCRUD(Data database)
+        public List<TimetableDTO> allTimetables { get; set; }
+
+        public TimetableCRUD(Data database, List<TimetableDTO> searchList = null)
         {
+          
             InitializeComponent();
             this.dataBase = database;
             DataContext = this;
+          
+
+
             this.timetableList = new List<TimetableDTO>();
-            for(int i = 0; i < dataBase.timetables.Count; i++)
+            this.allTimetables = new List<TimetableDTO>();
+            for (int i = 0; i < dataBase.timetables.Count; i++)
             {
                 String day = database.timetables[i].isWeekday ? "Weekday" : "Weekend";
                 this.timetableList.Add(new TimetableDTO(database.timetables[i].id, database.timetables[i].line, database.timetables[i].start, database.timetables[i].line.stations[0].name,
                      database.timetables[i].line.stations[database.timetables[i].line.stations.Count() - 1].name,
                       database.timetables[i].line.price, database.timetables[i].train, day, database.timetables[i].ValidFrom, database.timetables[i].ValidTo));
+                this.allTimetables.Add(new TimetableDTO(database.timetables[i].id, database.timetables[i].line, database.timetables[i].start, database.timetables[i].line.stations[0].name,
+                    database.timetables[i].line.stations[database.timetables[i].line.stations.Count() - 1].name,
+                     database.timetables[i].line.price, database.timetables[i].train, day, database.timetables[i].ValidFrom, database.timetables[i].ValidTo));
+
             }
+
+            if (searchList != null)
+            {
+                this.timetableList = searchList;
+            }
+
+            fromPlace.ItemsSource = getStations();
+            toPlace.ItemsSource = getStations();
+
         }
 
         private void btn_delete_Click(object sender, RoutedEventArgs e)  // promijeni tako da brise i iz dto i iz database
@@ -83,19 +104,49 @@ namespace HCI_Projekat.Pages
         {
             String start = fromPlace.Text.Trim().ToLower();
             String end = toPlace.Text.Trim().ToLower();
-            String day = (bool)rb_weekday.IsChecked ? "weekday" : "weekend";
+
+            String day = "";
+            if ((bool)rb_weekday.IsChecked)
+            {
+                day = "Weekday";
+            }
+            else if ((bool)rb_weekend.IsChecked)
+            {
+                day = "Weekend";
+            }
 
             List<TimetableDTO> timetables = new List<TimetableDTO>();
 
 
-            foreach (Timetable timetable in dataBase.timetables)
+            foreach (TimetableDTO dto in allTimetables)
             {
-                if (timetable.line.stations[0].name.ToLower() == start)
+                if ((dto.line.stations[0].name.ToLower() == start || start == "") && (dto.line.stations[dto.line.stations.Count-1].name.ToLower() == end || end == "") && (dto.day == day || day == ""))
                 {
-                    //timetables.Add(new TimetableDTO(timetable.startDateTime, timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count() - 1].name, timetable.line.price, timetable.train));
+                    timetables.Add(dto);
                 }
             }
 
+            this.timetableList = timetables;
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            TimetableCRUD tc = new TimetableCRUD(this.dataBase, timetables);
+            window.Content = tc;
+
+        }
+
+        private IEnumerable getStations()
+        {
+            List<string> stations = new List<string>();
+            foreach (TrainLine line in dataBase.trainLines)
+            {
+                foreach (Station s in line.stations)
+                {
+                    if (!stations.Contains(s.name.ToLower()))
+                    {
+                        stations.Add(s.name.ToLower());
+                    }
+                }
+            }
+            return stations;
         }
     }
 }
