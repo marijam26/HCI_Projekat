@@ -34,16 +34,16 @@
 
         <Label Grid.Row="1" Grid.Column="1" FontSize="35" HorizontalAlignment="Center" Margin="10" FontWeight="DemiBold" >Login</Label>
         <Label Grid.Row="2" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" >Username:</Label>
-        <TextBox x:Name="tb_username" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
+        <TextBox x:Name="tb_username" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Text="maki"></TextBox>
         <Label Grid.Row="4" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" >Password:</Label>
-        <PasswordBox x:Name="tb_password" Grid.Row="5" Grid.Column="1"  Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></PasswordBox>
+        <PasswordBox x:Name="tb_password" Grid.Row="5" Grid.Column="1"  Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Password="m"></PasswordBox>
 
         <Grid Grid.Row="6" Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button x:Name="btn_login" Grid.Column="0" Margin="120,0,0,0" Width="120" Height="40" FontSize="17" Background="DarkCyan" Foreground="White" Content="Login" Click="btn_login_Click" >
+            <Button x:Name="btn_login" Grid.Column="0" Margin="120,0,0,0" Width="120" Height="40" FontSize="17" Background="DarkCyan" Foreground="White" Content="Login" Click="btn_login_Click" BorderBrush="DarkCyan" >
             </Button>
             <Button x:Name="btn_register" Grid.Column="1" Margin="0,10,0,0" Width="80" Height="30" FontSize="13" Background="DarkCyan" Foreground="White" Content="Register" Click="btn_register_Click" >
             </Button>

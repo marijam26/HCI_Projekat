@@ -63,7 +63,22 @@ namespace HCI_Projekat.Pages
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;
-            AddTrainLine s = new AddTrainLine(this.dataBase,t);
+            AddTrainLine s = new AddTrainLine(this.dataBase,null);
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            window.Content = s;
+        }
+
+        private void btn_edit_Click(object sender, RoutedEventArgs e)
+        {
+            int selectedCells = trainLine_table.SelectedCells.Count();
+            if (selectedCells == 0)
+            {
+                MessageBox.Show("Must select train line.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            TrainLine t = (TrainLine)trainLine_table.SelectedItem;
+            this.dataBase.backupTrainLine = (TrainLine)t.Clone();
+            EditTrainLine s = new EditTrainLine(this.dataBase, t);
             MainWindow window = (MainWindow)Window.GetWindow(this);
             window.Content = s;
         }

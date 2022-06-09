@@ -15,6 +15,7 @@ namespace HCI_Projekat.Model
         public List<Train> trains { get; set; }
 
         public List<Timetable> timetables { get; set; }
+        public TrainLine backupTrainLine { get; set; }
 
         public Data()
         {
@@ -68,9 +69,8 @@ namespace HCI_Projekat.Model
             tl2.to = s2;
             tl1.time.Add(30);
             tl1.time.Add(20);
-            tl1.time.Add(50);
             tl2.time.Add(30);
-            tl2.time.Add(40);
+
 
             trainLines.Add(tl1);
             trainLines.Add(tl2);

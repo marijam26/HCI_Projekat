@@ -63,7 +63,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Center" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" >
+        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -79,7 +79,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_edit" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit"  >
+        <Button x:Name="btn_edit"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

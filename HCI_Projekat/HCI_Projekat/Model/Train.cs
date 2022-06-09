@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace HCI_Projekat.Model
 {
+    [Serializable]
     public class Train
     {
         public int id { get; set; }

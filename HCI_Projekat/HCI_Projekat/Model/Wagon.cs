@@ -7,6 +7,7 @@ using System.Windows.Documents;
 
 namespace HCI_Projekat.Model
 {
+    [Serializable]
     public class Wagon
     {
         public int id { get; set; }

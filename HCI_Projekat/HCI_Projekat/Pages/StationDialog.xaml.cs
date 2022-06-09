@@ -22,13 +22,14 @@ namespace HCI_Projekat.Pages
     public partial class StationDialog : Window
     {
         public bool isSaved { get; set; }
-
         public Data dataBase { get; set; }
-
         public TrainLine trainLine { get; set; }
         public Location location { get; set; }
+        public string pinType { get; set; }
+        public string parentPage { get; set; }
+        public TrainLine backup { get; set; }
 
-        public StationDialog(Data dataBase,TrainLine trainLine,Location location)
+        public StationDialog(Data dataBase,TrainLine trainLine,Location location,string pinType,string parentPage)
         {
             InitializeComponent();
             Uri uri = new Uri("../../Images/icon.png", UriKind.RelativeOrAbsolute);
@@ -37,6 +38,18 @@ namespace HCI_Projekat.Pages
             this.dataBase = dataBase;
             this.trainLine = trainLine;
             this.location = location;
+            this.pinType = pinType;
+            this.parentPage = parentPage;
+            if(trainLine.stations.Count == 0)
+            {
+                time_after.IsEnabled = false;
+                time_before.IsEnabled = false;
+            }else if (trainLine.stations.Count == 1)
+            {
+                time_after.IsEnabled = false;
+                time_before.IsEnabled = true;
+            }
+            
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)
@@ -46,7 +59,7 @@ namespace HCI_Projekat.Pages
             bool t1 = int.TryParse(time_before.Text, out res1);
             int res2;
             bool t2 = int.TryParse(time_after.Text, out res2);
-            if(!t1 || !t2)
+            if((!t1 && time_before.IsEnabled) || (!t2 && time_after.IsEnabled ))
             {
                 MessageBox.Show("Time must be number.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -58,24 +71,110 @@ namespace HCI_Projekat.Pages
             }
 
             int idTrainLine = this.dataBase.trainLines.Max(x => x.id);
+            if (parentPage == "add")
+            {
+                idTrainLine -= 1;
+            }
             TrainLine lastTrainLine = this.dataBase.trainLines.Where(x => x.id == idTrainLine).First();
             int lastStation = lastTrainLine.stations.Max(x => x.id);
-            Station s = new Station(lastStation+1,name,this.location.Latitude,this.location.Longitude);
-            foreach (TrainLine tl in this.dataBase.trainLines)
+            Station s = new Station(lastStation + 1, name, this.location.Latitude, this.location.Longitude);
+
+            if (this.pinType == "pin")
             {
-                if(tl.id == this.trainLine.id)
+                editBluePin(name,res1,res2,s);
+            }else if(this.trainLine.stations.Count == 0)
+            {
+                this.trainLine.stations.Add(s);
+            }
+            else if(this.trainLine.stations.Count == 1)
+            {
+                if (trainLine.stations[0].latitude < s.latitude)
                 {
-                    Station last = tl.stations.Last();
-                    tl.stations.Remove(last);
-                    tl.stations.Add(s);
-                    tl.stations.Add(last);
-                    this.trainLine = tl;
+                    this.trainLine.stations.Add(s);
+                }
+                else
+                {
+                    this.trainLine.stations.Insert(0, s);
+                    this.trainLine.time.Add(res1);
                 }
             }
+            if (this.pinType == "pin_start")
+            {
+                Station from = this.trainLine.from;
+                this.trainLine.from = s;
+                if(this.parentPage == "edit")
+                {
+                    int index = this.trainLine.stations.IndexOf(from);
+                    this.trainLine.stations.Remove(from);
+                    this.trainLine.stations.Insert(index, s);
+                }
+            }else if (this.pinType == "pin_end")
+            {
+                Station to = this.trainLine.to;
+                this.trainLine.to = s;
+                if (this.parentPage == "edit")
+                {
+                    int index = this.trainLine.stations.IndexOf(to);
+                    this.trainLine.stations.Remove(to);
+                    this.trainLine.stations.Insert(index, s);
+                }
+            }
+
+
             this.isSaved = true;
             this.Close();
-            AddTrainLine addLine = new AddTrainLine(this.dataBase, this.trainLine);
-            //ono sa mainwindow
+            MessageBox.Show("Sucfcessfully added station!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
+            MainWindow window = (MainWindow)App.Current.MainWindow;
+            if (parentPage == "add")
+            {
+                AddTrainLine addTrainLine = new AddTrainLine(this.dataBase,this.trainLine);
+                window.Content = addTrainLine;
+            }
+            else
+            {
+                EditTrainLine editLine = new EditTrainLine(this.dataBase, this.trainLine);
+                window.Content = editLine;
+            }
+            
+        }
+
+        public void editBluePin(string name, int res1,int res2,Station s)
+        {
+
+            if (this.trainLine.stations.Last().latitude < this.trainLine.stations.First().latitude)
+            {
+                Station first = this.trainLine.stations.First();
+                this.trainLine.stations[0] = this.trainLine.stations.Last();
+                this.trainLine.stations[this.trainLine.stations.Count-1] = first;
+            }
+
+            for(int i = 0; i < this.trainLine.stations.Count-1; i++)
+            {
+                if (this.trainLine.stations[i].latitude < s.latitude && this.trainLine.stations[i+1].latitude > s.latitude)
+                {
+                    this.trainLine.stations.Insert(i+1, s);
+                    this.trainLine.time.Remove(i);
+                    this.trainLine.time.Insert(i, res2);
+                    this.trainLine.time.Insert(i, res1);
+
+                }
+            }
+                    
+            if (this.trainLine.stations.Last().latitude < s.latitude)
+            {
+                int index = this.trainLine.stations.IndexOf(this.trainLine.stations.Last());
+                this.trainLine.stations.Insert(index, s);
+                this.trainLine.time.Remove(index - 1);
+                this.trainLine.time.Insert(index - 1, res2);
+                this.trainLine.time.Insert(index - 1, res1);
+            }
+            if (this.trainLine.stations.First().latitude > s.latitude)
+            {
+                this.trainLine.stations.Insert(1, s);
+                this.trainLine.time.Remove(0);
+                this.trainLine.time.Insert(0, res2);
+                this.trainLine.time.Insert(0, res1);
+            }
 
         }
     }

@@ -70,6 +70,11 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("Must select station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            if(this.stationsList.Count == 1)
+            {
+                MessageBox.Show("You cannot delete stations.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
 
             var Result = MessageBox.Show("Do you want to delete station?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
@@ -77,14 +82,11 @@ namespace HCI_Projekat.Pages
                 stationDto sdto = (stationDto)station_table.SelectedItem;
                 this.stationsList.Remove(sdto);
                 Station s = this.tl.stations.Where(x => x.name == sdto.from).First();
-                this.tl.stations.Remove(s);
-                foreach(TrainLine t in this.dataBase.trainLines)
+                if(s.id == this.tl.from.id)
                 {
-                    if(t.id == this.tl.id)
-                    {
-                        t.stations.Remove(s);
-                    }
+                    this.tl.from = this.tl.stations[1];
                 }
+                this.tl.stations.Remove(s);
                 station_table.ItemsSource = null;
                 station_table.ItemsSource = this.stationsList;
             }

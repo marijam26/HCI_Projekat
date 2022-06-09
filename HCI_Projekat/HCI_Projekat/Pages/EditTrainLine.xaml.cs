@@ -18,48 +18,29 @@ using System.Windows.Shapes;
 namespace HCI_Projekat.Pages
 {
     /// <summary>
-    /// Interaction logic for AddTrainLine.xaml
+    /// Interaction logic for EditTrainLine.xaml
     /// </summary>
-    public partial class AddTrainLine : Page
+    /// 
+
+    public partial class EditTrainLine : Page
     {
-        public List<StationLineDto> stationsDto { get; set; }
-        public Data dataBase { get; set; }
-
         Point startPoint = new Point();
+        public Data dataBase { get; set; }
+        public TrainLine TrainLine { get; set; }
         public MapPolyline polyline { get; set; }
-        public TrainLine trainLine { get; set; }
+        public List<StationLineDto> stationsDto { get; set; }
+        public TrainLine backupTrainLine { get; set; }
 
-
-        public AddTrainLine(Data dataBase,TrainLine trainLine)
+        public EditTrainLine(Data dataBase, TrainLine trainLine)
         {
             InitializeComponent();
             this.dataBase = dataBase;
+            this.TrainLine = trainLine;
             DataContext = this;
-
-            if(trainLine == null)
-            {
-                int index = this.dataBase.trainLines.Max(x => x.id);
-                this.trainLine = new TrainLine(index + 1, 0, null);
-                this.dataBase.trainLines.Add(this.trainLine);
-            }
-            else
-            {
-                this.trainLine = trainLine;
-            }
-
-            if(this.trainLine.stations.Count >= 2)
-            {
-                pin.Visibility = Visibility.Visible;
-                pin_start.Visibility = Visibility.Hidden;
-                pin_end.Visibility = Visibility.Hidden;
-            }else if (this.trainLine.stations.Count == 1)
-            {
-                pin_start.Visibility = Visibility.Hidden;
-            }
-
-
             this.stationsDto = new List<StationLineDto>();
 
+           
+            
             myMap.Children.Clear();
 
             this.polyline = new MapPolyline();
@@ -69,35 +50,43 @@ namespace HCI_Projekat.Pages
             this.polyline.Locations = new LocationCollection();
 
 
-            for (int i = 0; i < this.trainLine.stations.Count; i++)
+            addPinToMap();
+
+            myMap.Children.Add(this.polyline);
+            
+
+        }
+
+        public void addPinToMap()
+        {
+            for (int i = 0; i < this.TrainLine.stations.Count; i++)
             {
                 Pushpin p = new Pushpin();
 
-                if (this.trainLine.stations[i] == this.trainLine.from)
+                if (this.TrainLine.stations[i] == this.TrainLine.from)
                 {
                     p.Background = new SolidColorBrush(Colors.Red);
                     p.Content = "start";
-                    StationLineDto sldto = new StationLineDto(trainLine.stations[i].name, "/Images/start.png");
+                    StationLineDto sldto = new StationLineDto(this.TrainLine.stations[i].name, "/Images/start.png");
                     this.stationsDto.Add(sldto);
-                }else if (this.trainLine.stations[i] == this.trainLine.to)
+                }
+                else if (this.TrainLine.stations[i] == this.TrainLine.to)
                 {
                     p.Background = new SolidColorBrush(Colors.Red);
                     p.Content = "end";
-                    StationLineDto sldto = new StationLineDto(trainLine.stations[i].name, "/Images/end.png");
+                    StationLineDto sldto = new StationLineDto(this.TrainLine.stations[i].name, "/Images/end.png");
                     this.stationsDto.Add(sldto);
                 }
                 else
                 {
                     p.Background = new SolidColorBrush(Colors.Blue);
-                    this.stationsDto.Add(new StationLineDto(trainLine.stations[i].name, "/Images/blue.png"));
+                    this.stationsDto.Add(new StationLineDto(this.TrainLine.stations[i].name, "/Images/blue.png"));
                 }
-                Location loc = new Location(trainLine.stations[i].latitude, trainLine.stations[i].longitude);
+                Location loc = new Location(this.TrainLine.stations[i].latitude, this.TrainLine.stations[i].longitude);
                 p.Location = loc;
                 this.polyline.Locations.Add(loc);
                 myMap.Children.Add(p);
             }
-
-            myMap.Children.Add(this.polyline);
         }
 
         private void pin_MouseMove(object sender, MouseEventArgs e)
@@ -108,29 +97,50 @@ namespace HCI_Projekat.Pages
                 (Math.Abs(diff.X) > SystemParameters.MinimumHorizontalDragDistance ||
                 Math.Abs(diff.Y) > SystemParameters.MinimumVerticalDragDistance))
             {
-                DragDrop.DoDragDrop(pin, pin, DragDropEffects.Move);
+                DragDrop.DoDragDrop(pin,pin,DragDropEffects.Move);
             }
         }
+
 
         private void pin_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             startPoint = e.GetPosition(null);
         }
 
+
         private void myMap_Drop(object sender, DragEventArgs e)
         {
             var source = e.Data.GetData("System.Windows.Controls.Image") as Image;
             string name = source.Name;
-
-
             Point mousePosition = e.GetPosition(myMap);
             Location pinLocation = myMap.ViewportPointToLocation(mousePosition);
 
-            StationDialog d = new StationDialog(this.dataBase, this.trainLine, pinLocation, name,"add");
+            StationDialog d = new StationDialog(this.dataBase,this.TrainLine,pinLocation,name,"edit");
             d.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            d.ShowDialog();
+            d.ShowDialog();      
+
         }
 
+        private void bt_cancle_Click(object sender, RoutedEventArgs e)
+        {
+            var res = MessageBox.Show("Are you sure you want to quit?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (res == MessageBoxResult.Yes)
+            {
+                this.dataBase.trainLines.Remove(this.TrainLine);
+                this.dataBase.trainLines.Add(this.dataBase.backupTrainLine);
+                MainWindow window = (MainWindow)Window.GetWindow(this);
+                TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
+                window.Content = tc;
+            }
+        }
+
+        private void bt_save_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Sucfcessfully changed train line!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
+            window.Content = tc;
+        }
 
         private void pin_start_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
@@ -165,33 +175,17 @@ namespace HCI_Projekat.Pages
                 DragDrop.DoDragDrop(pin_end, pin_end, DragDropEffects.Move);
             }
         }
+    }
 
-        private void bt_cancle_Click(object sender, RoutedEventArgs e)
+    public class StationLineDto
+    {
+        public string name { get; set; }
+
+        public string path { get; set; }
+        public StationLineDto(string name, string path)
         {
-            var res = MessageBox.Show("Are you sure you want to quit?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
-            if(res == MessageBoxResult.Yes)
-            {
-                this.dataBase.trainLines.Remove(this.trainLine);
-                MainWindow window = (MainWindow)Window.GetWindow(this);
-                TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
-                window.Content = tc;
-            }
-            
-        }
-
-        private void bt_save_Click(object sender, RoutedEventArgs e)
-        {
-            if(this.trainLine.stations.Count < 2)
-            {
-                MessageBox.Show("You must add at least two stations!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                return;
-            }
-
-            MessageBox.Show("Sucfcessfully added train line!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
-            window.Content = tc;
-
+            this.name = name;
+            this.path = path;
         }
     }
 }

@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HCI_Projekat.Model
 {
-    public class TrainLine
+    [Serializable]
+    public class TrainLine : ICloneable
     {
         public int id { get; set; }
         public int price { get; set; }
@@ -19,6 +22,16 @@ namespace HCI_Projekat.Model
         public Station to { get; set; }
 
         public TrainLine() { }
+        public TrainLine(TrainLine trainLine)
+        {
+            this.id = trainLine.id;
+            this.price = trainLine.price;
+            this.time = trainLine.time;
+            this.train = trainLine.train;
+            this.stations = trainLine.stations;
+            this.from = trainLine.from;
+            this.to = trainLine.to;
+        }
 
         public TrainLine(int id, int price, Train train) {
             this.id = id;
@@ -27,8 +40,24 @@ namespace HCI_Projekat.Model
             this.stations = new List<Station>();
             this.time = new List<int>();
         }
+
+        public object Clone()
+        {
+            using (MemoryStream stream = new MemoryStream())
+            {
+                if (this.GetType().IsSerializable)
+                {
+                    BinaryFormatter formatter = new BinaryFormatter();
+                    formatter.Serialize(stream, this);
+                    stream.Position = 0;
+                    return formatter.Deserialize(stream);
+                }
+                return null;
+            }
+        }
     }
 
+    [Serializable]
     public class Station
     {
         public int id { get; set; }

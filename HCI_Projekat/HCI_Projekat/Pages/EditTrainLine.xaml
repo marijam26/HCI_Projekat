@@ -1,4 +1,4 @@
-﻿<Page x:Class="HCI_Projekat.Pages.AddTrainLine"
+﻿<Page x:Class="HCI_Projekat.Pages.EditTrainLine"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,10 +6,8 @@
       xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      TextElement.FontFamily="Century Gothic"
-      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
+      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat" 
       Title="AddTrainLine">
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"></RowDefinition>
@@ -33,21 +31,22 @@
         <m:Map Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="3" x:Name="myMap" CredentialsProvider="AcBtthiHq9NeAFlz5zoV~8h70_veH38L5WONtSEaQow~AmAcErGNAXLmB0Ru2U1F6DWg0yWaY3F2bS99-tkN42zDFUc2KlyBZNE4sNGwycmu" Mode="Road" ZoomLevel="8" Center="45.27167160883285, 19.8209432003093" Margin="20,20,20,30" AllowDrop="True" Drop="myMap_Drop">
         </m:Map>
 
-        <materialDesign:Card x:Name="canvas" Background="White" Grid.Row="1" Grid.Column="2" Margin="60,25,100,25" Padding="10" Grid.ColumnSpan="2">
+        <materialDesign:Card x:Name="canvas" Background="White" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" Margin="60,25,100,25" Padding="10">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-
-                <Image x:Name="pin_start" Grid.Column="0" Source="/Images/start.png"  MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="55" />
-                <Image x:Name="pin_end" Grid.Column="1" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" />
-                <Image x:Name="pin" Grid.Column="0" Source="/Images/blue.png"  MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="55" Visibility="Hidden"/>
+                <Image x:Name="pin" Source="/Images/blue.png" Grid.Column="0" MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Image x:Name="pin_start" Source="/Images/start.png" Grid.Column="1" MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Image x:Name="pin_end" Source="/Images/end.png" Grid.Column="2"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top"/>
 
             </Grid>
+            
         </materialDesign:Card>
 
-        <DataGrid Grid.Row="2" Grid.Column="2" Background="White" Margin="50,0,100,20" ItemsSource="{Binding stationsDto}" VerticalContentAlignment="Center" Grid.ColumnSpan="2" IsReadOnly="True" ColumnWidth="*" FontSize="18" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="2" Grid.Column="2" Background="White" Margin="50,0,100,20" Grid.ColumnSpan="2" ItemsSource="{Binding stationsDto}" IsReadOnly="True" ColumnWidth="*" FontSize="18" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Station name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
                 <DataGridTemplateColumn x:Name="dtTemp" Header="" Width="SizeToCells" IsReadOnly="True">
@@ -58,11 +57,11 @@
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-
         </DataGrid>
 
         <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click"></Button>
         <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click"/>
+
 
     </Grid>
 </Page>
