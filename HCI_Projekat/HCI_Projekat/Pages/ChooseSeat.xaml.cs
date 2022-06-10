@@ -21,7 +21,6 @@ namespace HCI_Projekat.Pages
     /// </summary>
     public partial class ChooseSeat : Page
     {
-        public Data database { get; set; }
         public TimetableDTO timetable { get; set; }
         public Button previousSelectedWagonBtn { get; set; }
         public Wagon previousSelectedWagon { get; set; }
@@ -29,14 +28,28 @@ namespace HCI_Projekat.Pages
         public Button previousSelectedSeatBtn { get; set; }
         public User loggedUser { get; set; }
         public DateTime date { get; set; }
+        public Data database { get; set; }
+        public TicketDTO ticketDTO { get; set; }
+        public String placeNum { get; set; }
+        public String relation { get; set; }
 
-        public ChooseSeat(Data database,TimetableDTO timetable, User user,DateTime date)
+        public ChooseSeat(Data database, TicketDTO ticketDTO,String placeNum)
         {
             InitializeComponent();
             this.database = database;
-            this.timetable = timetable;
-            this.loggedUser = user;
             this.date = date;
+            this.ticketDTO = ticketDTO;
+            this.loggedUser = ticketDTO.user;
+            this.placeNum = placeNum;
+            this.relation = formRelation();
+            DataContext = this;
+            if (placeNum == "first")
+            {
+                this.timetable = formTimetableDTO( ticketDTO.timetableDTO.timetables[0]);
+            }
+            else {
+                this.timetable = formTimetableDTO(ticketDTO.timetableDTO.timetables[1]);
+            }
 
             for (int i = 0; i < timetable.train.wagons.Count;i++) {
                 wagonsGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -60,7 +73,63 @@ namespace HCI_Projekat.Pages
                 Grid.SetRow(wagonBtn, 1);
                 Grid.SetColumn(wagonBtn, wagonCounter-1);
                 wagonsGrid.Children.Add(wagonBtn);
+
+                if (ticketDTO.transferPlace != "" && placeNum == "first")
+                {
+                    btn_buy.Visibility = Visibility.Hidden;
+                    btn_reserve.Visibility = Visibility.Hidden;
+                    btn_next.Visibility = Visibility.Visible;
+                }
+                else {
+
+                    btn_buy.Visibility = Visibility.Visible;
+                    btn_reserve.Visibility = Visibility.Visible;
+                    btn_next.Visibility = Visibility.Hidden;
+
+                }
             }
+                if (placeNum == "first" && ticketDTO.wagonBtns.Count !=0) {
+                    previousSelectedWagonBtn = ticketDTO.wagonBtns[0];
+                    previousSelectedSeatBtn = ticketDTO.seatBtns[0];
+                previousSelectedWagon = ticketDTO.wagons[0];
+                previousSelectedSeat = ticketDTO.seats[0];
+                    btn_wagon_Click(ticketDTO.wagonBtns[0],new RoutedEventArgs());
+                    btn_seat_Click(ticketDTO.seatBtns[0], new RoutedEventArgs());
+                }
+                if (placeNum == "second" && ticketDTO.wagonBtns.Count == 2)
+                {
+                    previousSelectedWagonBtn = ticketDTO.wagonBtns[1];
+                    previousSelectedSeatBtn = ticketDTO.seatBtns[1];
+                previousSelectedWagon = ticketDTO.wagons[1];
+                previousSelectedSeat = ticketDTO.seats[1];
+                btn_wagon_Click(ticketDTO.wagonBtns[1], new RoutedEventArgs());
+                    btn_seat_Click(ticketDTO.seatBtns[1], new RoutedEventArgs());
+                }
+            
+        }
+
+        private string formRelation()
+        {
+            if (ticketDTO.transferPlace == "")
+            {
+                return ticketDTO.timetableDTO.startStation.ToUpper() + "-" + ticketDTO.timetableDTO.endStation.ToUpper();
+            }
+            else {
+                if (placeNum == "first")
+                {
+                    return ticketDTO.timetableDTO.startStation.ToUpper() + "-" + ticketDTO.transferPlace.ToUpper();
+                }
+                else {
+                    return ticketDTO.transferPlace.ToUpper() + "-" + ticketDTO.timetableDTO.endStation.ToUpper();
+                }
+            }
+        }
+
+        private TimetableDTO formTimetableDTO(Timetable timetable)
+        {
+            String day = timetable.isWeekday ? "Weekday" : "Weekend";
+            TimetableDTO dto = new TimetableDTO(timetable.id, timetable.line, timetable.start, timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count-1].name, timetable.line.price, timetable.train, day, timetable.ValidFrom, timetable.ValidTo);
+            return dto;
         }
 
         private void btn_wagon_Click(object sender, RoutedEventArgs e)
@@ -74,22 +143,22 @@ namespace HCI_Projekat.Pages
 
                 if (previousSelectedWagon.wagonClass == Wagon.WagonClass.first)
                     {
-                    previousSelectedWagonBtn.Background = (Brush)new BrushConverter().ConvertFrom("DarkCyan");
+                    ((Button)wagonsGrid.Children[previousSelectedWagon.id - 1]).Background = (Brush)new BrushConverter().ConvertFrom("DarkCyan");
                     }
                     else
                     {
-                    previousSelectedWagonBtn.Background = (Brush)new BrushConverter().ConvertFrom("DarkGoldenrod");
+                    ((Button)wagonsGrid.Children[previousSelectedWagon.id - 1]).Background = (Brush)new BrushConverter().ConvertFrom("DarkGoldenrod");
                     }
             }
 
             Wagon wagon = timetable.train.wagons[Grid.GetColumn(wagonBtn)];
             if (wagon.wagonClass == Wagon.WagonClass.first)
             {
-                wagonBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FF3DD0D0");
+                ((Button)wagonsGrid.Children[wagon.id-1]).Background = (Brush)new BrushConverter().ConvertFrom("#FF3DD0D0");
             }
                 else
             {
-                wagonBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FFCAAF49");
+                ((Button)wagonsGrid.Children[wagon.id - 1]).Background = (Brush)new BrushConverter().ConvertFrom("#FFCAAF49");
             }
 
             previousSelectedWagonBtn = wagonBtn;
@@ -132,7 +201,7 @@ namespace HCI_Projekat.Pages
         {
 
             if (previousSelectedSeat != -1) {
-                previousSelectedSeatBtn.Background = (Brush)new BrushConverter().ConvertFrom("DarkCyan");
+                ((Button)seatGrid.Children[previousSelectedSeat]).Background = (Brush)new BrushConverter().ConvertFrom("DarkCyan");
             }
             Button seatBtn = sender as Button;
             int column = Grid.GetColumn(seatBtn);
@@ -140,7 +209,8 @@ namespace HCI_Projekat.Pages
             int position = row * 4 + column;
             previousSelectedSeat = position;
             previousSelectedSeatBtn = seatBtn;
-            seatBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FF3DD0D0");
+            currentlySaveSeat();
+            ((Button)seatGrid.Children[position]).Background = (Brush)new BrushConverter().ConvertFrom("#FF3DD0D0");
             
 
 
@@ -152,16 +222,23 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("Must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            Timetable table = formTimetablefromDTO(this.timetable);
-            Ticket ticket = new Ticket(table, date, this.previousSelectedWagon, this.previousSelectedSeat);
-            TicketDTO ticketDTO = new TicketDTO(timetable, ticket,loggedUser,false);
-            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketDTO,ticket,loggedUser)
+            currentlySaveSeat();
+            Ticket ticket = new Ticket(ticketDTO.timetableDTO.timetables,ticketDTO.dateReserved,ticketDTO.wagons,ticketDTO.seats);
+            TicketShowDTO ticketShowDTO = new TicketShowDTO( ticketDTO,loggedUser,false);
+            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO,ticket,loggedUser)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             d.ShowDialog();
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ChooseSeat r = new ChooseSeat(this.database, this.timetable, this.loggedUser, this.date);
+            ChooseSeat r;
+            if (ticketDTO.seats.Count == 2)
+            {
+                r = new ChooseSeat(this.database, ticketDTO, "second");
+            }
+            else {
+                r = new ChooseSeat(this.database, ticketDTO, "first");
+            }
             window.Content = r;
         }
 
@@ -186,20 +263,20 @@ namespace HCI_Projekat.Pages
                 return;
             }
 
-            Timetable table = formTimetablefromDTO(this.timetable);
-            Ticket ticket = new Ticket(table, date, this.previousSelectedWagon, this.previousSelectedSeat);
-            TicketDTO ticketDTO = new TicketDTO(timetable, ticket, loggedUser, true);
+            currentlySaveSeat();
+            Ticket ticket = new Ticket(ticketDTO.timetableDTO.timetables, ticketDTO.dateReserved, ticketDTO.wagons, ticketDTO.seats);
+            TicketShowDTO ticketShowDTO = new TicketShowDTO(ticketDTO, loggedUser, true);
             if ((date - DateTime.Now).TotalDays >= 5) {
                 MessageBox.Show("Reservation is not possible more than 5 days before departure date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketDTO, ticket, loggedUser)
+            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO, ticket, loggedUser)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             d.ShowDialog();
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ChooseSeat r = new ChooseSeat(this.database,this.timetable, this.loggedUser,this.date);
+            ChooseSeat r = new ChooseSeat(this.database,ticketDTO,"second");
             window.Content = r;
 
 
@@ -209,9 +286,55 @@ namespace HCI_Projekat.Pages
         private void back_Btn_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ReserveBuyTicket r = new ReserveBuyTicket(this.database,this.loggedUser);
+            if (placeNum == "first")
+            {
+                ReserveBuyTicket r = new ReserveBuyTicket(this.database, this.loggedUser);
+                window.Content = r;
+            }
+            else {
+                ChooseSeat r = new ChooseSeat(this.database, this.ticketDTO,"first");
+                window.Content = r;
+
+            }
+
+        }
+        
+        private void next_btn_Click(object sender, RoutedEventArgs e)
+        {
+            if (previousSelectedSeat == -1)
+            {
+                MessageBox.Show("Must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            currentlySaveSeat();
+            ChooseSeat r = new ChooseSeat(this.database, ticketDTO, "second");
             window.Content = r;
 
+        }
+
+        private void currentlySaveSeat() {
+            if ((placeNum == "second" && ticketDTO.seats.Count == 1) || ticketDTO.seats.Count == 0)
+            {
+                ticketDTO.seats.Add(previousSelectedSeat);
+                ticketDTO.wagons.Add(previousSelectedWagon);
+                ticketDTO.wagonBtns.Add(previousSelectedWagonBtn);
+                ticketDTO.seatBtns.Add(previousSelectedSeatBtn);
+            }
+            else if ((ticketDTO.transferPlace == "" && ticketDTO.seats.Count == 1) || (placeNum=="first") && ticketDTO.wagonBtns.Count>0)
+            {
+                ticketDTO.seats[0] = previousSelectedSeat;
+                ticketDTO.wagons[0] = previousSelectedWagon;
+                ticketDTO.wagonBtns[0] = previousSelectedWagonBtn;
+                ticketDTO.seatBtns[0] = previousSelectedSeatBtn;
+            }
+            else if (ticketDTO.transferPlace != "" && ticketDTO.seats.Count == 2)
+            {
+                ticketDTO.seats[1] = previousSelectedSeat;
+                ticketDTO.wagons[1] = previousSelectedWagon;
+                ticketDTO.wagonBtns[1] = previousSelectedWagonBtn;
+                ticketDTO.seatBtns[1] = previousSelectedSeatBtn;
+            }
         }
     }
 

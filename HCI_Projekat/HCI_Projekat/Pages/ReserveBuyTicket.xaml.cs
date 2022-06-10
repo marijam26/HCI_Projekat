@@ -24,6 +24,7 @@ namespace HCI_Projekat.Pages
     {
         public Data dataBase { get; set; }
         public User loggedUser { get; set; }
+        String transferPlace = "";
 
         public ReserveBuyTicket(Data database, User user)
         {
@@ -70,8 +71,14 @@ namespace HCI_Projekat.Pages
             if (startDatePick.SelectedDate != null) { 
                 startDate = (DateTime)startDatePick.SelectedDate;
             }
+
+            TicketDTO ticketInfo = new TicketDTO(loggedUser, transferPlace, startDate);
+            ticketInfo.timetableDTO = t;
+            foreach (Timetable table in t.timetables) {
+                ticketInfo.trains.Add(table.train);
+            }
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ChooseSeat r = new ChooseSeat(this.dataBase, t, loggedUser, startDate);
+            ChooseSeat r = new ChooseSeat(dataBase, ticketInfo ,"first");
             window.Content = r;
 
         }
@@ -81,9 +88,20 @@ namespace HCI_Projekat.Pages
         {
             String start = fromPlace.Text.Trim().ToLower();
             String end = toPlace.Text.Trim().ToLower();
-            DateTime startDate = (DateTime)startDatePick.SelectedDate;
-            if (startDate == null) { 
+            DateTime? date = startDatePick.SelectedDate;
+            if (date == null) { 
                 MessageBox.Show("Must enter date of departure.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            DateTime startDate = (DateTime)date;
+            
+            if (start == "") { 
+                MessageBox.Show("Must enter date of start place.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+            
+            if (end == "") { 
+                MessageBox.Show("Must enter date of start place.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             List<TimetableDTO> timetables = new List<TimetableDTO>();
@@ -94,10 +112,17 @@ namespace HCI_Projekat.Pages
                     if ( ((startDate.DayOfWeek == DayOfWeek.Saturday || startDate.DayOfWeek == DayOfWeek.Sunday) && !timetable.isWeekday) || ((startDate.DayOfWeek != DayOfWeek.Saturday && startDate.DayOfWeek != DayOfWeek.Sunday) && timetable.isWeekday)) { 
 
                     String day = timetable.isWeekday ? "Weekday" : "Weekend";
-                    timetables.Add(new TimetableDTO(timetable.id ,timetable.line,timetable.start,timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count()-1].name,timetable.line.price,timetable.train, day, timetable.ValidFrom, timetable.ValidTo));
-                 }
+                    TimetableDTO dto = new TimetableDTO(timetable.id, timetable.line, timetable.start, timetable.line.stations[0].name, timetable.line.stations[timetable.line.stations.Count() - 1].name, timetable.line.price, timetable.train, day, timetable.ValidFrom, timetable.ValidTo);
+                    dto.stationInfo = createStationInfo(timetable);
+                    dto.timetables.Add(timetable);
+                        timetables.Add(dto);
+                    }
                 }
             }
+            if (timetables.Count == 0) {
+                timetables = findTimetableWithTransfer(start,end,timetables);
+            }
+
             if (timetables.Count() == 0)
             {
                 btn_chooseSeat.IsEnabled = false;
@@ -109,23 +134,133 @@ namespace HCI_Projekat.Pages
             timetable_table.ItemsSource = timetables;
 
         }
+
+        private List<TimetableDTO> findTimetableWithTransfer(String start,String end, List<TimetableDTO> timetables) 
+        {
+            foreach (Timetable timetable in dataBase.timetables)
+            {
+                if (timetable.line.stations[0].name.ToLower() == start && DateTime.Now > timetable.ValidFrom && DateTime.Now < timetable.ValidTo)
+                {
+                    foreach (Timetable timetable2 in dataBase.timetables)
+                    {
+                        var listCommon = timetable.line.stations
+                                        .Select(a => a.name)
+                                        .Intersect(timetable2.line.stations.Select(b => b.name))
+                                        .Distinct();
+
+                        if (timetable2.line.stations[timetable2.line.stations.Count - 1].name.ToLower() == end && listCommon.Count() != 0 && DateTime.Now > timetable2.ValidFrom && DateTime.Now < timetable2.ValidTo)
+                        {
+                            List<DateTime> departuresFirstTrain = calculateDepartureTimes(timetable);
+                            List<DateTime> departuresSecondTrain = calculateDepartureTimes(timetable2);
+                            transferPlace = findTransferPlace(departuresFirstTrain, departuresSecondTrain, timetable, timetable2);
+                            if (transferPlace != "")
+                            {
+                                String info = createStationInfoTransfer(timetable, timetable2, departuresFirstTrain, departuresSecondTrain, transferPlace);
+                                String day = timetable.isWeekday ? "Weekday" : "Weekend";
+                                TimetableDTO dto = new TimetableDTO(timetable.id, timetable.line, timetable.start, start, end, timetable.line.price + timetable2.line.price, timetable.train, day, timetable.ValidFrom, timetable.ValidTo);
+                                dto.stationInfo = info;
+                                dto.timetables.Add(timetable);
+                                dto.timetables.Add(timetable2);
+                                timetables.Add(dto);
+                            }
+
+                        }
+
+                    }
+                }
+            }
+            return timetables;
+        }
+
+        private List<DateTime> calculateDepartureTimes(Timetable timetable)
+        {
+            DateTime startDepartureTime = timetable.start;
+            List<DateTime> departureTimes = new List<DateTime>();
+            foreach (int travelTime in timetable.line.time) {
+                departureTimes.Add(startDepartureTime);
+                startDepartureTime = startDepartureTime.AddMinutes(travelTime);
+            }
+            return departureTimes;
+        }
+
+        private string findTransferPlace(List<DateTime> departuresFirstTrain, List<DateTime> departuresSecondTrain, Timetable timetable, Timetable timetable2)
+        {
+            String departure = "";
+            for (int i = 0; i < timetable.line.stations.Count; i++) {
+                for (int j = 0; j < timetable2.line.stations.Count; j++) {
+                    if (timetable.line.stations[i].name == timetable2.line.stations[j].name && departuresFirstTrain[i] < departuresSecondTrain[j])
+                    {
+                        departure = timetable.line.stations[i].name;
+                    }
+                }
+                
+            }
+            return departure;
+
+        }
+
+        private string createStationInfoTransfer(Timetable timetable, Timetable timetable2, List<DateTime> departuresFirstTrain, List<DateTime> departuresSecondTrain, String transferPlace )
+        {
+            String stringBuilder = "";
+            stringBuilder +="\tFirst train".PadRight(50)+"Second train".PadRight(50)+ "\n\n";
+            stringBuilder += "              Station".PadRight(30)+"Departure time".PadRight(20)+"Station".PadRight(20)+"Departure time".PadRight(20)+"Transfer place".PadRight(20)+"\n\n";
+            String time = departuresFirstTrain[0].ToString().Split(' ')[1].Substring(0, 5);
+            stringBuilder += ("      " + timetable.line.stations[0].name).PadRight(30) + time.PadRight(20);
+            time = departuresSecondTrain[0].ToString().Split(' ')[1].Substring(0, 5);
+            stringBuilder += timetable2.line.stations[0].name.PadRight(30) +time.PadRight(20);
+            stringBuilder += transferPlace.PadRight(20)+"\n";
+            for (int i = 1; i < timetable.line.stations.Count; i++)
+            {
+                time = departuresFirstTrain[i].ToString().Split(' ')[1].Substring(0, 5);
+                stringBuilder += ("      " + timetable.line.stations[i].name).PadRight(30);
+                stringBuilder += time.PadRight(20);
+                if (timetable2.line.stations.Count > i) {
+                    time = departuresSecondTrain[i].ToString().Split(' ')[1].Substring(0, 5);
+                    stringBuilder += (timetable2.line.stations[i].name).PadRight(30) + time.PadRight(20)+"\n";
+                }
+                else {
+                    stringBuilder += ("".PadRight(30) + "".PadRight(30)+"\n");
+
+                }
+            }
+            return stringBuilder;
+
+        }
+
+        private string createStationInfo(Timetable timetable)
+        {
+            StringBuilder stringBuilder = new StringBuilder();
+            DateTime date = timetable.start;
+            stringBuilder.Append($"{ "Station ",-50}{ "Departure time",20}\n\n");
+            for (int i = 0; i < timetable.line.stations.Count; i++) {
+                String time = date.ToString().Split(' ')[1].Substring(0,5);
+                stringBuilder.Append($"{ timetable.line.stations[i].name,-60}{ time,20}\n");
+                date = date.AddMinutes(timetable.line.time[i]);
+            }
+            return stringBuilder.ToString();
+        }
     }
 
 
     public class TimetableDTO { 
 
         public int id { get; set; }
-        public String startTime {get; set;}
 
+        public String startTime {get; set;}
         public DateTime startDateTime { get; set; }
+
         public String startStation { get; set; }
         public String endStation { get; set; }
+
+        public List<Timetable> timetables { get; set; }  
+
         public int price { get; set; }
         public Train train { get; set; }
         public TrainLine line { get; set; }
         public String day { get; set; }    // weekday ili weekend
         public DateTime validFrom { get; set; }
         public DateTime validTo { get; set; }
+        public String stationInfo { get; set; }
 
         public TimetableDTO() { }
 
@@ -139,7 +274,7 @@ namespace HCI_Projekat.Pages
             this.day = day;
             this.validFrom = validFrom;
             this.validTo = validTo;
-
+            timetables = new List<Timetable>();
             startTime = startDateTime.ToString("HH:mm");
         }
 
@@ -155,8 +290,38 @@ namespace HCI_Projekat.Pages
             this.day = day;
             this.validFrom = validFrom;
             this.validTo = validTo;
-
+            timetables = new List<Timetable>();
             startTime = startDateTime.ToString("HH:mm");
         }
+    }
+
+
+    public class TicketDTO {
+
+        public TimetableDTO timetableDTO { get; set; }
+        public List<Wagon> wagons { get; set; }
+        public List<int> seats { get; set; }
+        public List<Button> wagonBtns { get; set; }
+        public List<Button> seatBtns { get; set; }
+        public List<Train> trains { get; set; }
+        public User user { get; set; }
+        public String transferPlace { get; set; }
+        public DateTime dateReserved { get; set; }
+
+
+        public TicketDTO() { }
+
+        public TicketDTO(User user,String place,DateTime dateReserved) {
+            this.user = user;
+            this.transferPlace = place;
+            this.dateReserved = dateReserved;
+            wagons = new List<Wagon>();
+            seats = new List<int>();
+            trains = new List<Train>();
+            wagonBtns = new List<Button>();
+            seatBtns = new List<Button>();
+
+        }
+    
     }
 }

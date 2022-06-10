@@ -29,31 +29,31 @@
 
         <Label Grid.Row="1" Grid.Column="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">Name:
             </Label>
-        <Label  Grid.Column="0"  Grid.Row="1" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="80,0,0,0" Content="{Binding ticketDTO.userName}" ></Label>
+        <Label  Grid.Column="0"  Grid.Row="1" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="80,0,0,0" Content="{Binding ticketShowDTO.userName}" ></Label>
 
         <Label Grid.Row="1" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">Surname:</Label>
-        <Label  Grid.Column="1"  Grid.Row="1" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="100,0,0,0" Content="{Binding ticketDTO.userSurname}" ></Label>
+        <Label  Grid.Column="1"  Grid.Row="1" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="100,0,0,0" Content="{Binding ticketShowDTO.userSurname}" ></Label>
 
             
         <Label Grid.Row="2" Grid.Column="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">From:</Label>
-        <Label  Grid.Column="0"  Grid.Row="2" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="80,0,0,0" Content="{Binding ticketDTO.startStation}" ></Label>
+        <Label  Grid.Column="0"  Grid.Row="2" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="80,0,0,0" Content="{Binding ticketShowDTO.startStation}" ></Label>
         
         <Label Grid.Row="2" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">To:</Label>
-        <Label  Grid.Column="1"  Grid.Row="2" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="60,0,0,0" Content="{Binding ticketDTO.endStation}" ></Label>
+        <Label  Grid.Column="1"  Grid.Row="2" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="60,0,0,0" Content="{Binding ticketShowDTO.endStation}" ></Label>
 
 
         <Label Grid.Row="3" Grid.Column="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">Date:</Label>
-        <Label  Grid.Column="0"  Grid.Row="3" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="65,0,0,0" Content="{Binding ticketDTO.startDateTime}" ></Label>
+        <Label  Grid.Column="0"  Grid.Row="3" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="65,0,0,0" Content="{Binding ticketShowDTO.startDateTime}" ></Label>
 
         <Label Grid.Row="3" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">Train:</Label>
-        <Label  Grid.Column="1"  Grid.Row="3" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="70,0,0,0" Content="{Binding ticketDTO.trainName}" ></Label>
+        <Label  Grid.Column="1"  Grid.Row="3" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="70,0,0,0" Content="{Binding ticketShowDTO.trainName}" ></Label>
 
         
         <Label Grid.Row="4" Grid.Column="0" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">Wagon:</Label>
-        <Label  Grid.Column="0"  Grid.Row="4" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="85,0,0,0" Content="{Binding ticketDTO.wagon}" ></Label>
+        <Label  Grid.Column="0"  Grid.Row="4" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="85,0,0,0" Content="{Binding ticketShowDTO.wagon}" ></Label>
 
         <Label Grid.Row="4" Grid.Column="1" FontSize="15" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="25,0,0,0">Seat:</Label>
-        <Label  Grid.Column="1"  Grid.Row="4" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="70,0,0,0" Content="{Binding ticketDTO.seat}" ></Label>
+        <Label  Grid.Column="1"  Grid.Row="4" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="70,0,0,0" Content="{Binding ticketShowDTO.seat}" ></Label>
 
         <Grid Grid.Row="5" Grid.ColumnSpan="2">
         <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,150,0"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Cancel" Click="btn_cancel_Click">

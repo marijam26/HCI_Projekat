@@ -53,11 +53,41 @@ namespace HCI_Projekat.Model
             Station s2 = new Station(2, "Nova Pazova",44.95983320985867, 20.23084652428375);
             Station s3 = new Station(3, "Novi Sad", 45.27167160883285, 19.8209432003093);
 
-         
+            Station s5 = new Station(4, "Nis", 44.95983320985867, 20.23084652428375);
+            Station s6 = new Station(5, "Sarajevo", 44.95983320985867, 20.23084652428375);
+            Station s7 = new Station(6, "Trebinje", 44.95983320985867, 20.23084652428375);
+            Station s8 = new Station(7, "Nis", 44.95983320985867, 20.23084652428375);
+            Station s9 = new Station(8, "Valjevo", 44.95983320985867, 20.23084652428375);
+            Station s10 = new Station(10, "Bileca", 44.95983320985867, 20.23084652428375);
+
+
 
             trainLines = new List<TrainLine>();
             TrainLine tl1 = new TrainLine(1, 200, train1);
             TrainLine tl2 = new TrainLine(2, 150, train2);
+            TrainLine tl3 = new TrainLine(3, 150, train2);
+            TrainLine tl4 = new TrainLine(4, 150, train2);
+
+            tl3.stations.Add(s2);
+            tl3.stations.Add(s5);
+            tl3.stations.Add(s6);
+            tl3.stations.Add(s10);
+            tl3.from = s2;
+            tl3.to = s10;
+
+            tl4.stations.Add(s7);
+            tl4.stations.Add(s8);
+            tl4.stations.Add(s9);
+            tl4.from = s7;
+            tl4.to = s9;
+            tl3.time.Add(10);
+            tl3.time.Add(10);
+            tl3.time.Add(10);
+            tl3.time.Add(10);
+            tl4.time.Add(20);
+            tl4.time.Add(20);
+            tl4.time.Add(20);
+
             tl1.stations.Add(s1);
             tl1.stations.Add(s2);
             tl1.stations.Add(s3);
@@ -74,10 +104,15 @@ namespace HCI_Projekat.Model
 
             trainLines.Add(tl1);
             trainLines.Add(tl2);
+            trainLines.Add(tl3);
+            trainLines.Add(tl4);
 
 
             this.timetables = new List<Timetable>();
             Timetable tt1 = new Timetable(1, tl1, new DateTime(2022,6,2,10,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt7 = new Timetable(7, tl1, new DateTime(2022,6,2,12,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt8 = new Timetable(8, tl3, new DateTime(2022,6,2,12,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt9 = new Timetable(9, tl4, new DateTime(2022,6,2,12,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
             Timetable tt2 = new Timetable(2, tl1, new DateTime(2022, 6, 2, 15, 0, 0), train2, false, new DateTime(2022, 6, 2, 17, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // valid
             Timetable tt3 = new Timetable(3, tl1, new DateTime(2022, 6, 3, 16, 10, 0), train1, true, new DateTime(2022, 6, 15, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // nije jos validan
             Timetable tt4 = new Timetable(4, tl1, new DateTime(2022, 6, 4, 17, 10, 0), train1, false, new DateTime(2022, 6, 4, 13, 10, 0), new DateTime(2022, 6, 6, 17, 10, 0));   // nije validan
@@ -90,6 +125,9 @@ namespace HCI_Projekat.Model
             this.timetables.Add(tt4);
             this.timetables.Add(tt5);
             this.timetables.Add(tt6);
+            this.timetables.Add(tt7);
+            this.timetables.Add(tt8);
+            this.timetables.Add(tt9);
 
         }
     }

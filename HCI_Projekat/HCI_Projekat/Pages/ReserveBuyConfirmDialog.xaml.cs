@@ -20,16 +20,16 @@ namespace HCI_Projekat.Pages
 
     public partial class ReserveBuyConfirmDialog : Window
     {
-        public TicketDTO ticketDTO { get; set; }
+        public TicketShowDTO ticketShowDTO { get; set; }
         public Ticket ticket { get; set; }
         public User loggedUser { get; set; }
         
-        public ReserveBuyConfirmDialog(TicketDTO ticketDTO,Ticket ticket,User loggedUser)
+        public ReserveBuyConfirmDialog(TicketShowDTO ticketDTO,Ticket ticket,User loggedUser)
         {
             InitializeComponent();
             Uri uri = new Uri("../../Images/icon.png", UriKind.RelativeOrAbsolute);
             this.Icon = BitmapFrame.Create(uri);
-            this.ticketDTO = ticketDTO;
+            this.ticketShowDTO = ticketDTO;
             this.ticket = ticket;
             this.loggedUser = loggedUser;
             if (ticketDTO.isReservation)
@@ -44,8 +44,12 @@ namespace HCI_Projekat.Pages
 
         private void btn_confirm_Click(object sender, RoutedEventArgs e)
         {
-            ticket.timetable.train.wagons[ticket.wagon.id-1].seatAvailability[ticket.seatPosition] = false;
-            if (ticketDTO.isReservation)
+            for (int i = 0; i < ticket.seatPosition.Count; i++){
+                ticket.timetable[i].
+                    train.wagons[ticket.wagon[i].id - 1]
+                    .seatAvailability[ticket.seatPosition[i]] = false; 
+            }
+            if (ticketShowDTO.isReservation)
             {
                 loggedUser.reservations.Add(ticket);
                 MessageBox.Show("You have successfully reserved your ticket.", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -65,7 +69,7 @@ namespace HCI_Projekat.Pages
         }
     }
 
-    public class TicketDTO
+    public class TicketShowDTO
     {
 
         public String userName { get; set; }
@@ -79,10 +83,10 @@ namespace HCI_Projekat.Pages
         public String seat { get; set; }
         public String wagon { get; set; }
         public Boolean isReservation { get; set; }
-        public TicketDTO() { }
+        public TicketShowDTO() { }
 
 
-        public TicketDTO(TimetableDTO timetable, Ticket ticket, User loggedUser,Boolean isReservation)
+        public TicketShowDTO(TimetableDTO timetable, Ticket ticket, User loggedUser,Boolean isReservation)
         {
             this.userName = loggedUser.name;
             this.userSurname = loggedUser.surname;
@@ -91,13 +95,36 @@ namespace HCI_Projekat.Pages
             this.startDateTime = ticket.date.ToString().Split(' ')[0]+" "+timetable.startTime;
             this.startTime = timetable.startTime;
             this.trainName = timetable.train.name;
-            this.wagon = (ticket.wagon.id ).ToString();
-            this.seat = ticket.seatPosition.ToString();
+            this.wagon = (ticket.wagon[0].id).ToString();
+            this.seat = ticket.seatPosition[0].ToString();
+            if (ticket.wagon.Count > 1)
+            {
+                this.wagon += "/" + (ticket.wagon[1].id).ToString();
+                this.seat += "/" + (ticket.seatPosition[1]).ToString();
+            }
             this.isReservation = isReservation;
 
         }
 
-       
+        public TicketShowDTO(TicketDTO ticketDTO, User loggedUser, Boolean isReservation)
+        {
+            this.userName = loggedUser.name;
+            this.userSurname = loggedUser.surname;
+            this.startStation = ticketDTO.timetableDTO.startStation;
+            this.endStation = ticketDTO.timetableDTO.endStation;
+            this.startDateTime = ticketDTO.dateReserved.ToString().Split(' ')[0] + " " + ticketDTO.timetableDTO.startTime;
+            this.startTime = ticketDTO.timetableDTO.startTime;
+            this.trainName = ticketDTO.timetableDTO.train.name; //mozda i za voz
+            this.wagon = (ticketDTO.wagons[0].id).ToString();
+            this.seat = ticketDTO.seats[0].ToString();
+            if (ticketDTO.wagons.Count > 1) {
+                this.wagon += "/"+(ticketDTO.wagons[1].id).ToString();
+                this.seat += "/"+(ticketDTO.seats[1]).ToString();
+            }
+            this.isReservation = isReservation;
+
+        }
+
     }
 
 }

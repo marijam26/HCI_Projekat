@@ -76,7 +76,7 @@
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
 
-                <ColumnDefinition Width="121*"></ColumnDefinition>
+                <ColumnDefinition Width="70*"></ColumnDefinition>
                 <ColumnDefinition Width="479*"/>
                 
             </Grid.ColumnDefinitions>
@@ -97,7 +97,9 @@
                 </Button.Resources>
             </Button>
             
-            <DataGrid Background="White" x:Name="timetable_table" Grid.Row="2" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,0,250,111.978"  Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged"  Grid.Column="1">
+            <DataGrid Background="White" x:Name="timetable_table" Grid.Row="2" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*"
+                      FontSize="18" Margin="7.6,0,70,50.978"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged"  
+                      Grid.Column="1" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="To" Width="*" Binding="{Binding endStation}"></DataGridTextColumn>
@@ -105,6 +107,11 @@
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
 
                 </DataGrid.Columns>
+                <DataGrid.RowDetailsTemplate >
+                    <DataTemplate>
+                        <TextBlock Text="{Binding stationInfo}"  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" />
+                    </DataTemplate>
+                </DataGrid.RowDetailsTemplate>
             </DataGrid>
 
             <Button x:Name="btn_chooseSeat" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"   Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Choose seat" Click="btn_chooseSeat_Click">
