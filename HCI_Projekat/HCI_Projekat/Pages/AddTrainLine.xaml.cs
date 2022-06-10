@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -14,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -29,12 +32,15 @@ namespace HCI_Projekat.Pages
         public MapPolyline polyline { get; set; }
         public TrainLine trainLine { get; set; }
 
+        public List<Control> controlList { get; set; }
 
-        public AddTrainLine(Data dataBase,TrainLine trainLine)
+        public AddTrainLine(Data dataBase,TrainLine trainLine, bool tour=false)
         {
             InitializeComponent();
             this.dataBase = dataBase;
             DataContext = this;
+
+            controlList = new List<Control>() {bt_cancle, bt_save};     // ...
 
             if(trainLine == null)
             {
@@ -98,6 +104,42 @@ namespace HCI_Projekat.Pages
             }
 
             myMap.Children.Add(this.polyline);
+
+          
+        }
+
+        public void StartTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.OnStepEntered(ElementID.PinStart).Execute(s => pin_start.Focus());
+            navigator.OnStepEntered(ElementID.PinEnd).Execute(s => pin_end.Focus());
+            navigator.OnStepEntered(ElementID.Pin).Execute(s => pin.Focus());
+
+            navigator.OnStepEntered(ElementID.AddTrainLineButtonSave).Execute(s => bt_save.Focus());
+            foreach (Control c in this.controlList)
+            {
+                c.IsEnabled = false;
+            }
+            TourStarter.StartAddTrainLineTour();
+        }
+
+        public void bt_tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.OnStepEntered(ElementID.PinStart).Execute(s => pin_start.Focus());
+            navigator.OnStepEntered(ElementID.PinEnd).Execute(s => pin_end.Focus());
+            navigator.OnStepEntered(ElementID.Pin).Execute(s => pin.Focus());
+            
+            navigator.OnStepEntered(ElementID.AddTrainLineButtonSave).Execute(s => bt_save.Focus());
+            foreach (Control c in this.controlList)
+            {
+                c.IsEnabled = false;
+            }
+            
+            TourStarter.StartAddTrainLineTour();
+
         }
 
         private void pin_MouseMove(object sender, MouseEventArgs e)
@@ -129,6 +171,24 @@ namespace HCI_Projekat.Pages
             StationDialog d = new StationDialog(this.dataBase, this.trainLine, pinLocation, name,"add");
             d.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             d.ShowDialog();
+
+            
+            var navigator = FeatureTour.GetNavigator();
+            if(name == "pin_start")
+            {
+                navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
+              
+            }
+            else if(name == "pin_end")
+            {
+                navigator.IfCurrentStepEquals(ElementID.PinEnd).GoNext();
+               
+            }
+            else
+            {
+                navigator.IfCurrentStepEquals(ElementID.Pin).GoNext();
+            }
+
         }
 
 
@@ -191,6 +251,9 @@ namespace HCI_Projekat.Pages
             MainWindow window = (MainWindow)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
             window.Content = tc;
+
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.AddTrainLineButtonSave).GoNext();
 
         }
     }

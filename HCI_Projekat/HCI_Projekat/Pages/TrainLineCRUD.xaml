@@ -4,6 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
+      xmlns:app="clr-namespace:HCI_Projekat.touring"
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
@@ -42,7 +44,11 @@
 
         <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
-        <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Style="{DynamicResource MaterialDesignDataGrid}" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False">
+        <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3" 
+                  IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Style="{DynamicResource MaterialDesignDataGrid}" 
+                  Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" 
+                  featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainLineTable}"
+>
 
             <DataGrid.Columns>
                 <DataGridTextColumn Header="From" Width="*" Binding="{Binding from.name}"></DataGridTextColumn>
@@ -71,7 +77,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"  >
+        <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"  featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainLineButtonAdd}">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -86,5 +92,15 @@
                 </Style>
             </Button.Resources>
         </Button>
+
+
+        <Button x:Name="btn_tutorial" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Margin="0, 0, 20, 0" Style="{StaticResource ResourceKey=MyButton}"  Content="Tutorial" Click="btn_tutorial_Click" >
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"></Setter>
+                </Style>
+            </Button.Resources>
+        </Button>
+
     </Grid>
 </Page>

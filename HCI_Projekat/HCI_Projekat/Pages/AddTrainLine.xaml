@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
+      xmlns:app="clr-namespace:HCI_Projekat.touring"
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
@@ -40,9 +42,15 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Image x:Name="pin_start" Grid.Column="0" Source="/Images/start.png"  MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="55" />
-                <Image x:Name="pin_end" Grid.Column="1" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" />
-                <Image x:Name="pin" Grid.Column="0" Source="/Images/blue.png"  MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="55" Visibility="Hidden"/>
+                <Image x:Name="pin_start" Grid.Column="0" Source="/Images/start.png"  MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="55"                   
+                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinStart}"
+                       featureTouring:TourHelper.Placement="TopRight"/>
+                <Image x:Name="pin_end" Grid.Column="1" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" 
+                       featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinEnd}"
+                       featureTouring:TourHelper.Placement="TopRight"/>
+                <Image x:Name="pin" Grid.Column="0" Source="/Images/blue.png"  MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="55" Visibility="Hidden"
+                       featureTouring:TourHelper.ElementID="{x:Static app:ElementID.Pin}"
+                       featureTouring:TourHelper.Placement="TopRight"/>
 
             </Grid>
         </materialDesign:Card>
@@ -62,7 +70,12 @@
         </DataGrid>
 
         <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click"></Button>
-        <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click"/>
+        <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" 
+                featureTouring:TourHelper.ElementID="{x:Static app:ElementID.AddTrainLineButtonSave}"
+                featureTouring:TourHelper.Placement="TopRight"/>
+
+        <Button x:Name="bt_tutorial" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Tour" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Right" Click="bt_tutorial_Click" 
+               />
 
     </Grid>
 </Page>

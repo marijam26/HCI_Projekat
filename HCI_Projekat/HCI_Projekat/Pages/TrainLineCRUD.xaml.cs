@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -23,12 +25,17 @@ namespace HCI_Projekat.Pages
     {
         public Data dataBase { get; set; }
 
+        public List<Control> controlList { get; set; }
+
+        public bool tour = false;
+
         public TrainLineCRUD(Data database)
         {
             InitializeComponent();
             this.dataBase = database;
             DataContext = this;
-            
+
+            this.controlList = new List<Control>() { trainLine_table, btn_add, btn_delete, btn_edit, btn_tutorial};
 
         }
 
@@ -63,9 +70,14 @@ namespace HCI_Projekat.Pages
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;
-            AddTrainLine s = new AddTrainLine(this.dataBase,null);
+            AddTrainLine s = new AddTrainLine(this.dataBase,null, tour);
             MainWindow window = (MainWindow)Window.GetWindow(this);
             window.Content = s;
+            if (tour)
+            {
+                s.StartTour();
+            }
+            
         }
 
         private void btn_edit_Click(object sender, RoutedEventArgs e)
@@ -81,6 +93,34 @@ namespace HCI_Projekat.Pages
             EditTrainLine s = new EditTrainLine(this.dataBase, t);
             MainWindow window = (MainWindow)Window.GetWindow(this);
             window.Content = s;
+        }
+
+
+        private void btn_tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            //navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "beograd");
+            //navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "novi sad");
+
+
+            navigator.OnStepEntered(ElementID.TrainLineButtonAdd).Execute(s => btn_add.Focus());
+
+            //navigator.OnStepEntered(ElementID.PinStart).Execute(s => pinSta.Focus());
+           // navigator.OnStepEntered(ElementID.RadioWeekend).Execute(s => rb_weekend.Focus());
+           // navigator.OnStepEntered(ElementID.ButtonSearch).Execute(s => btn_search.Focus());
+
+            //toPlace.SelectionChanged += toPlaceSelectionChanged;
+            //rb_weekend.Checked += Rb_weekend_Checked;
+            //btn_search.Click += searchClicked;
+            this.tour = true;
+
+            foreach (Control c in this.controlList)
+            {
+                c.IsEnabled = false;
+            }
+            btn_add.IsEnabled = true;
+            TourStarter.StartTrainLineTour();
         }
     }
 }

@@ -27,5 +27,41 @@ namespace HCI_Projekat.touring
 
             tour.Start();
         }
+
+        public static void StartTrainLineTour()
+        {
+            var tour = new Tour
+            {
+                Name = "Train Line tour",
+                ShowNextButtonDefault = false,
+                Steps = new[]
+                {
+                    new Step(ElementID.TrainLineButtonAdd, "Add a new train line", "Click to add a new train line "),
+                   
+                }
+            };
+
+            tour.Start();
+        }
+
+        public static void StartAddTrainLineTour()
+        {
+            var tour = new Tour
+            {
+                Name = "Train Line add tour",
+                ShowNextButtonDefault = false,
+                Steps = new[]
+                {
+                    new Step(ElementID.PinStart, "Choose start station", "Take this pin and drag it to the map where you want to put the start station."),
+                    new Step(ElementID.PinEnd, "Choose end station", "Take this pin and drag it to the map where you want to put the end station."),
+                    new Step(ElementID.Pin, "Add station", "Drag the pin to the map to add a new station. "),
+                    new Step(ElementID.AddTrainLineButtonSave, "Save", "Click the button to add the line."),
+                }
+            };
+
+            tour.Start();
+        }
+
+
     }
 }
