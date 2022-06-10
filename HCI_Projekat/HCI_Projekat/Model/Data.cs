@@ -53,13 +53,13 @@ namespace HCI_Projekat.Model
             Station s2 = new Station(2, "Nova Pazova",44.95983320985867, 20.23084652428375);
             Station s3 = new Station(3, "Novi Sad", 45.27167160883285, 19.8209432003093);
 
-            Station s5 = new Station(4, "Nis", 44.95983320985867, 20.23084652428375);
-            Station s6 = new Station(5, "Sarajevo", 44.95983320985867, 20.23084652428375);
-            Station s7 = new Station(6, "Trebinje", 44.95983320985867, 20.23084652428375);
-            Station s8 = new Station(7, "Nis", 44.95983320985867, 20.23084652428375);
-            Station s9 = new Station(8, "Valjevo", 44.95983320985867, 20.23084652428375);
-            Station s10 = new Station(10, "Bileca", 44.95983320985867, 20.23084652428375);
-
+            Station s5 = new Station(4, "Nis", 43.31930885447344, 21.885659191612273);
+            Station s6 = new Station(5, "Sarajevo", 43.85422028058687, 18.419045368067394);
+            Station s7 = new Station(6, "Trebinje", 42.72505852408489, 18.30905508445819);
+            Station s9 = new Station(8, "Valjevo", 44.28316645558399, 19.895600694210952);
+            Station s10 = new Station(10, "Bileca", 42.87383117173714, 18.425855729487388);
+            Station s11 = new Station(10, "Leskovac", 43.01668171118617, 21.95190615150356);
+            Station s12 = new Station(10, "Kragujevac", 44.00979922976477, 20.871867812775758);
 
 
             trainLines = new List<TrainLine>();
@@ -69,16 +69,16 @@ namespace HCI_Projekat.Model
             TrainLine tl4 = new TrainLine(4, 150, train2);
 
             tl3.stations.Add(s2);
+            tl3.stations.Add(s12);
             tl3.stations.Add(s5);
-            tl3.stations.Add(s6);
-            tl3.stations.Add(s10);
+            tl3.stations.Add(s11);
             tl3.from = s2;
-            tl3.to = s10;
+            tl3.to = s11;
 
-            tl4.stations.Add(s7);
-            tl4.stations.Add(s8);
+            tl4.stations.Add(s11);
+            tl4.stations.Add(s5);
             tl4.stations.Add(s9);
-            tl4.from = s7;
+            tl4.from = s11;
             tl4.to = s9;
             tl3.time.Add(10);
             tl3.time.Add(10);
@@ -88,13 +88,13 @@ namespace HCI_Projekat.Model
             tl4.time.Add(20);
             tl4.time.Add(20);
 
-            tl1.stations.Add(s1);
-            tl1.stations.Add(s2);
             tl1.stations.Add(s3);
+            tl1.stations.Add(s2);
+            tl1.stations.Add(s1);
             tl2.stations.Add(s3);
             tl2.stations.Add(s2);
-            tl1.from = s1;
-            tl1.to = s3;
+            tl1.from = s3;
+            tl1.to = s1;
             tl2.from = s3;
             tl2.to = s2;
             tl1.time.Add(30);

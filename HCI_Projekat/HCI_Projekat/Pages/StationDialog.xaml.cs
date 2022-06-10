@@ -44,7 +44,7 @@ namespace HCI_Projekat.Pages
             {
                 time_after.IsEnabled = false;
                 time_before.IsEnabled = false;
-            }else if (trainLine.stations.Count == 1)
+            }else if (trainLine.stations.Count == 1 || (parentPage=="edit" && (pinType=="pin_start" || pinType=="pin_end")))
             {
                 time_after.IsEnabled = false;
                 time_before.IsEnabled = true;
@@ -107,6 +107,8 @@ namespace HCI_Projekat.Pages
                     int index = this.trainLine.stations.IndexOf(from);
                     this.trainLine.stations.Remove(from);
                     this.trainLine.stations.Insert(index, s);
+                    this.trainLine.time.RemoveAt(0);
+                    this.trainLine.time.Insert(0, res1);
                 }
             }else if (this.pinType == "pin_end")
             {
@@ -117,6 +119,8 @@ namespace HCI_Projekat.Pages
                     int index = this.trainLine.stations.IndexOf(to);
                     this.trainLine.stations.Remove(to);
                     this.trainLine.stations.Insert(index, s);
+                    this.trainLine.time.RemoveAt(this.trainLine.time.Count-1);
+                    this.trainLine.time.Insert(this.trainLine.time.Count - 1, res1);
                 }
             }
 
@@ -141,19 +145,19 @@ namespace HCI_Projekat.Pages
         public void editBluePin(string name, int res1,int res2,Station s)
         {
 
-            if (this.trainLine.stations.Last().latitude < this.trainLine.stations.First().latitude)
+            if (this.trainLine.stations.Last().latitude > this.trainLine.stations.First().latitude)
             {
-                Station first = this.trainLine.stations.First();
-                this.trainLine.stations[0] = this.trainLine.stations.Last();
-                this.trainLine.stations[this.trainLine.stations.Count-1] = first;
-                //this.trainLine.stations.OrderBy(x => x.latitude);
+                //Station first = this.trainLine.stations.First();
+                //this.trainLine.stations[0] = this.trainLine.stations.Last();
+                //this.trainLine.stations[this.trainLine.stations.Count-1] = first;
+                this.trainLine.stations = this.trainLine.stations.OrderByDescending(x => x.latitude).ToList();
             }
 
            
 
             for(int i = 0; i < this.trainLine.stations.Count-1; i++)
             {
-                if (this.trainLine.stations[i].latitude < s.latitude && this.trainLine.stations[i+1].latitude > s.latitude)
+                if (this.trainLine.stations[i].latitude > s.latitude && this.trainLine.stations[i+1].latitude < s.latitude)
                 {
                     this.trainLine.stations.Insert(i+1, s);
                     this.trainLine.time.Remove(i);
@@ -163,7 +167,7 @@ namespace HCI_Projekat.Pages
                 }
             }
                     
-            if (this.trainLine.stations.Last().latitude < s.latitude)
+            if (this.trainLine.stations.Last().latitude > s.latitude)
             {
                 int index = this.trainLine.stations.IndexOf(this.trainLine.stations.Last());
                 this.trainLine.stations.Insert(index, s);
@@ -171,7 +175,7 @@ namespace HCI_Projekat.Pages
                 this.trainLine.time.Insert(index - 1, res2);
                 this.trainLine.time.Insert(index - 1, res1);
             }
-            if (this.trainLine.stations.First().latitude > s.latitude)
+            if (this.trainLine.stations.First().latitude < s.latitude)
             {
                 this.trainLine.stations.Insert(1, s);
                 this.trainLine.time.Remove(0);

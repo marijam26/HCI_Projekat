@@ -77,7 +77,19 @@ namespace HCI_Projekat.Pages
             this.polyline.Opacity = 0.7;
             this.polyline.Locations = new LocationCollection();
 
+            addPinToMap();
 
+            myMap.Children.Add(this.polyline);
+
+          
+        }
+
+        public void addPinToMap()
+        {
+            if (this.trainLine.stations.Count>0 && (this.trainLine.from != this.trainLine.stations.First()))
+            {
+                this.trainLine.stations = this.trainLine.stations.OrderBy(x => x.latitude).ToList();
+            }
             for (int i = 0; i < this.trainLine.stations.Count; i++)
             {
                 Pushpin p = new Pushpin();
@@ -88,7 +100,8 @@ namespace HCI_Projekat.Pages
                     p.Content = "start";
                     StationLineDto sldto = new StationLineDto(trainLine.stations[i].name, "/Images/start.png");
                     this.stationsDto.Add(sldto);
-                }else if (this.trainLine.stations[i] == this.trainLine.to)
+                }
+                else if (this.trainLine.stations[i] == this.trainLine.to)
                 {
                     p.Background = new SolidColorBrush(Colors.Red);
                     p.Content = "end";
@@ -105,11 +118,8 @@ namespace HCI_Projekat.Pages
                 this.polyline.Locations.Add(loc);
                 myMap.Children.Add(p);
             }
-
-            myMap.Children.Add(this.polyline);
-
-          
         }
+
 
         public void StartTour()
         {

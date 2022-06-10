@@ -69,6 +69,8 @@ namespace HCI_Projekat.Pages
 
 
             addPinToMap();
+            Station middle = this.TrainLine.stations[this.TrainLine.stations.Count / 2];
+            myMap.Center = new Location(middle.latitude,middle.longitude);
             dg_stations.ItemsSource = null;
             dg_stations.ItemsSource = this.stationsDto;
 

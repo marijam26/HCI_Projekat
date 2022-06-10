@@ -59,6 +59,10 @@ namespace HCI_Projekat.Pages
 
         public void addPinToMap()
         {
+            if(this.TrainLine.from != this.TrainLine.stations.First())
+            {
+                this.TrainLine.stations = this.TrainLine.stations.OrderBy(x => x.latitude).ToList();
+            }
             for (int i = 0; i < this.TrainLine.stations.Count; i++)
             {
                 Pushpin p = new Pushpin();
