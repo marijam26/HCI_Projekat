@@ -28,8 +28,9 @@ namespace HCI_Projekat.Pages
         public string pinType { get; set; }
         public string parentPage { get; set; }
         public TrainLine backup { get; set; }
+        public bool tour = false;
 
-        public StationDialog(Data dataBase,TrainLine trainLine,Location location,string pinType,string parentPage)
+        public StationDialog(Data dataBase,TrainLine trainLine,Location location,string pinType,string parentPage, bool tour=false)
         {
             InitializeComponent();
             Uri uri = new Uri("../../Images/icon.png", UriKind.RelativeOrAbsolute);
@@ -49,7 +50,7 @@ namespace HCI_Projekat.Pages
                 time_after.IsEnabled = false;
                 time_before.IsEnabled = true;
             }
-            
+            this.tour = tour;
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)
@@ -131,7 +132,7 @@ namespace HCI_Projekat.Pages
             MainWindow window = (MainWindow)App.Current.MainWindow;
             if (parentPage == "add")
             {
-                AddTrainLine addTrainLine = new AddTrainLine(this.dataBase,this.trainLine);
+                AddTrainLine addTrainLine = new AddTrainLine(this.dataBase,this.trainLine, tour);
                 window.Content = addTrainLine;
             }
             else

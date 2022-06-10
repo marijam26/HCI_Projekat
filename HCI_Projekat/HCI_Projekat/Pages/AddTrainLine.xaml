@@ -48,7 +48,7 @@
                        featureTouring:TourHelper.Placement="TopRight"/>
                 </Canvas>
 
-                <Canvas x:Name="end" Grid.Column="1">
+                <Canvas x:Name="endd" Grid.Column="1">
                     <Image x:Name="pin_end" Grid.Column="1" Canvas.Top="7" Canvas.Left="30" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" 
                        featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinEnd}"
                        featureTouring:TourHelper.Placement="TopRight"/>  
@@ -79,9 +79,5 @@
         <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.AddTrainLineButtonSave}"
                 featureTouring:TourHelper.Placement="TopRight"/>
-
-        <Button x:Name="bt_tutorial" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Tour" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Right" Click="bt_tutorial_Click" 
-               />
-
     </Grid>
 </Page>
