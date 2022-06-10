@@ -81,14 +81,18 @@ namespace HCI_Projekat.Pages
             window.Content = r;
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_ticket_view(object sender, RoutedEventArgs e)
         {
-
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ClientTicketView r = new ClientTicketView( this.loggedUser);
+            window.Content = r;
         }
 
-        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        private void MenuItem_Click_reservation_view(object sender, RoutedEventArgs e)
         {
-
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ClientReservationView r = new ClientReservationView(this.loggedUser);
+            window.Content = r;
         }
 
         private void MenuItem_Click_3(object sender, RoutedEventArgs e)

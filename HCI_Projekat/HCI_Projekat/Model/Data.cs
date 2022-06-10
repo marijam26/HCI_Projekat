@@ -22,7 +22,8 @@ namespace HCI_Projekat.Model
             users = new List<User>();
             User u1 = new User("maki", "m", "Marija", "Milosevic", UserType.Manager);
             users.Add(u1);
-            users.Add(new User("coki", "c", "Coka", "Cokic", UserType.Client));
+            User u2 = new User("coki", "c", "Coka", "Cokic", UserType.Client);
+            users.Add(u2);
 
             List<Wagon> wagons1 = new List<Wagon>();
             wagons1.Add(new Wagon(1,Wagon.WagonClass.first,16));
@@ -84,8 +85,8 @@ namespace HCI_Projekat.Model
             tl3.time.Add(10);
             tl3.time.Add(10);
             tl3.time.Add(10);
-            tl4.time.Add(20);
-            tl4.time.Add(20);
+            tl4.time.Add(30);
+            tl4.time.Add(40);
             tl4.time.Add(20);
 
             tl1.stations.Add(s3);
@@ -129,6 +130,18 @@ namespace HCI_Projekat.Model
             this.timetables.Add(tt8);
             this.timetables.Add(tt9);
 
+            List<Timetable> timetables = new List<Timetable>();
+            timetables.Add(tt1);
+
+            Ticket ticket1 = new Ticket(1,timetables, new DateTime(2022, 6, 2, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16) },new List<int>() { 1},"",DateTime.Now);
+            Ticket ticket2 = new Ticket(2,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 5, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            Ticket ticket3 = new Ticket(3,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 5, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            Ticket ticket4 = new Ticket(4,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 6, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            
+            users[1].tickets.Add(ticket1);
+            users[1].tickets.Add(ticket2);
+            users[1].reservations.Add(ticket3);
+            users[1].reservations.Add(ticket4);
         }
     }
 }

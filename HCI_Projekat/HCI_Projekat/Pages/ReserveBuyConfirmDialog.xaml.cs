@@ -71,7 +71,7 @@ namespace HCI_Projekat.Pages
 
     public class TicketShowDTO
     {
-
+        public int id { get; set; }
         public String userName { get; set; }
         public String userSurname { get; set; }
         public String startTime { get; set; }
@@ -83,6 +83,8 @@ namespace HCI_Projekat.Pages
         public String seat { get; set; }
         public String wagon { get; set; }
         public Boolean isReservation { get; set; }
+        public string transferPlace { get; set; }
+        public string purchasementDate { get; set; }
         public TicketShowDTO() { }
 
 
@@ -123,6 +125,41 @@ namespace HCI_Projekat.Pages
             }
             this.isReservation = isReservation;
 
+        }
+
+        public TicketShowDTO(Ticket ticket) {
+            this.startStation = ticket.timetable[0].line.stations[0].name;
+            if (ticket.timetable.Count == 1)
+            {
+                this.endStation = ticket.timetable[0].line.stations[ticket.timetable[0].line.stations.Count-1].name;
+            }
+            else {
+                this.endStation = ticket.timetable[1].line.stations[ticket.timetable[1].line.stations.Count - 1].name;
+            }
+            if (ticket.transferStation != "")
+            {
+                this.transferPlace = ticket.transferStation;
+            }
+            else {
+                this.transferPlace = "-";
+            }
+            this.wagon = ticket.wagon[0].id.ToString();
+            this.seat = ticket.seatPosition[0].ToString();
+            if (ticket.wagon.Count > 1)
+            {
+                this.wagon += "/" + (ticket.wagon[1].id).ToString();
+                this.seat += "/" + (ticket.seatPosition[1]).ToString();
+            }
+            this.startDateTime = ticket.date.ToString().Split(' ')[0] + " " + ticket.timetable[0].start.ToString().Split(' ')[1];
+            if (ticket.wagon.Count > 1)
+            {
+                this.price = (ticket.timetable[0].line.price + ticket.timetable[1].line.price);
+            }
+            else {
+                this.price = ticket.timetable[0].line.price;
+            }
+            this.purchasementDate = ticket.purchasementDate.ToString();
+            this.id = ticket.id;
         }
 
     }

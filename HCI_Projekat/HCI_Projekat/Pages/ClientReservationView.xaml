@@ -1,0 +1,85 @@
+﻿<Page x:Class="HCI_Projekat.Pages.ClientReservationView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
+      Title="ClientReservationView">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="131*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <DockPanel  Grid.ColumnSpan="4">
+            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top">
+                <MenuItem Header="Tickets" Height="41" >
+                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" ></MenuItem>
+                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
+                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" ></MenuItem>
+                    <Separator></Separator>
+                </MenuItem>
+                <MenuItem Header="Info" Height="41">
+                    <MenuItem Header="nesto"></MenuItem>
+                </MenuItem>
+
+            </Menu>
+            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            </Grid>
+        </DockPanel>
+        <Border Grid.Row="2" Background="DarkCyan" Grid.ColumnSpan="3"/>
+        <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
+
+        <Grid Grid.Row="1">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.25*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.2*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Row="0" HorizontalAlignment="Center" FontSize="25" Width="Auto" FontFamily="Century Gothic" VerticalAlignment="Center"  Grid.Column="1">My reservations</Label>
+
+            <DataGrid Background="White" x:Name="timetable_table" Grid.Row="1" ItemsSource="{Binding tickets}" IsReadOnly="True" 
+                      FontSize="13" Margin="60,0,60,10"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="To" Width="*" Binding="{Binding endStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Transfer" Width="1.5*" Binding="{Binding transferPlace}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Departure time" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Wagon" Width="2*" Binding="{Binding wagon}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Seat" Width="2*" Binding="{Binding seat}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Reservation date" Width="2*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,180,5"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Cancel" Click="btn_cancel_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+            <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,80,5"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Confirm" Click="btn_confirm_Click">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </Grid>
+        </Grid>
+</Page>

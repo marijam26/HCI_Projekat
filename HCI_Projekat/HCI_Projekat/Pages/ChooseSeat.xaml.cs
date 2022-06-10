@@ -223,7 +223,8 @@ namespace HCI_Projekat.Pages
                 return;
             }
             currentlySaveSeat();
-            Ticket ticket = new Ticket(ticketDTO.timetableDTO.timetables,ticketDTO.dateReserved,ticketDTO.wagons,ticketDTO.seats);
+            int id = this.loggedUser.tickets.Max(x => x.id);
+            Ticket ticket = new Ticket(id,ticketDTO.timetableDTO.timetables,ticketDTO.dateReserved,ticketDTO.wagons,ticketDTO.seats,ticketDTO.transferPlace,DateTime.Now);
             TicketShowDTO ticketShowDTO = new TicketShowDTO( ticketDTO,loggedUser,false);
             ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO,ticket,loggedUser)
             {
@@ -264,7 +265,8 @@ namespace HCI_Projekat.Pages
             }
 
             currentlySaveSeat();
-            Ticket ticket = new Ticket(ticketDTO.timetableDTO.timetables, ticketDTO.dateReserved, ticketDTO.wagons, ticketDTO.seats);
+            int id = this.loggedUser.tickets.Max(x => x.id);
+            Ticket ticket = new Ticket(id,ticketDTO.timetableDTO.timetables, ticketDTO.dateReserved, ticketDTO.wagons, ticketDTO.seats,ticketDTO.transferPlace,DateTime.Now);
             TicketShowDTO ticketShowDTO = new TicketShowDTO(ticketDTO, loggedUser, true);
             if ((date - DateTime.Now).TotalDays >= 5) {
                 MessageBox.Show("Reservation is not possible more than 5 days before departure date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
