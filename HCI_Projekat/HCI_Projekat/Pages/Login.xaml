@@ -34,9 +34,9 @@
 
         <Label Grid.Row="1" Grid.Column="1" FontSize="35" HorizontalAlignment="Center" Margin="10" FontWeight="DemiBold" >Login</Label>
         <Label Grid.Row="2" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" >Username:</Label>
-        <TextBox x:Name="tb_username" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Text="maki"></TextBox>
+        <TextBox x:Name="tb_username" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Text="coki"></TextBox>
         <Label Grid.Row="4" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" >Password:</Label>
-        <PasswordBox x:Name="tb_password" Grid.Row="5" Grid.Column="1"  Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Password="m"></PasswordBox>
+        <PasswordBox x:Name="tb_password" Grid.Row="5" Grid.Column="1"  Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Password="c"></PasswordBox>
 
         <Grid Grid.Row="6" Grid.Column="1">
             <Grid.ColumnDefinitions>

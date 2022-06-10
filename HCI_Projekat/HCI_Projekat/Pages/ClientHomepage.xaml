@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      TextElement.FontFamily="Century Gothic"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="ClientHomepage">
@@ -21,14 +22,16 @@
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel  Grid.ColumnSpan="4">
-            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top">
+            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top" FontFamily="Century Gothic">
                 <MenuItem Header="Tickets" Height="41" >
                     <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" Click="MenuItem_Click_reserve_buy"></MenuItem>
                     <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
                     <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" ></MenuItem>
                     <Separator></Separator>
                 </MenuItem>
-                <MenuItem Header="Info">
+                <MenuItem Name="mi_railmap" Header="Railway map" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic">
+                </MenuItem>
+                <MenuItem Header="Help" Height="41" FontFamily="Century Gothic">
                     <MenuItem Header="nesto"></MenuItem>
                 </MenuItem>
                 
@@ -40,6 +43,6 @@
 
         <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
-        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" FontFamily="Century Gothic" Grid.ColumnSpan="4">Welcome client! Enjoy!</Label>
+        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" Grid.ColumnSpan="4">Welcome client! Enjoy!</Label>
     </Grid>
 </Page>

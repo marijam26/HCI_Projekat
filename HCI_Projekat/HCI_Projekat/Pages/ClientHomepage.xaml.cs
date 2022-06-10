@@ -105,5 +105,12 @@ namespace HCI_Projekat.Pages
         {
 
         }
+
+        private void mi_railmap_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            RailwayMap rw = new RailwayMap(this.dataBase);
+            window.Content = rw;
+        }
     }
 }
