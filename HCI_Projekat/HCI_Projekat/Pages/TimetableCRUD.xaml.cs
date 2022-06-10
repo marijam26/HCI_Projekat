@@ -1,4 +1,6 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,16 +16,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
  
     public partial class TimetableCRUD : Page
     {
+
+        private Placement _placement;
+
         public Data dataBase { get; set; }
         public List<TimetableDTO> timetableList { get; set; }
 
         public List<TimetableDTO> allTimetables { get; set; }
+
+        public List<Control> controlList { get; set; }
 
         public TimetableCRUD(Data database, List<TimetableDTO> searchList = null)
         {
@@ -31,8 +40,8 @@ namespace HCI_Projekat.Pages
             InitializeComponent();
             this.dataBase = database;
             DataContext = this;
-          
 
+            this.controlList = new List<Control>() { fromPlace, toPlace, rb_weekday, rb_weekend, btn_search, timetable_table, btn_edit, btn_delete, btn_add };
 
             this.timetableList = new List<TimetableDTO>();
             this.allTimetables = new List<TimetableDTO>();
@@ -58,6 +67,53 @@ namespace HCI_Projekat.Pages
 
         }
 
+        private void searchClicked(object sender, RoutedEventArgs e)
+        {
+            foreach (Control c in this.controlList)
+            {
+                c.IsEnabled = true;
+            }
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.ButtonSearch).GoNext();
+        }
+
+        private void Rb_weekend_Checked(object sender, RoutedEventArgs e)
+        {
+            rb_weekend.IsEnabled = false;
+            btn_search.IsEnabled = true;
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.RadioWeekend).GoNext();
+        }
+
+        private void fromPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(fromPlace.SelectedItem.ToString() == "beograd")
+            {
+                fromPlace.IsEnabled = false;
+                toPlace.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.ComboBoxFrom).GoNext();
+            }
+        }
+
+        private void toPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (toPlace.SelectedItem.ToString() == "novi sad")
+            {
+                toPlace.IsEnabled = false;
+                rb_weekend.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.ComboBoxTo).GoNext();
+            }
+        }
+
+
+        public Placement Placement
+        {
+            get { return _placement; }
+            set { Placement = value; }
+        }
+
         private void btn_delete_Click(object sender, RoutedEventArgs e)  // promijeni tako da brise i iz dto i iz database
         {
             int selectedCells = timetable_table.SelectedCells.Count();
@@ -79,9 +135,37 @@ namespace HCI_Projekat.Pages
 
         private void btn_add_Click(object sender, RoutedEventArgs e)   // ici ce preko tabele
         {
+           
             MainWindow window = (MainWindow)Window.GetWindow(this);
             AddTimetable tc = new AddTimetable(this.dataBase);
             window.Content = tc;
+        }
+
+        private void btn_tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "beograd");
+            navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "novi sad");
+
+
+            navigator.OnStepEntered(ElementID.ComboBoxFrom).Execute(s => fromPlace.Focus());
+            navigator.OnStepEntered(ElementID.ComboBoxTo).Execute(s => toPlace.Focus());
+            navigator.OnStepEntered(ElementID.RadioWeekend).Execute(s => rb_weekend.Focus());
+            navigator.OnStepEntered(ElementID.ButtonSearch).Execute(s => btn_search.Focus());
+
+            fromPlace.SelectionChanged += fromPlaceSelectionChanged;
+            toPlace.SelectionChanged += toPlaceSelectionChanged;
+            rb_weekend.Checked += Rb_weekend_Checked;
+            btn_search.Click += searchClicked;
+
+
+            foreach (Control c in this.controlList)
+            {
+                c.IsEnabled = false;
+            }
+            fromPlace.IsEnabled = true;
+            TourStarter.StartTimetableTour();
         }
 
         private void btn_edit_Click(object sender, RoutedEventArgs e)
@@ -147,6 +231,16 @@ namespace HCI_Projekat.Pages
                 }
             }
             return stations;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp(str, (MainWindow)Window.GetWindow(this));
+            }
         }
     }
 }
