@@ -235,7 +235,11 @@ namespace HCI_Projekat.Pages
             for (int i = 0; i < timetable.line.stations.Count; i++) {
                 String time = date.ToString().Split(' ')[1].Substring(0,5);
                 stringBuilder.Append($"{ timetable.line.stations[i].name,-60}{ time,20}\n");
-                date = date.AddMinutes(timetable.line.time[i]);
+                if(i < timetable.line.stations.Count - 1)
+                {
+                    date = date.AddMinutes(timetable.line.time[i]);
+                }
+                
             }
             return stringBuilder.ToString();
         }

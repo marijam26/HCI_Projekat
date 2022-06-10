@@ -146,7 +146,10 @@ namespace HCI_Projekat.Pages
                 Station first = this.trainLine.stations.First();
                 this.trainLine.stations[0] = this.trainLine.stations.Last();
                 this.trainLine.stations[this.trainLine.stations.Count-1] = first;
+                //this.trainLine.stations.OrderBy(x => x.latitude);
             }
+
+           
 
             for(int i = 0; i < this.trainLine.stations.Count-1; i++)
             {

@@ -58,9 +58,12 @@ namespace HCI_Projekat.Pages
                 pin.Visibility = Visibility.Visible;
                 pin_start.Visibility = Visibility.Hidden;
                 pin_end.Visibility = Visibility.Hidden;
-            }else if (this.trainLine.stations.Count == 1)
+            }else if (this.trainLine.stations.Count == 1 && this.trainLine.from != null)
             {
                 pin_start.Visibility = Visibility.Hidden;
+            }else if (this.trainLine.stations.Count == 1 && this.trainLine.to != null)
+            {
+                pin_end.Visibility = Visibility.Hidden;
             }
 
 
