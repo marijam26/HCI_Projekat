@@ -25,6 +25,19 @@ namespace HCI_Projekat.touring
         public static readonly string AddTrainLineButtonSave = "AddTrainLineButtonSave";
 
 
+        // Train
+        public static readonly string TrainButtonAdd = "TrainButtonAdd";
+
+        public static readonly string TrainName = "TrainName";
+        public static readonly string TrainRang = "TrainRang";
+        public static readonly string TrainButtonNext = "TrainButtonNext";
+
+
+        // Wagons
+        public static readonly string WagonButtonAdd = "WagonButtonAdd";
+        public static readonly string WagonCapacity = "WagonCapacity";
+        public static readonly string WagonClass = "WagonClass";
+        public static readonly string ButtonFinish = "ButtonFinish";
 
     }
 }

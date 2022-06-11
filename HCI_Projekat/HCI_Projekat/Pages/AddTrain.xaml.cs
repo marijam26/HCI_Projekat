@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -25,12 +27,15 @@ namespace HCI_Projekat.Pages
         public Data dataBase { get; set; }
         public Train newTrain { get; set; }
 
-        public AddTrain(Data database)
+        public bool tour = false;
+
+        public AddTrain(Data database, bool tour = false)
         {
             InitializeComponent();
             this.dataBase = database;
             DataContext = this;
             this.newTrain = null;
+            this.tour = tour;
         }
         
         public AddTrain(Data database,Train train)
@@ -48,6 +53,47 @@ namespace HCI_Projekat.Pages
             else
             {
                 rb_simple.IsChecked = true;
+            }
+        }
+
+        public void StartTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.ForStep(ElementID.TrainName).AttachDoable(s => tb_name.Text = "Soko5");
+
+
+            navigator.OnStepEntered(ElementID.TrainName).Execute(s => tb_name.Focus());
+            navigator.OnStepEntered(ElementID.TrainRang).Execute(s => rb_soko.Focus());
+            navigator.OnStepEntered(ElementID.TrainButtonNext).Execute(s => btn_next.Focus());
+
+            rb_soko.IsEnabled = false;
+            rb_simple.IsEnabled = false;
+            btn_next.IsEnabled = false;
+            btn_cancel.IsEnabled = false;
+
+            tb_name.SelectionChanged += Tb_name_SelectionChanged;
+            rb_soko.Checked += Rb_soko_Checked;
+
+            TourStarter.StartAddTrainTour();
+        }
+
+        private void Rb_soko_Checked(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+            rb_soko.IsEnabled = false;
+            btn_next.IsEnabled = true;
+            navigator.IfCurrentStepEquals(ElementID.TrainRang).GoNext();
+        }
+
+        private void Tb_name_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if (tb_name.Text.ToString() == "Soko5")
+            {
+                tb_name.IsEnabled = false;
+                rb_soko.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.TrainName).GoNext();
             }
         }
 
@@ -88,6 +134,10 @@ namespace HCI_Projekat.Pages
             MainWindow window = (MainWindow)Window.GetWindow(this);
             WagonCRUD r = new WagonCRUD(t,this.dataBase,"add");
             window.Content = r;
+            if (tour)
+            {
+                r.StartTour();
+            }
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)

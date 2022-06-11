@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -46,6 +48,59 @@ namespace HCI_Projekat.Pages
 
         }
 
+        public void StartTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.ForStep(ElementID.WagonCapacity).AttachDoable(s => tb_capacity.Text = "40");
+
+            navigator.OnStepEntered(ElementID.WagonButtonAdd).Execute(s => btn_add.Focus());
+            navigator.OnStepEntered(ElementID.WagonCapacity).Execute(s => tb_capacity.Focus());
+            navigator.OnStepEntered(ElementID.WagonClass).Execute(s => rb_first.Focus());
+            navigator.OnStepEntered(ElementID.ButtonFinish).Execute(s => btn_finish.Focus());
+
+            trainWagons_table.IsEnabled = false;
+            btn_edit.IsEnabled = false;
+            btn_delete.IsEnabled = false;
+            btn_back.IsEnabled = false;
+            rb_first.IsEnabled = false;
+            rb_second.IsEnabled = false;
+            btn_finish.IsEnabled = false;
+            btn_add.IsEnabled = false;
+
+            btn_add.Click += Tour_btn_add_Click;
+            tb_capacity.TextChanged += Tb_capacity_TextChanged;
+            rb_first.Checked += Rb_first_Checked;
+
+            TourStarter.StartAddWagonTour();
+        }
+
+        private void Tour_btn_add_Click(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+            btn_add.IsEnabled = false;
+            btn_finish.IsEnabled = true;
+            navigator.IfCurrentStepEquals(ElementID.WagonButtonAdd).GoNext();
+        }
+
+        private void Rb_first_Checked(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+            rb_first.IsEnabled = false;
+            btn_add.IsEnabled = true;
+            navigator.IfCurrentStepEquals(ElementID.WagonClass).GoNext();
+        }
+
+        private void Tb_capacity_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(tb_capacity.Text.ToString() == "40")
+            {
+                var navigator = FeatureTour.GetNavigator();
+                tb_capacity.IsEnabled = false;
+                rb_first.IsEnabled = true;
+                navigator.IfCurrentStepEquals(ElementID.WagonCapacity).GoNext();
+            }
+        }
 
         private void trainWagons_table_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

@@ -63,5 +63,58 @@ namespace HCI_Projekat.touring
         }
 
 
+        public static void StartTrainTour()
+        {
+            var tour = new Tour
+            {
+                Name = "Train tour",
+                ShowNextButtonDefault = false,
+                Steps = new[]
+                {
+                    new Step(ElementID.TrainButtonAdd, "Add a new train", "Click to add a new train"),
+
+                }
+            };
+
+            tour.Start();
+        }
+
+        public static void StartAddTrainTour()
+        {
+            var tour = new Tour
+            {
+                Name = "Train add tour",
+                ShowNextButtonDefault = false,
+                Steps = new[]
+                {
+                    new Step(ElementID.TrainName, "Choose a train name", "Try entering \"Soko5\""),
+                    new Step(ElementID.TrainRang, "Choose a train rang", "Choose the \"soko\" rang."),
+                    new Step(ElementID.TrainButtonAdd, "Next", "Click the button to go to the next step. "),
+                }
+            };
+
+            tour.Start();
+        }
+
+        public static void StartAddWagonTour()
+        {
+            var tour = new Tour
+            {
+                Name = "Wagon add tour",
+                ShowNextButtonDefault = false,
+                Steps = new[]
+                {
+                    new Step(ElementID.WagonCapacity, "Choose the wagon capacity", "Try entering \"40\""),
+                    new Step(ElementID.WagonClass, "Choose the wagon class", "Check the option \"First\""),
+                    new Step(ElementID.WagonButtonAdd, "Add the wagon", "Click the button to add a new wagon"),
+                    new Step(ElementID.ButtonFinish, "Finish", "Click the button to finally add the train. "),
+
+                }
+            };
+
+            tour.Start();
+        }
+
+
     }
 }

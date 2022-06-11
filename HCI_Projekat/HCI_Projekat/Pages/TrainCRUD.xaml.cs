@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -21,7 +23,7 @@ namespace HCI_Projekat.Pages
     public partial class TrainCRUD : Page
     {
         public Data dataBase { get; set; }
-
+        public bool tour = false;
 
         public TrainCRUD(Data database)
         {
@@ -35,6 +37,22 @@ namespace HCI_Projekat.Pages
             
             
 
+        }
+
+        private void btn_tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.OnStepEntered(ElementID.TrainButtonAdd).Execute(s => btn_add.Focus());
+
+            btn_edit.IsEnabled = false;
+            btn_delete.IsEnabled = false;
+            train_table.IsEnabled = false;
+
+            btn_add.IsEnabled = true;
+
+            tour = true;
+            TourStarter.StartTrainTour();
         }
 
 
@@ -88,8 +106,12 @@ namespace HCI_Projekat.Pages
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            AddTrain r = new AddTrain(this.dataBase);
+            AddTrain r = new AddTrain(this.dataBase, tour);
             window.Content = r;
+            if (tour)
+            {
+                r.StartTour();
+            }
 
         }
 

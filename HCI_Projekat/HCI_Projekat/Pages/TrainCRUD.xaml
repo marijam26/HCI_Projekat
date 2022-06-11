@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
       mc:Ignorable="d" 
+      xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
+      xmlns:app="clr-namespace:HCI_Projekat.touring"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TrainCRUD">
 
@@ -61,7 +63,7 @@
             </Grid.ColumnDefinitions>
 
             <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,111.979,250,111.978" Background="White" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1">
-                
+
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Rang" Width="*" Binding="{Binding rang}"></DataGridTextColumn>
@@ -90,8 +92,10 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_add" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="7.6,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click" >
-                <Button.Resources>
+            <Button x:Name="btn_add" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="7.6,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"
+                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainButtonAdd}"
+                       featureTouring:TourHelper.Placement="TopRight">
+            <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
                     </Style>
@@ -99,6 +103,14 @@
             </Button>
 
             <Button x:Name="btn_edit" Grid.Row="1" Grid.Column="1"  Margin="297.6,0,540,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" >
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="btn_tutorial" Grid.Row="1" Grid.Column="1"  Margin="800,0,30,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Tutorial" Click="btn_tutorial_Click" >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
