@@ -135,7 +135,7 @@ namespace HCI_Projekat.Model
 
             Ticket ticket1 = new Ticket(1,timetables, new DateTime(2022, 6, 2, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16) },new List<int>() { 1},"",DateTime.Now);
             Ticket ticket2 = new Ticket(2,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 5, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
-            Ticket ticket3 = new Ticket(3,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 5, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            Ticket ticket3 = new Ticket(3,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 11, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
             Ticket ticket4 = new Ticket(4,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 6, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
             
             users[1].tickets.Add(ticket1);
