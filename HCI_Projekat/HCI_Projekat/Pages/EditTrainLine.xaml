@@ -6,6 +6,7 @@
       xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
+      TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat" 
       Title="AddTrainLine">
     <Grid>

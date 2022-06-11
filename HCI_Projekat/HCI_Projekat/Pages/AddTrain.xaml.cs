@@ -36,6 +36,10 @@ namespace HCI_Projekat.Pages
             DataContext = this;
             this.newTrain = null;
             this.tour = tour;
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#e8cfa5");
+            brush.Freeze();
+            Background = brush;
         }
         
         public AddTrain(Data database,Train train)

@@ -4,7 +4,8 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-      mc:Ignorable="d" 
+      mc:Ignorable="d"
+      TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="AddTimetable">
 
@@ -62,34 +63,34 @@
             <Label Grid.ColumnSpan="2" Grid.Column="2" Margin="15,0,0,20" FontSize="30" Width="300" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Bottom">New depature time</Label>
 
             <Label Grid.Row="1" Grid.Column="2" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">From:</Label>
-            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="1" Grid.Column="2" Width="205" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
+            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="1" Grid.Column="2" Width="205" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></ComboBox>
 
             <Label Grid.Row="1" Grid.Column="3" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">To:</Label>
-            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="1" Grid.Column="3" Width="200" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
+            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="1" Grid.Column="3" Width="200" FontSize="20" Height="35" Margin="80,0,0,0" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
 
 
             <Label Grid.Row="2" Grid.Column="2" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Departure time:</Label>
-            <materialDesign:TimePicker x:Name="tb_time" Grid.Row="2" Grid.Column="2" Width="105" FontSize="20" Height="35" Margin="180,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
+            <materialDesign:TimePicker x:Name="tb_time" Grid.Row="2" Grid.Column="2" Width="105" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="180,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
 
             <Label Grid.Row="2" Grid.Column="3" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Train:</Label>
-            <ComboBox x:Name="train"  Grid.Row="2" Grid.Column="3" Width="200" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
+            <ComboBox x:Name="train"  Grid.Row="2" Grid.Column="3" Width="200" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
 
 
             <Label Grid.Row="3" Grid.Column="2" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Valid since:</Label>
-            <DatePicker x:Name="tb_valid_since" Grid.Row="3" Grid.Column="2" Width="155" FontSize="20" Height="35" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></DatePicker>
+            <DatePicker x:Name="tb_valid_since" Grid.Row="3" Grid.Column="2" Width="155" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></DatePicker>
 
             <Label Grid.Row="3" Grid.Column="3" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Valid until:</Label>
-            <DatePicker x:Name="tb_valid_until" Grid.Row="3" Grid.Column="3" Width="155" FontSize="20" Height="35" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></DatePicker>
+            <DatePicker x:Name="tb_valid_until" Grid.Row="3" Grid.Column="3" Width="155" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></DatePicker>
 
             <Viewbox Height="40" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,0"   HorizontalAlignment="Center">
-                <RadioButton x:Name="rb_weekday" Grid.Column="1" Content="Weekday" Margin="0,0,0,5"  GroupName="class" ></RadioButton>
+                <RadioButton x:Name="rb_weekday" Grid.Column="1" Content="Weekday" Margin="0,0,0,5"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>
             </Viewbox>
 
             <Viewbox Height="40" Grid.Row="4" Grid.Column="3" Margin="0,0,0,0" VerticalAlignment="Center"  HorizontalAlignment="Left">
-                <RadioButton x:Name="rb_weekend" Grid.Column="1" Content="Weekend"  Margin="0,0,0,5"  GroupName="class" ></RadioButton>
+                <RadioButton x:Name="rb_weekend" Grid.Column="1" Content="Weekend"  Margin="0,0,0,5"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>
             </Viewbox>
 
-            <Button x:Name="btn_save" Grid.Row="5" Grid.Column="3" Margin="165,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Save" Click="btn_save_Click">
+            <Button x:Name="btn_save" Grid.Row="5" Grid.Column="3" Margin="165,0,0,0" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Background="DarkCyan" BorderThickness="0" Content="Save" Click="btn_save_Click">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -97,7 +98,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="2" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Cancel" Click="btn_cancel_Click" >
+            <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="2" VerticalAlignment="Bottom"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Background="DarkCyan" BorderThickness="0" Content="Cancel" Click="btn_cancel_Click" >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>

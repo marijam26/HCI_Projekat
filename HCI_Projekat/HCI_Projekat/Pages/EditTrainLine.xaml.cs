@@ -140,7 +140,7 @@ namespace HCI_Projekat.Pages
 
         private void bt_save_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Sucfcessfully changed train line!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Successfully changed train line!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             MainWindow window = (MainWindow)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
             window.Content = tc;

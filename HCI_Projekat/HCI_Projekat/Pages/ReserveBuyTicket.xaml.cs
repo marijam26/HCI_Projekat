@@ -202,21 +202,25 @@ namespace HCI_Projekat.Pages
         private string createStationInfoTransfer(Timetable timetable, Timetable timetable2, List<DateTime> departuresFirstTrain, List<DateTime> departuresSecondTrain, String transferPlace )
         {
             String stringBuilder = "";
-            stringBuilder +="\tFirst train".PadRight(50)+"Second train".PadRight(50)+ "\n\n";
-            stringBuilder += "              Station".PadRight(30)+"Departure time".PadRight(20)+"Station".PadRight(20)+"Departure time".PadRight(20)+"Transfer place".PadRight(20)+"\n\n";
+            stringBuilder +="\tFirst train".PadRight(80)+"Second train".PadRight(50)+ "\n\n";
+            stringBuilder += "       Station".PadRight(30)+"Departure time".PadRight(42)+"Station".PadRight(20)+"Departure time".PadRight(30)+"Transfer place".PadRight(20)+"\n\n";
             String time = departuresFirstTrain[0].ToString().Split(' ')[1].Substring(0, 5);
-            stringBuilder += ("      " + timetable.line.stations[0].name).PadRight(30) + time.PadRight(20);
+            stringBuilder += ("      " + timetable.line.stations[0].name).PadRight(43 - timetable.line.stations[0].name.Length) + time.PadRight(40);
             time = departuresSecondTrain[0].ToString().Split(' ')[1].Substring(0, 5);
-            stringBuilder += timetable2.line.stations[0].name.PadRight(30) +time.PadRight(20);
+            stringBuilder += timetable2.line.stations[0].name.PadRight(32- timetable2.line.stations[0].name.Length) +time.PadRight(40);
             stringBuilder += transferPlace.PadRight(20)+"\n";
             for (int i = 1; i < timetable.line.stations.Count; i++)
             {
                 time = departuresFirstTrain[i].ToString().Split(' ')[1].Substring(0, 5);
-                stringBuilder += ("      " + timetable.line.stations[i].name).PadRight(30);
-                stringBuilder += time.PadRight(20);
+                stringBuilder += ("      " + timetable.line.stations[i].name.Trim()).PadRight(45- timetable.line.stations[i].name.Length);
+                stringBuilder += time.PadRight(40);
                 if (timetable2.line.stations.Count > i) {
                     time = departuresSecondTrain[i].ToString().Split(' ')[1].Substring(0, 5);
-                    stringBuilder += (timetable2.line.stations[i].name).PadRight(30) + time.PadRight(20)+"\n";
+                    if (time.EndsWith(":"))
+                    {
+                        time = " "+time.Substring(0, 4);
+                    }
+                    stringBuilder += (timetable2.line.stations[i].name).PadRight(33 - timetable2.line.stations[i].name.Length) + time.PadRight(30)+"\n";
                 }
                 else {
                     stringBuilder += ("".PadRight(30) + "".PadRight(30)+"\n");
@@ -229,12 +233,12 @@ namespace HCI_Projekat.Pages
 
         private string createStationInfo(Timetable timetable)
         {
-            StringBuilder stringBuilder = new StringBuilder();
+            String stringBuilder = "";
             DateTime date = timetable.start;
-            stringBuilder.Append($"{ "Station ",-50}{ "Departure time",20}\n\n");
+            stringBuilder+="Station".PadRight(55)+"Departure time" + "\n\n";
             for (int i = 0; i < timetable.line.stations.Count; i++) {
                 String time = date.ToString().Split(' ')[1].Substring(0,5);
-                stringBuilder.Append($"{ timetable.line.stations[i].name,-60}{ time,20}\n");
+                stringBuilder+=timetable.line.stations[i].name.PadRight(68- timetable.line.stations[i].name.Length) + time+"\n";
                 if(i < timetable.line.stations.Count - 1)
                 {
                     date = date.AddMinutes(timetable.line.time[i]);

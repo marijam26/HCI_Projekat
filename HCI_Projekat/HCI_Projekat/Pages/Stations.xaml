@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
       mc:Ignorable="d" 
+      TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="Stations">
     <Page.Resources>
@@ -55,7 +56,7 @@
                 <DataGridTextColumn Header="Time (min)" Width="*" Binding="{Binding time}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" >
+        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Background="DarkCyan" Content="Delete" Click="btn_delete_Click" BorderThickness="0" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -63,7 +64,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_back" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Margin="0,0,100,0" Width="100" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Back" Click="btn_back_Click" >
+        <Button x:Name="btn_back" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Margin="0,0,100,0" Width="100" Height="40" FontSize="20" Background="DarkCyan" Content="Back" Click="btn_back_Click" BorderThickness="0" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

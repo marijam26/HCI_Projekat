@@ -10,22 +10,7 @@
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TrainLineCRUD">
-    <Page.Resources>
-        <Style TargetType="Border" x:Key="radius">
-            <Setter Property="CornerRadius" Value="5"></Setter>
-        </Style>
-        <Style TargetType="Button" x:Key="MyButton">
-            <Setter Property="Background" Value="DarkCyan" />
-            <Setter Property="Foreground" Value="White" />
-
-            <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="Gray"></Setter>
-                    <Setter Property="Foreground" Value="DarkGray"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Page.Resources>
+   
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -56,7 +41,7 @@
                 <DataGridTemplateColumn Header="Stations" Width="*">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Content="View" Style="{StaticResource ResourceKey=MyButton}" FontSize="15" Click="Show_Stations">
+                            <Button Content="View" Background="DarkCyan" BorderThickness="0" FontSize="15" Click="Show_Stations">
                                 <Button.Resources>
                                     <Style TargetType="Border">
                                         <Setter Property="CornerRadius" Value="0"></Setter>
@@ -70,7 +55,7 @@
         </DataGrid>
 
         <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="2" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" 
-                Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" ToolTip="Delete the selected train line.">
+                Background="DarkCyan" BorderThickness="0" Content="Delete" Click="btn_delete_Click" ToolTip="Delete the selected train line.">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -79,7 +64,7 @@
         </Button>
 
         <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" 
-                Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"  
+                Background="DarkCyan" BorderThickness="0" Content="Add" Click="btn_add_Click"  
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainLineButtonAdd}"
                 ToolTip="Add a new train line.">
             <Button.Resources>
@@ -90,7 +75,7 @@
         </Button>
 
         <Button x:Name="btn_edit"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
-                Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train line.">
+                Background="DarkCyan" BorderThickness="0"  Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train line.">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -99,7 +84,7 @@
         </Button>
 
 
-        <Button x:Name="btn_tutorial" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Margin="0, 0, 20, 0" Style="{StaticResource ResourceKey=MyButton}"  Content="Tutorial" Click="btn_tutorial_Click" >
+        <Button x:Name="btn_tutorial" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Margin="0, 0, 20, 0" Background="DarkCyan" BorderThickness="0"  Content="Tutorial" Click="btn_tutorial_Click" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

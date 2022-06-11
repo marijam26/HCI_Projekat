@@ -5,9 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
        xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
-      xmlns:app="clr-namespace:HCI_Projekat.touring"
+      xmlns:app="clr-namespace:HCI_Projekat.touring" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.FontFamily="Century Gothic"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
+      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="AddTrain">
 
     <Page.Resources>
@@ -28,9 +29,7 @@
     </Page.Resources>
     
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Images/nature-rail.jpg"  Stretch="UniformToFill"/>
-        </Grid.Background>
+
     <Grid.RowDefinitions>
         <RowDefinition ></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
@@ -57,7 +56,7 @@
 
     <Label Grid.Row="1" Grid.Column="1" FontSize="35" HorizontalAlignment="Center" Margin="10" FontWeight="DemiBold" FontFamily="Century Gothic">Add new train</Label>
     <Label Grid.Row="2" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Name:</Label>
-        <TextBox x:Name="tb_name" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top"
+        <TextBox x:Name="tb_name" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"
               featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainName}"
               featureTouring:TourHelper.Placement="BottomRight"
                  ToolTip="New train name">
@@ -65,16 +64,16 @@
         <Label Grid.Row="4" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Rang:</Label>
 
         <Viewbox Height="40" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Margin="105,10,0,0" HorizontalAlignment="Left" >
-            <RadioButton x:Name="rb_simple" Content="Simple" Margin="0,5,0,7"  GroupName="class" ></RadioButton>
+            <RadioButton x:Name="rb_simple" Content="Simple" Margin="0,5,0,7"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>
         </Viewbox>
 
         <Viewbox Height="40" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,120,0" VerticalAlignment="Top">
-            <RadioButton x:Name="rb_soko" Grid.Column="1" Content="Soko"  Margin="0,5,0,7"  GroupName="class" 
+            <RadioButton x:Name="rb_soko" Grid.Column="1" Content="Soko"  Margin="0,5,0,7"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}"
                          featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainRang}"
                          featureTouring:TourHelper.Placement="BottomRight"></RadioButton>
         </Viewbox>
 
-        <Button x:Name="btn_cancel" Grid.Column="1" Grid.Row="6" Margin="20,10,0,0" Width="75" Height="30" FontSize="17" Background="DarkCyan" Foreground="White" Content="Cancel" 
+        <Button x:Name="btn_cancel" Grid.Column="1" Grid.Row="6" Margin="20,10,0,0" Width="100"  FontSize="17" Background="DarkCyan" Foreground="White" Content="Cancel" BorderThickness="0"
                 Click="btn_cancel_Click" ToolTip="Quit adding the train.">
             <Button.Resources>
                 <Style TargetType="Border">
@@ -82,8 +81,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <Button x:Name="btn_next" Grid.Column="1" Grid.Row="6" Margin="0,10,20,0" Width="80" HorizontalAlignment="Right" Height="30" FontSize="15" Click="btn_next_Click" Background="DarkCyan" Foreground="White" Content="Next" 
-                Style="{StaticResource ResourceKey=MyButton}" 
+        <Button x:Name="btn_next" Grid.Column="1" Grid.Row="6" Margin="0,10,20,0" Width="100" HorizontalAlignment="Right" FontSize="15" Click="btn_next_Click" Background="DarkCyan" Foreground="White" Content="Next" BorderThickness="0" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainButtonAdd}"
                 featureTouring:TourHelper.Placement="BottomRight"
                 ToolTip="Continue to adding wagons">

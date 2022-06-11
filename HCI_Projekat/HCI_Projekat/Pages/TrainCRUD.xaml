@@ -5,27 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
       mc:Ignorable="d" 
+      TextElement.FontFamily="Century Gothic"
       xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
       xmlns:app="clr-namespace:HCI_Projekat.touring"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TrainCRUD">
 
-    <Page.Resources>
-        <Style TargetType="Border" x:Key="radius">
-            <Setter Property="CornerRadius" Value="5"></Setter>
-        </Style>
-        <Style TargetType="Button" x:Key="MyButton">
-            <Setter Property="Background" Value="DarkCyan" />
-            <Setter Property="Foreground" Value="White" />
-
-            <Style.Triggers>
-                <Trigger Property="IsEnabled" Value="False">
-                    <Setter Property="Background" Value="Gray"></Setter>
-                    <Setter Property="Foreground" Value="DarkGray"></Setter>
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Page.Resources>
+    
 
     <Grid>
 
@@ -62,7 +48,7 @@
                 <ColumnDefinition Width="479*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,111.979,250,111.978" Background="White" Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1">
+            <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,111.979,250,111.978" Background="White" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" >
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
@@ -70,7 +56,7 @@
                     <DataGridTemplateColumn Header="Wagons" Width="*" >
                         <DataGridTemplateColumn.CellTemplate>
                             <DataTemplate>
-                                <Button Content="View" Style="{StaticResource ResourceKey=MyButton}" FontSize="15" Click="Show_Wagons">
+                                <Button Content="View" Background="DarkCyan" BorderThickness="0" FontSize="15" Click="Show_Wagons">
                                     <Button.Resources>
                                         <Style TargetType="Border">
                                             <Setter Property="CornerRadius" Value="0"></Setter>
@@ -85,7 +71,7 @@
             </DataGrid>
 
             <Button x:Name="btn_delete" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,250,0"   Width="120" Height="40" FontSize="20" 
-                    Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" ToolTip="Delete the selected train.">
+                    Background="DarkCyan" BorderThickness="0" Content="Delete" Click="btn_delete_Click" ToolTip="Delete the selected train.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -93,7 +79,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_add" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="7.6,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"
+            <Button x:Name="btn_add" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="7.6,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Background="DarkCyan" BorderThickness="0" Content="Add" Click="btn_add_Click"
                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainButtonAdd}"
                        featureTouring:TourHelper.Placement="TopRight"
                     ToolTip="Add a new train.">
@@ -104,8 +90,8 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_edit" Grid.Row="1" Grid.Column="1"  Margin="297.6,0,540,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
-                    Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train.">
+            <Button x:Name="btn_edit" Grid.Row="1" Grid.Column="1"  Margin="250.6,0,450,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
+                    Background="DarkCyan" BorderThickness="0" Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -113,7 +99,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_tutorial" Grid.Row="1" Grid.Column="1"  Margin="800,0,30,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Tutorial" Click="btn_tutorial_Click" >
+            <Button x:Name="btn_tutorial" Grid.Row="1" Grid.Column="1"  Margin="760,0,10,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Background="DarkCyan" BorderThickness="0"  Content="Tutorial" Click="btn_tutorial_Click" >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>

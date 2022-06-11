@@ -247,7 +247,7 @@ namespace HCI_Projekat.Pages
                 return;
             }
 
-            MessageBox.Show("Sucfcessfully added train line!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show("Successfully added train line!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
             MainWindow window = (MainWindow)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
             window.Content = tc;

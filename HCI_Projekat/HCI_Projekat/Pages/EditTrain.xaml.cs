@@ -40,6 +40,10 @@ namespace HCI_Projekat.Pages
                 rb_simple.IsChecked = true;
             }
             DataContext = this;
+            BrushConverter bc = new BrushConverter();
+            Brush brush = (Brush)bc.ConvertFrom("#e8cfa5");
+            brush.Freeze();
+            Background = brush;
         }
 
 

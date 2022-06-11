@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat.Pages"
         mc:Ignorable="d"
+        TextElement.FontFamily="Century Gothic"
         Title="Confirmation" Height="450" Width="500" Background="Beige">
     
     
@@ -56,21 +57,21 @@
         <Label  Grid.Column="1"  Grid.Row="4" FontSize="15"  VerticalAlignment="Center" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="70,0,0,0" Content="{Binding ticketShowDTO.seat}" ></Label>
 
         <Grid Grid.Row="5" Grid.ColumnSpan="2">
-        <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,150,0"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Cancel" Click="btn_cancel_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
-        
-        <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,20,0"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Confirm" Click="btn_confirm_Click">
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"></Setter>
-                </Style>
-            </Button.Resources>
-        </Button>
+            <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,150,0"   Width="90" Height="30" FontSize="13" Background="DarkCyan" Content="Cancel" Click="btn_cancel_Click" BorderThickness="0">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,20,0"   Width="90" Height="30" FontSize="13" Background="DarkCyan" Content="Confirm" Click="btn_confirm_Click" BorderThickness="0">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </Grid>
     </Grid>
 </Window>

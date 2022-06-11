@@ -70,6 +70,12 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("Must enter name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
+            if (this.trainLine.stations.Select(x => x.name).ToArray().Contains(name))
+            {
+                MessageBox.Show("Station name already exists.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
 
             int idTrainLine = this.dataBase.trainLines.Max(x => x.id);
             if (parentPage == "add")
@@ -128,7 +134,7 @@ namespace HCI_Projekat.Pages
 
             this.isSaved = true;
             this.Close();
-            MessageBox.Show("Sucfcessfully added station!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show("Successfully added station!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
             MainWindow window = (MainWindow)App.Current.MainWindow;
             if (parentPage == "add")
             {

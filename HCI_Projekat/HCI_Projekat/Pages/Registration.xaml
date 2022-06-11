@@ -3,8 +3,9 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
+      TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200"
       Title="Registration" Background="DarkCyan">
 
@@ -36,15 +37,15 @@
         <Border Grid.Row="1" Grid.Column="1" Background="AntiqueWhite" Grid.RowSpan="11"></Border>
 
 
-        <Label Grid.Row="1" Grid.Column="1" FontSize="33" HorizontalAlignment="Center" Margin="10" FontWeight="DemiBold" FontFamily="Century Gothic">Registration</Label>
-        <Label Grid.Row="2" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Username:</Label>
-        <TextBox x:Name="tb_username" Grid.Row="3" Grid.Column="1" Width="240" FontSize="20" Height="35" VerticalAlignment="Top"></TextBox>
-        <Label Grid.Row="4" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Password:</Label>
-        <TextBox x:Name="tb_password" Grid.Row="5" Grid.Column="1"  Width="240" FontSize="20" Height="35" VerticalAlignment="Top"></TextBox>
-        <Label Grid.Row="6" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Name:</Label>
-        <TextBox x:Name="tb_name" Grid.Row="7" Grid.Column="1" Width="240" FontSize="20" Height="35" VerticalAlignment="Top"></TextBox>
-        <Label Grid.Row="8" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Surname:</Label>
-        <TextBox x:Name="tb_surname" Grid.Row="9" Grid.Column="1" Width="240" FontSize="20" Height="35" VerticalAlignment="Top"></TextBox>
+        <Label Grid.Row="1" Grid.Column="1" FontSize="33" HorizontalAlignment="Center" Margin="10" FontWeight="DemiBold">Registration</Label>
+        <Label Grid.Row="2" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" >Username:</Label>
+        <TextBox x:Name="tb_username" Grid.Row="3" Grid.Column="1" Width="240" FontSize="20" Height="35" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
+        <Label Grid.Row="4" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" >Password:</Label>
+        <TextBox x:Name="tb_password" Grid.Row="5" Grid.Column="1"  Width="240" FontSize="20" Height="35" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
+        <Label Grid.Row="6" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240" >Name:</Label>
+        <TextBox x:Name="tb_name" Grid.Row="7" Grid.Column="1" Width="240" FontSize="20" Height="35" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
+        <Label Grid.Row="8" Grid.Column="1" FontSize="18" VerticalAlignment="Bottom" Width="240">Surname:</Label>
+        <TextBox x:Name="tb_surname" Grid.Row="9" Grid.Column="1" Width="240" FontSize="20" Height="35" VerticalAlignment="Top" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></TextBox>
 
         <Grid Grid.Row="10" Grid.Column="1">
             <Grid.ColumnDefinitions>
@@ -65,7 +66,7 @@
         </Grid>
 
         
-        <Button x:Name="btn_register" Grid.Row="11" Grid.Column="1" Margin="15" Width="120" Height="40" FontSize="20" Background="DarkCyan" Foreground="White" Content="Register" Click="btn_register_Click">
+        <Button x:Name="btn_register" Grid.Row="11" Grid.Column="1" Margin="15" Width="120" Height="40" FontSize="20" Background="DarkCyan" Foreground="White" Content="Register" Click="btn_register_Click" BorderThickness="0">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -73,7 +74,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_back" Grid.Row="0" Grid.Column="0" Margin="0,0,200,0" Width="100" Height="25" FontSize="15" Background="DarkCyan" Foreground="White" Content="Back" Click="btn_back_Click" >
+        <Button x:Name="btn_back" Grid.Row="0" Grid.Column="0" Margin="0,0,200,0" Width="100" Height="25" FontSize="15" Background="DarkCyan" Foreground="White" Content="Back" Click="btn_back_Click" BorderThickness="0">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

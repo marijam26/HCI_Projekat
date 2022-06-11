@@ -46,5 +46,12 @@ namespace HCI_Projekat.Pages
             TimetableCRUD tc = new TimetableCRUD(window.dataBase);
             window.Content = tc;
         }
+
+        private void bt_logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            MonthlyTicketReport tc = new MonthlyTicketReport(window.dataBase);
+            window.Content = tc;
+        }
     }
 }

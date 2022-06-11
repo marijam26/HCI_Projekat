@@ -3,9 +3,10 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HCI_Projekat.Pages"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
+      xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d"
+      TextElement.FontFamily="Century Gothic"
+      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="ReserveBuyTicket">
 
     <Page.Resources>
@@ -81,20 +82,15 @@
                 
             </Grid.ColumnDefinitions>
             <Label Grid.Row="0"  HorizontalAlignment="Right" Grid.Column="0" Margin="0,10,10,0">From: </Label>
-            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="180" FontSize="15" ></ComboBox>
+            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Left" Height="25" Width="180" FontSize="15" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" ></ComboBox>
 
             <Label Grid.Row="0"  HorizontalAlignment="Right" Grid.Column="1" Margin="0,10,730,0">To:</Label>
-            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,530,0" Height="25" Width="180" FontSize="15" ></ComboBox>
+            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right" Margin="0,0,530,0" Height="25" Width="180" FontSize="15" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" ></ComboBox>
 
             <Label Grid.Row="0"  HorizontalAlignment="Right" Grid.Column="1" Margin="0,10,450,0">Date:</Label>
-            <DatePicker Margin="0,10,240,0" Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1" Width="200" x:Name="startDatePick" VerticalAlignment="Top"  FontSize="16"/>
+            <DatePicker Margin="0,10,240,0" Grid.Row="0" HorizontalAlignment="Right" Grid.Column="1" Width="200" x:Name="startDatePick" VerticalAlignment="Top"  FontSize="16" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"/>
 
-            <Button x:Name="btn_search" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,120,0"   Width="100" Height="25" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Search" Click="searchStations" >
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"></Setter>
-                    </Style>
-                </Button.Resources>
+            <Button x:Name="btn_search" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,120,0"   Width="100" Height="25" FontSize="15" Style="{StaticResource ResourceKey=MyButton}" Content="Search" Click="searchStations" BorderThickness="0">
             </Button>
             
             <DataGrid Background="White" x:Name="timetable_table" Grid.Row="2" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*"
@@ -114,12 +110,7 @@
                 </DataGrid.RowDetailsTemplate>
             </DataGrid>
 
-            <Button x:Name="btn_chooseSeat" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"   Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Choose seat" Click="btn_chooseSeat_Click">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"></Setter>
-                    </Style>
-                </Button.Resources>
+            <Button x:Name="btn_chooseSeat" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,50,0"   Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Choose seat" Click="btn_chooseSeat_Click" BorderThickness="0">
             </Button>
 
 
