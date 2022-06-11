@@ -45,7 +45,7 @@
             </Grid.ColumnDefinitions>
             <Button x:Name="btn_login" Grid.Column="0" Margin="120,0,0,0" Width="120" Height="40" FontSize="17" Background="DarkCyan" Foreground="White" Content="Login" Click="btn_login_Click" BorderBrush="DarkCyan" >
             </Button>
-            <Button x:Name="btn_register" Grid.Column="1" Margin="0,10,0,0" Width="80" Height="30" FontSize="13" Background="DarkCyan" Foreground="White" Content="Register" Click="btn_register_Click" >
+            <Button x:Name="btn_register" Grid.Column="1" Margin="0,10,0,0" Width="90" Height="30" FontSize="13" Foreground="DarkCyan" Content="Register" Click="btn_register_Click" Style="{StaticResource MaterialDesignFlatLightButton}" >
             </Button>
         </Grid>
         
