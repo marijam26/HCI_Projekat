@@ -32,7 +32,7 @@
                 <MenuItem Name="mi_railmap" Header="Railway map" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic">
                 </MenuItem>
                 <MenuItem Header="Help" Height="41" FontFamily="Century Gothic">
-                    <MenuItem Header="nesto"></MenuItem>
+                    <MenuItem Header="nesto" Click="MenuItem_Click_report_timetable" ></MenuItem>
                 </MenuItem>
                 
             </Menu>

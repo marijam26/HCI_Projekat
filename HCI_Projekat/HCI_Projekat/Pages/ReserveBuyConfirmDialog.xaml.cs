@@ -150,7 +150,45 @@ namespace HCI_Projekat.Pages
                 this.wagon += "/" + (ticket.wagon[1].id).ToString();
                 this.seat += "/" + (ticket.seatPosition[1]).ToString();
             }
-            this.startDateTime = ticket.date.ToString().Split(' ')[0] + " " + ticket.timetable[0].start.ToString().Split(' ')[1];
+            this.startDateTime = new DateTime(ticket.date.Year, ticket.date.Month, ticket.date.Day, ticket.timetable[0].start.Hour, ticket.timetable[0].start.Minute, ticket.timetable[0].start.Second).ToString();
+            if (ticket.wagon.Count > 1)
+            {
+                this.price = (ticket.timetable[0].line.price + ticket.timetable[1].line.price);
+            }
+            else {
+                this.price = ticket.timetable[0].line.price;
+            }
+            this.purchasementDate = ticket.purchasementDate.ToString();
+            this.id = ticket.id;
+        }
+        
+        public TicketShowDTO(Ticket ticket,User user) {
+            this.userName = user.name;
+            this.userSurname = user.surname;
+            this.startStation = ticket.timetable[0].line.stations[0].name;
+            if (ticket.timetable.Count == 1)
+            {
+                this.endStation = ticket.timetable[0].line.stations[ticket.timetable[0].line.stations.Count-1].name;
+            }
+            else {
+                this.endStation = ticket.timetable[1].line.stations[ticket.timetable[1].line.stations.Count - 1].name;
+            }
+            if (ticket.transferStation != "")
+            {
+                this.transferPlace = ticket.transferStation;
+            }
+            else {
+                this.transferPlace = "-";
+            }
+            this.wagon = ticket.wagon[0].id.ToString();
+            this.seat = ticket.seatPosition[0].ToString();
+            if (ticket.wagon.Count > 1)
+            {
+                this.wagon += "/" + (ticket.wagon[1].id).ToString();
+                this.seat += "/" + (ticket.seatPosition[1]).ToString();
+            }
+            this.startDateTime = new DateTime(ticket.date.Year, ticket.date.Month, ticket.date.Day, ticket.timetable[0].start.Hour, ticket.timetable[0].start.Minute, ticket.timetable[0].start.Second).ToString();
+                                 //ticket.date.ToString().Split(' ')[0] + " " + ticket.timetable[0].start.ToString().Split(' ')[1];
             if (ticket.wagon.Count > 1)
             {
                 this.price = (ticket.timetable[0].line.price + ticket.timetable[1].line.price);

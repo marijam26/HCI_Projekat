@@ -82,6 +82,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Help\HelpProvider.cs" />
+    <Compile Include="Help\HelpViewer.xaml.cs">
+      <DependentUpon>HelpViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Help\JavaScriptControlHelper.cs" />
+    <Compile Include="Pages\ClientReservationView.xaml.cs">
+      <DependentUpon>ClientReservationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ClientTicketView.xaml.cs">
+      <DependentUpon>ClientTicketView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManagerTicketReportByTimetable.xaml.cs">
+      <DependentUpon>ManagerTicketReportByTimetable.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\RailwayMap.xaml.cs">
+      <DependentUpon>RailwayMap.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="touring\ElementID.cs" />
+    <Compile Include="touring\TourStarter.cs" />
+    <Page Include="Help\HelpViewer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -114,9 +137,25 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ClientReservationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ClientTicketView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditTimetable.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\EditTrain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\EditTrainLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Pages\Login.xaml">
       <SubType>Designer</SubType>
@@ -130,7 +169,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ManagerTicketReportByTimetable.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\RailwayMap.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\Registration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ReserveBuyConfirmDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -166,6 +217,7 @@
   <ItemGroup>
     <Compile Include="Model\Address.cs" />
     <Compile Include="Model\Data.cs" />
+    <Compile Include="Model\Ticket.cs" />
     <Compile Include="Model\Timetable.cs" />
     <Compile Include="Model\Train.cs" />
     <Compile Include="Model\TrainLine.cs" />
@@ -186,8 +238,14 @@
     <Compile Include="Pages\ClientHomepage.xaml.cs">
       <DependentUpon>ClientHomepage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\EditTimetable.xaml.cs">
+      <DependentUpon>EditTimetable.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\EditTrain.xaml.cs">
       <DependentUpon>EditTrain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\EditTrainLine.xaml.cs">
+      <DependentUpon>EditTrainLine.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -200,6 +258,9 @@
     </Compile>
     <Compile Include="Pages\Registration.xaml.cs">
       <DependentUpon>Registration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReserveBuyConfirmDialog.xaml.cs">
+      <DependentUpon>ReserveBuyConfirmDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ReserveBuyTicket.xaml.cs">
       <DependentUpon>ReserveBuyTicket.xaml</DependentUpon>
@@ -283,6 +344,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\rail.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Thinksharp.FeatureTour">
+      <Version>2.1.0</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Help\error.htm" />
+    <Content Include="Help\index.htm" />
+    <Content Include="Help\timetableAdd.htm" />
+    <Content Include="Help\timetableEdit.htm" />
+    <Content Include="Help\timetableView.htm" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

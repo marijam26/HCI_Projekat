@@ -36,10 +36,31 @@ namespace HCI_Projekat.Pages
         private List<TicketShowDTO> formTicketShowDTO(List<Ticket> tickets)
         {
             List<TicketShowDTO> ticketDTO = new List<TicketShowDTO>();
+            List<Ticket> deleteTickets = new List<Ticket>();
             foreach (Ticket ticket in tickets)
             {
+                if ((ticket.timetable[0].start - DateTime.Now.Date).TotalDays <= 1) {
+                    deleteTickets.Add(ticket);
+                }
+                else { 
                 ticketDTO.Add(new TicketShowDTO(ticket));
+                }
             }
+            foreach (Ticket ticket in deleteTickets)
+            {
+                loggedUser.tickets.Add(ticket);
+                loggedUser.reservations.Remove(ticket);
+            }
+            if (loggedUser.reservations.Count == 0)
+            {
+                btn_cancel.IsEnabled = false;
+                btn_confirm.IsEnabled = false;
+            }
+            else {
+                btn_cancel.IsEnabled = true;
+                btn_confirm.IsEnabled = true;
+            }
+
             return ticketDTO;
         }
 

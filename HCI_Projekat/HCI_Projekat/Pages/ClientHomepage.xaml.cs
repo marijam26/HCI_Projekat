@@ -116,5 +116,12 @@ namespace HCI_Projekat.Pages
             RailwayMap rw = new RailwayMap(this.dataBase);
             window.Content = rw;
         }
+        
+        private void MenuItem_Click_report_timetable(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ManagerTicketReportByTimetable rw = new ManagerTicketReportByTimetable(this.dataBase);
+            window.Content = rw;
+        }
     }
 }
