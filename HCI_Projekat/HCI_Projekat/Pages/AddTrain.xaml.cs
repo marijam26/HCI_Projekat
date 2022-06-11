@@ -135,9 +135,9 @@ namespace HCI_Projekat.Pages
             else {
                 t = this.newTrain;
             }
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             WagonCRUD r = new WagonCRUD(t,this.dataBase,"add");
-            window.Content = r;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(r);
             if (tour)
             {
                 r.StartTour();
@@ -146,9 +146,9 @@ namespace HCI_Projekat.Pages
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             TrainCRUD r = new TrainCRUD(this.dataBase);
-            window.Content = r;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(r);
         }
     }
 }

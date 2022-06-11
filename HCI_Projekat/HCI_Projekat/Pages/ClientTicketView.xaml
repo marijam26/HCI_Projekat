@@ -22,25 +22,7 @@
 
         </Grid.ColumnDefinitions>
 
-        <DockPanel  Grid.ColumnSpan="4">
-            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top">
-                <MenuItem Header="Tickets" Height="41" >
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" ></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" ></MenuItem>
-                    <Separator></Separator>
-                </MenuItem>
-                <MenuItem Header="Info" Height="41">
-                    <MenuItem Header="nesto"></MenuItem>
-                </MenuItem>
-
-            </Menu>
-            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            </Grid>
-        </DockPanel>
-        <Border Grid.Row="2" Background="DarkCyan" Grid.ColumnSpan="3"/>
-        <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
-
+       
         <Grid Grid.Row="1">
 
             <Grid.RowDefinitions>
@@ -56,11 +38,11 @@
                     <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="To" Width="*" Binding="{Binding endStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Transfer" Width="1.5*" Binding="{Binding transferPlace}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Departure time" Width="2*" Binding="{Binding startDateTime}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Wagon" Width="2*" Binding="{Binding wagon}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Seat" Width="2*" Binding="{Binding seat}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Departure time" Width="2.5*" Binding="{Binding startDateTime}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Wagon" Width="*" Binding="{Binding wagon}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Seat" Width="*" Binding="{Binding seat}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Purchasement date" Width="2*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Purchase date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
 
                 </DataGrid.Columns>
             </DataGrid>

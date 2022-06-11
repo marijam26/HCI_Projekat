@@ -37,7 +37,7 @@ namespace HCI_Projekat.Pages
                 titleLabel.Content = "Confirm reservation";
             }
             else {
-                titleLabel.Content = "Confirm purchasement";
+                titleLabel.Content = "Confirm purchase";
             }
             DataContext = this;
         }

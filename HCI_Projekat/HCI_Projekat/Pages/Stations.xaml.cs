@@ -58,8 +58,8 @@ namespace HCI_Projekat.Pages
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
             TrainLineCRUD s = new TrainLineCRUD(this.dataBase);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = s;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(s);
         }
 
         private void btn_delete_Click(object sender, RoutedEventArgs e)

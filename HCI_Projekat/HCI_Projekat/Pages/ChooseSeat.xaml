@@ -34,22 +34,6 @@
             <RowDefinition Height="0.1*"></RowDefinition>
             
         </Grid.RowDefinitions>
-        <DockPanel  Grid.ColumnSpan="4">
-            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top">
-                <MenuItem Header="Tickets" Height="41" >
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" ></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" ></MenuItem>
-                    <Separator></Separator>
-                </MenuItem>
-                <MenuItem Header="Info" Height="41">
-                    <MenuItem Header="nesto"></MenuItem>
-                </MenuItem>
-
-            </Menu>
-            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            </Grid>
-        </DockPanel>
         
 
         <Button x:Name="btn_buy" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Background="DarkCyan"  HorizontalAlignment="Right" Margin="0,10,30,0" Width="90" Height="30" FontSize="15" BorderThickness="0" Content="Buy" Click="buy_ticket">
@@ -83,10 +67,7 @@
             </Button.Resources>
         </Button>
 
-        <Border Grid.Row="4" Background="DarkCyan" Grid.ColumnSpan="3"/>
-
-        <Label Grid.Row="4" Margin="0,0,0,0" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
-
+       
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"></ColumnDefinition>

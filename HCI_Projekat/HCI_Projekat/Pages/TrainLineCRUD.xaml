@@ -23,15 +23,11 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <local:ManagerNavbar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"></local:ManagerNavbar>
-
-        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
-
-        <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
-
+        
+        
         <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3" 
                   IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Style="{DynamicResource MaterialDesignDataGrid}" 
-                  Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" 
+                  Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
                   featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainLineTable}"
 >
 

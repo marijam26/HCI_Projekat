@@ -26,12 +26,8 @@
             <ColumnDefinition Width="131*"/>
 
         </Grid.ColumnDefinitions>
-        <local:ManagerNavbar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="3"></local:ManagerNavbar>
 
-        <Border Grid.Row="2" Background="DarkCyan" Grid.ColumnSpan="2"/>
-
-        <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
-
+       
         <Grid Grid.Row="1" Grid.ColumnSpan="2">
 
             <Grid.Resources>
@@ -48,7 +44,7 @@
                 <ColumnDefinition Width="479*"/>
             </Grid.ColumnDefinitions>
 
-            <DataGrid x:Name="train_table" Grid.Row="0" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,111.979,250,111.978" Background="White" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" >
+            <DataGrid x:Name="train_table" Grid.Row="0" Height="250" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="7.6,56.979,250,111.978" Background="White" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="train_table_SelectionChanged" Grid.Column="1" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" >
 
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding name}"></DataGridTextColumn>

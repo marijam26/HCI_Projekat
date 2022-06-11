@@ -44,11 +44,7 @@
             <ColumnDefinition></ColumnDefinition>
 
         </Grid.ColumnDefinitions>
-        <local:ManagerNavbar Grid.Row="0" Grid.ColumnSpan="2"  Grid.RowSpan="5"></local:ManagerNavbar>
 
-        <Border Grid.Row="5" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
-
-        <Label Grid.Row="5" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
         <Label Grid.Column="0"  Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,40,450,0">Train name:</Label>
         <Label  Grid.Column="0"  Grid.Row="1" FontSize="18"  VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,40,380,0" Content="{Binding train.name}" ></Label>

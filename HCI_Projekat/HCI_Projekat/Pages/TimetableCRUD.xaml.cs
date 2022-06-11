@@ -136,9 +136,9 @@ namespace HCI_Projekat.Pages
         private void btn_add_Click(object sender, RoutedEventArgs e)   // ici ce preko tabele
         {
            
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             AddTimetable tc = new AddTimetable(this.dataBase);
-            window.Content = tc;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(tc);
         }
 
         private void btn_tutorial_Click(object sender, RoutedEventArgs e)
@@ -179,9 +179,9 @@ namespace HCI_Projekat.Pages
 
             TimetableDTO t = (TimetableDTO)timetable_table.SelectedItem;
 
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             EditTimetable et = new EditTimetable(this.dataBase, t);
-            window.Content = et;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(et);
         }
 
         private void searchTimetable(object sender, RoutedEventArgs e)
@@ -211,9 +211,9 @@ namespace HCI_Projekat.Pages
             }
 
             this.timetableList = timetables;
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             TimetableCRUD tc = new TimetableCRUD(this.dataBase, timetables);
-            window.Content = tc;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(tc);
 
         }
 

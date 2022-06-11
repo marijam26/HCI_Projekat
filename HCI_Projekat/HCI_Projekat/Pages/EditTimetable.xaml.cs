@@ -121,10 +121,10 @@ namespace HCI_Projekat.Pages
                 }
             }
 
-            
-            foreach(Timetable tt in Database.timetables)
+
+            foreach (Timetable tt in Database.timetables)
             {
-                if(tt.id == Timetable.id)
+                if (tt.id == Timetable.id)
                 {
                     tt.start = DateTime.Parse(tb_time.Text.Trim());
                     tt.isWeekday = isWeekday;
@@ -137,16 +137,15 @@ namespace HCI_Projekat.Pages
             }
             MessageBox.Show("Successfully edited the timetable!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             TimetableCRUD tc = new TimetableCRUD(this.Database);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = tc;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(tc);
+
         }
-
-
-        private void btn_cancel_Click(object sender, RoutedEventArgs e)
+            private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             TimetableCRUD t = new TimetableCRUD(this.Database);
-            window.Content = t;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(t);
         }
 
         private bool checkInput()

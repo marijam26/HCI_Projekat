@@ -43,8 +43,9 @@ namespace HCI_Projekat.Pages
         {
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;
             Stations s = new Stations(t,this.dataBase);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = s;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(s);
+       
 
         }
 
@@ -71,8 +72,9 @@ namespace HCI_Projekat.Pages
         {
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;
             AddTrainLine s = new AddTrainLine(this.dataBase,null, tour);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = s;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(s);
+
             if (tour)
             {
                 s.StartTour();
@@ -91,8 +93,9 @@ namespace HCI_Projekat.Pages
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;
             this.dataBase.backupTrainLine = (TrainLine)t.Clone();
             EditTrainLine s = new EditTrainLine(this.dataBase, t);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = s;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(s);
+
         }
 
 

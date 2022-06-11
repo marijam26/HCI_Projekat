@@ -1,17 +1,14 @@
-﻿<Page x:Class="HCI_Projekat.Pages.ClientHomepage"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:HCI_Projekat.Pages"
-      TextElement.FontFamily="Century Gothic"
-      mc:Ignorable="d" 
-      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="ClientHomepage">
-
+﻿<Window x:Class="HCI_Projekat.ClientHomepage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HCI_Projekat"
+        mc:Ignorable="d"
+        Title="ClientHomepage" Height="650" Width="1200" Background="Wheat">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.08*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
         </Grid.RowDefinitions>
@@ -31,18 +28,23 @@
                 </MenuItem>
                 <MenuItem Name="mi_railmap" Header="Railway map" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic">
                 </MenuItem>
+                
+                <MenuItem Name="logout" Header="Logout" Height="41" Click="logout_Click" FontFamily="Century Gothic">
+                </MenuItem>
+                
+                
                 <MenuItem Header="Help" Height="41" FontFamily="Century Gothic">
                     <MenuItem Header="nesto" Click="MenuItem_Click_report_timetable" ></MenuItem>
                 </MenuItem>
-                
+
             </Menu>
             <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
             </Grid>
         </DockPanel>
         <Border Grid.Row="2" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
 
-        <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
+        <Label Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Grid.Column="3">You got this!</Label>
 
-        <Label Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="35" Grid.ColumnSpan="4">Welcome client! Enjoy!</Label>
+        <Frame x:Name="clientHomepage" NavigationUIVisibility="Hidden" Grid.Row="1" Grid.ColumnSpan="4" ></Frame>
     </Grid>
-</Page>
+</Window>

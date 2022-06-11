@@ -234,7 +234,6 @@ namespace HCI_Projekat.Pages
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             d.ShowDialog();
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             if (oldReservationsNum == loggedUser.reservations.Count && oldTicketsNum == loggedUser.tickets.Count)
             {
                 ChooseSeat r;
@@ -246,13 +245,14 @@ namespace HCI_Projekat.Pages
                 {
                     r = new ChooseSeat(this.database, ticketDTO, "first");
                 }
-                window.Content = r;
-
+                ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
+                window.clientHomepage.Navigate(r);
             }
             else
             {
                 ReserveBuyTicket r = new ReserveBuyTicket(database, loggedUser);
-                window.Content = r;
+                ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
+                window.clientHomepage.Navigate(r);
             }
         }
 
@@ -293,7 +293,6 @@ namespace HCI_Projekat.Pages
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             d.ShowDialog();
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             if (oldReservationsNum == loggedUser.reservations.Count && oldTicketsNum == loggedUser.tickets.Count)
             {
                 ChooseSeat r;
@@ -305,12 +304,13 @@ namespace HCI_Projekat.Pages
                 {
                     r = new ChooseSeat(this.database, ticketDTO, "first");
                 }
-                window.Content = r;
-
+                ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
+                window.clientHomepage.Navigate(r);
             }
             else {
                 ReserveBuyTicket r = new ReserveBuyTicket(database,loggedUser);
-                window.Content = r;
+                ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
+                window.clientHomepage.Navigate(r);
             }
 
 
@@ -319,15 +319,15 @@ namespace HCI_Projekat.Pages
 
         private void back_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
             if (placeNum == "first")
             {
                 ReserveBuyTicket r = new ReserveBuyTicket(this.database, this.loggedUser);
-                window.Content = r;
+                window.clientHomepage.Navigate(r);
             }
             else {
                 ChooseSeat r = new ChooseSeat(this.database, this.ticketDTO,"first");
-                window.Content = r;
+                window.clientHomepage.Navigate(r);
 
             }
 
@@ -340,10 +340,10 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("Must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
             currentlySaveSeat();
             ChooseSeat r = new ChooseSeat(this.database, ticketDTO, "second");
-            window.Content = r;
+            window.clientHomepage.Navigate(r);
 
         }
 

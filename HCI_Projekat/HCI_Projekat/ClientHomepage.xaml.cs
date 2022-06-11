@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.Pages;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,31 +13,31 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HCI_Projekat.Pages
+namespace HCI_Projekat
 {
     /// <summary>
     /// Interaction logic for ClientHomepage.xaml
     /// </summary>
-    public partial class ClientHomepage : Page
+    public partial class ClientHomepage : Window
     {
         public Data dataBase { get; set; }
         public User loggedUser { get; set; }
 
-        public ClientHomepage(Data dataBase,User u)
+        public ClientHomepage(Data dataBase, User u)
         {
             loggedUser = u;
             InitializeComponent();
+            Uri uri = new Uri("../../Images/icon.png", UriKind.RelativeOrAbsolute);
+            this.Icon = BitmapFrame.Create(uri);
             this.dataBase = dataBase;
             DataContext = this;
+            this.clientHomepage.Navigate(new WelcomeClient());
         }
 
-        private void HelloWorld_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            MessageBox.Show("Hello world!");
-        }
+
+        
 
         private void Enable_CanExecute(object sender, CanExecuteRoutedEventArgs e)
         {
@@ -76,52 +77,42 @@ namespace HCI_Projekat.Pages
 
         private void MenuItem_Click_reserve_buy(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            ReserveBuyTicket r = new ReserveBuyTicket(this.dataBase,this.loggedUser);
-            window.Content = r;
+
+            ReserveBuyTicket r = new ReserveBuyTicket(this.dataBase, this.loggedUser);
+            this.clientHomepage.Navigate(r);
         }
 
         private void MenuItem_Click_ticket_view(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            ClientTicketView r = new ClientTicketView( this.loggedUser);
-            window.Content = r;
+            ClientTicketView r = new ClientTicketView(this.loggedUser);
+            this.clientHomepage.Navigate(r);
         }
 
         private void MenuItem_Click_reservation_view(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             ClientReservationView r = new ClientReservationView(this.loggedUser);
-            window.Content = r;
+            this.clientHomepage.Navigate(r);
         }
 
-        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click_4(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItem_Click_5(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void mi_railmap_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            RailwayMap rw = new RailwayMap(this.dataBase);
-            window.Content = rw;
+            RailwayMap r = new RailwayMap(this.dataBase);
+            this.clientHomepage.Navigate(r);
         }
-        
+
         private void MenuItem_Click_report_timetable(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            ManagerTicketReportByTimetable rw = new ManagerTicketReportByTimetable(this.dataBase);
-            window.Content = rw;
+            ManagerTicketReportByTimetable r = new ManagerTicketReportByTimetable(this.dataBase);
+            this.clientHomepage.Navigate(r);
+        }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow window = new MainWindow();
+            window.Show();
+            Close();
         }
     }
 }
+

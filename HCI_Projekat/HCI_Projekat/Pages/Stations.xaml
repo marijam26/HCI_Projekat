@@ -27,7 +27,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.09*"></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -37,17 +37,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-            <Menu Grid.ColumnSpan="2" Height="40" FontSize="22" Background="DarkGoldenrod" Foreground="White">
-            <MenuItem Header="Train">
-            </MenuItem>
-            <MenuItem Header="Train line"></MenuItem>
-            </Menu>
-
-
-        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
-
-        <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
-
+        
         <DataGrid x:Name="station_table" Grid.Row="1" ItemsSource="{Binding stationsList}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="300,0,300,0" Height="250" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
  
             <DataGrid.Columns>

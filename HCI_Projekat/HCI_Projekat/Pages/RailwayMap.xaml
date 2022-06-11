@@ -23,29 +23,8 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DockPanel  Grid.ColumnSpan="4">
-            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top" FontFamily="Century Gothic">
-                <MenuItem Header="Tickets" Height="41" >
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" ></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" ></MenuItem>
-                    <Separator></Separator>
-                </MenuItem>
-                <MenuItem Name="mi_railmap" Header="Railway map" Height="41" FontFamily="Century Gothic">
-                </MenuItem>
-                <MenuItem Header="Help" Height="41" FontFamily="Century Gothic">
-                    <MenuItem Header="nesto"></MenuItem>
-                </MenuItem>
-
-            </Menu>
-            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            </Grid>
-        </DockPanel>
-
-        <Border Grid.Row="5" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
-
-        <Label Grid.Row="5" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
-
+        
+        
         <m:Map Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="4" x:Name="myMap" CredentialsProvider="AcBtthiHq9NeAFlz5zoV~8h70_veH38L5WONtSEaQow~AmAcErGNAXLmB0Ru2U1F6DWg0yWaY3F2bS99-tkN42zDFUc2KlyBZNE4sNGwycmu" Mode="Road" ZoomLevel="7.2" Center="44.459663851961594, 20.804401343598798" Margin="20,70,20,30">
         </m:Map>
 

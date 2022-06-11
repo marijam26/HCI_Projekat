@@ -20,25 +20,8 @@
 
         </Grid.ColumnDefinitions>
 
-        <DockPanel  Grid.ColumnSpan="4">
-            <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top">
-                <MenuItem Header="Tickets" Height="41" >
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" ></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" ></MenuItem>
-                    <Separator></Separator>
-                </MenuItem>
-                <MenuItem Header="Info" Height="41">
-                    <MenuItem Header="nesto"></MenuItem>
-                </MenuItem>
-
-            </Menu>
-            <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-            </Grid>
-        </DockPanel>
-        <Border Grid.Row="2" Background="DarkCyan" Grid.ColumnSpan="3"/>
-        <Label Grid.Row="2" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
-
+        
+       
         <Grid Grid.Row="1">
 
             <Grid.RowDefinitions>

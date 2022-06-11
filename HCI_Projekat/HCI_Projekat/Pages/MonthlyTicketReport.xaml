@@ -20,8 +20,6 @@
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="3"/>
-        <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="1">You got this!</Label>
         <ComboBox x:Name="cb_months" Grid.Row="1" Grid.Column="1" Height="30" FontSize="18" Margin="20,0,730,0" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" SelectionChanged="cb_months_SelectionChanged" ></ComboBox>
         <Label Content="Month:" FontSize="20" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
 

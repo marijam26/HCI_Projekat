@@ -232,9 +232,9 @@ namespace HCI_Projekat.Pages
             if(res == MessageBoxResult.Yes)
             {
                 this.dataBase.trainLines.Remove(this.trainLine);
-                MainWindow window = (MainWindow)Window.GetWindow(this);
+                ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
                 TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
-                window.Content = tc;
+                window.managerHomepage.Navigate(tc);
             }
             
         }
@@ -248,9 +248,9 @@ namespace HCI_Projekat.Pages
             }
 
             MessageBox.Show("Successfully added train line!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
-            window.Content = tc;
+            window.managerHomepage.Navigate(tc);
 
             var navigator = FeatureTour.GetNavigator();
             navigator.IfCurrentStepEquals(ElementID.AddTrainLineButtonSave).GoNext();

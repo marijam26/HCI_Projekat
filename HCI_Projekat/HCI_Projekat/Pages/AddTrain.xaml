@@ -46,10 +46,6 @@
         <ColumnDefinition></ColumnDefinition>
         <ColumnDefinition Width="0.9*"></ColumnDefinition>
     </Grid.ColumnDefinitions>
-        <local:ManagerNavbar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="8"></local:ManagerNavbar>
-        <Border Grid.Row="8" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
-
-        <Label Grid.Row="8" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
 
         <Border Grid.Row="1" Grid.Column="1" Background="AntiqueWhite" Grid.RowSpan="6"></Border>
 

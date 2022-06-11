@@ -75,16 +75,16 @@ namespace HCI_Projekat.Pages
             t.id = id + 1;
             t.name = tb_name.Text.Trim();
             t.rang = (bool)rb_simple.IsChecked ? Rang.obicni : Rang.Soko;
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             WagonCRUD r = new WagonCRUD(t, this.dataBase, "edit");
-            window.Content = r;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(r);
         }
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             TrainCRUD r = new TrainCRUD(this.dataBase);
-            window.Content = r;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(r);
         }
     }
 }

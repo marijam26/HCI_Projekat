@@ -248,20 +248,20 @@ namespace HCI_Projekat.Pages
         {
             if (this.action == "view")
             {
-                MainWindow window = (MainWindow)Window.GetWindow(this);
                 TrainCRUD r = new TrainCRUD(this.dataBase);
-                window.Content = r;
+                ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+                window.managerHomepage.Navigate(r);
             }
             else if (this.action == "edit")
             {
-                MainWindow window = (MainWindow)Window.GetWindow(this);
                 EditTrain r = new EditTrain(this.dataBase, this.train);
-                window.Content = r;
+                ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+                window.managerHomepage.Navigate(r);
             }
             else {
-                MainWindow window = (MainWindow)Window.GetWindow(this);
                 AddTrain r = new AddTrain(this.dataBase, this.train);
-                window.Content = r;
+                ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+                window.managerHomepage.Navigate(r);
             }
         }
 
@@ -294,9 +294,9 @@ namespace HCI_Projekat.Pages
                     MessageBox.Show("Successfully changed train!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             TrainCRUD r = new TrainCRUD(this.dataBase);
-            window.Content = r;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(r);
         }
 
 

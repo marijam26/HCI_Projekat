@@ -1,5 +1,4 @@
-﻿using HCI_Projekat.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,19 +16,13 @@ using System.Windows.Shapes;
 namespace HCI_Projekat.Pages
 {
     /// <summary>
-    /// Interaction logic for ManagerHomepage.xaml
+    /// Interaction logic for WelcomeManager.xaml
     /// </summary>
-    public partial class ManagerHomepage : Page
+    public partial class WelcomeManager : Page
     {
-        public Data dataBase { get; set; }
-
-
-        public ManagerHomepage(Data database)
+        public WelcomeManager()
         {
             InitializeComponent();
-            this.dataBase = dataBase;
-            DataContext = this;
         }
-
     }
 }

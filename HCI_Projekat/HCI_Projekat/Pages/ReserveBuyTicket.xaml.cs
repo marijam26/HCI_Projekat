@@ -78,9 +78,9 @@ namespace HCI_Projekat.Pages
             foreach (Timetable table in t.timetables) {
                 ticketInfo.trains.Add(table.train);
             }
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             ChooseSeat r = new ChooseSeat(dataBase, ticketInfo ,"first");
-            window.Content = r;
+            ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
+            window.clientHomepage.Navigate(r);
 
         }
 

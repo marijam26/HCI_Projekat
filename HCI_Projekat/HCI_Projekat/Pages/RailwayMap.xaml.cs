@@ -44,9 +44,9 @@ namespace HCI_Projekat.Pages
 
         private void bt_back_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            ClientHomepage ch = new ClientHomepage(this.dataBase,this.dataBase.currentUser);
-            window.Content = ch;
+            ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
+            WelcomeClient ch = new WelcomeClient();
+            window.clientHomepage.Navigate(ch);
         }
 
         private void cb_lines_SelectionChanged(object sender, SelectionChangedEventArgs e)

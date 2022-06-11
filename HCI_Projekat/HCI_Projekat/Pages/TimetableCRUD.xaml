@@ -45,12 +45,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <local:ManagerNavbar Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="3"></local:ManagerNavbar>
-
-        <Border Grid.Row="3" Background="DarkCyan" Grid.ColumnSpan="4" Grid.RowSpan="4"></Border>
-
-        <Label Grid.Row="3" HorizontalAlignment="Right" Foreground="White" Grid.Column="3">You got this!</Label>
-
+        
         <Grid Grid.Row="1" Grid.ColumnSpan="4">
             <Grid.Resources>
 

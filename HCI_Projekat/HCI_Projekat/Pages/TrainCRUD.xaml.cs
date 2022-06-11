@@ -59,8 +59,8 @@ namespace HCI_Projekat.Pages
         private void Show_Wagons(object sender,RoutedEventArgs e) {
             Train t = (Train)train_table.SelectedItem;
             WagonCRUD wagons = new WagonCRUD(t,dataBase,"view");
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = wagons;
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(wagons);
         
         }
 
@@ -76,10 +76,9 @@ namespace HCI_Projekat.Pages
           
             Train t = (Train)train_table.SelectedItem;
 
-            MainWindow window = (MainWindow)Window.GetWindow(this);
             EditTrain r = new EditTrain(this.dataBase,t);
-            window.Content = r;
-
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(r);
         }
 
         private void btn_delete_Click(object sender, RoutedEventArgs e)
@@ -105,9 +104,9 @@ namespace HCI_Projekat.Pages
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             AddTrain r = new AddTrain(this.dataBase, tour);
-            window.Content = r;
+            window.managerHomepage.Navigate (r);
             if (tour)
             {
                 r.StartTour();
@@ -115,26 +114,5 @@ namespace HCI_Projekat.Pages
 
         }
 
-        private bool checkInput()
-        {
-            /*if (tb_name.Text == "")
-            {
-                MessageBox.Show("Must enter name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            int res;
-            bool num = int.TryParse(tb_capacity.Text, out res);
-            if (!num)
-            {
-                MessageBox.Show("Capacity must be number.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }
-            if (rb_obican.IsChecked == false && rb_soko.IsChecked == false)
-            {
-                MessageBox.Show("Must choose range.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return false;
-            }*/
-            return true;
-        }
     }
 }

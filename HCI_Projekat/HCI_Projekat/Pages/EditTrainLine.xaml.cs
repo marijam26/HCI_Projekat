@@ -132,18 +132,18 @@ namespace HCI_Projekat.Pages
             {
                 this.dataBase.trainLines.Remove(this.TrainLine);
                 this.dataBase.trainLines.Add(this.dataBase.backupTrainLine);
-                MainWindow window = (MainWindow)Window.GetWindow(this);
+                ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
                 TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
-                window.Content = tc;
+                window.managerHomepage.Navigate(tc);
             }
         }
 
         private void bt_save_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Successfully changed train line!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
-            window.Content = tc;
+            window.managerHomepage.Navigate(tc);
         }
 
         private void pin_start_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)

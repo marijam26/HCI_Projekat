@@ -65,12 +65,15 @@ namespace HCI_Projekat.Pages
             if(dataBase.currentUser.type == UserType.Client)
             {
                 ClientHomepage ch = new ClientHomepage(dataBase, loggedUser);
-                window.Content = ch;
+                ch.Show();
+                window.Close();
+
             }
             else
             {
                 ManagerHomepage mh = new ManagerHomepage(this.dataBase);
-                window.Content = mh;
+                mh.Show();
+                window.Close();
             }
         }
 
