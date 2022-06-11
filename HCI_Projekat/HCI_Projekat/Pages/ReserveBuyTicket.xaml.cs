@@ -73,7 +73,8 @@ namespace HCI_Projekat.Pages
             }
 
             TicketDTO ticketInfo = new TicketDTO(loggedUser, transferPlace, startDate);
-            ticketInfo.timetableDTO = t;
+            ticketInfo.timetableDTO = findTimetable(t,startDate);
+          
             foreach (Timetable table in t.timetables) {
                 ticketInfo.trains.Add(table.train);
             }
@@ -82,9 +83,32 @@ namespace HCI_Projekat.Pages
             window.Content = r;
 
         }
-        
-        
-    private void searchStations(object sender, RoutedEventArgs e)
+
+        private TimetableDTO findTimetable(TimetableDTO t, DateTime startDate)
+        {
+            List<Timetable> tables = new List<Timetable>();
+            foreach (Timetable timetable in t.timetables) {
+                tables.Add(cloneOrFindTimetable(timetable,startDate));
+            }
+            t.timetables = tables;
+            return t;
+        }
+
+        private Timetable cloneOrFindTimetable(Timetable timetable, DateTime startDate)
+        {
+            foreach (User u in dataBase.users) {
+                foreach (Ticket ticket in u.tickets) {
+                    foreach (Timetable t in ticket.timetable) {
+                        if (t.id == timetable.id && startDate.Equals(ticket.date.Date)) {
+                            return t;
+                        }
+                    }
+                }
+            }
+            return (Timetable)timetable.Clone();
+        }
+
+        private void searchStations(object sender, RoutedEventArgs e)
         {
             String start = fromPlace.Text.Trim().ToLower();
             String end = toPlace.Text.Trim().ToLower();

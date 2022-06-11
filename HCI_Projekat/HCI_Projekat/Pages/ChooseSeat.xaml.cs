@@ -185,10 +185,11 @@ namespace HCI_Projekat.Pages
                 seatBtn.Margin = new Thickness(5);
                 seatBtn.MinWidth = 40;
                 seatBtn.MaxHeight = 40;
+                seatBtn.Background = (Brush)new BrushConverter().ConvertFrom("DarkCyan");
                 if (wagon.seatAvailability[i] == false) {
                     seatBtn.IsEnabled = false;
+                    seatBtn.Background = (Brush)new BrushConverter().ConvertFrom("#FF3DD0D0");
                 }
-                seatBtn.Background = (Brush)new BrushConverter().ConvertFrom("DarkCyan");
                 seatBtn.HorizontalAlignment = HorizontalAlignment.Center;
                 seatBtn.Content = i;
                 Grid.SetRow(seatBtn, row);
@@ -226,21 +227,33 @@ namespace HCI_Projekat.Pages
             int id = this.loggedUser.tickets.Max(x => x.id);
             Ticket ticket = new Ticket(id,ticketDTO.timetableDTO.timetables,ticketDTO.dateReserved,ticketDTO.wagons,ticketDTO.seats,ticketDTO.transferPlace,DateTime.Now);
             TicketShowDTO ticketShowDTO = new TicketShowDTO( ticketDTO,loggedUser,false);
+            int oldTicketsNum = loggedUser.tickets.Count;
+            int oldReservationsNum = loggedUser.reservations.Count;
             ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO,ticket,loggedUser)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             d.ShowDialog();
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ChooseSeat r;
-            if (ticketDTO.seats.Count == 2)
+            if (oldReservationsNum == loggedUser.reservations.Count && oldTicketsNum == loggedUser.tickets.Count)
             {
-                r = new ChooseSeat(this.database, ticketDTO, "second");
+                ChooseSeat r;
+                if (ticketDTO.seats.Count == 2)
+                {
+                    r = new ChooseSeat(this.database, ticketDTO, "second");
+                }
+                else
+                {
+                    r = new ChooseSeat(this.database, ticketDTO, "first");
+                }
+                window.Content = r;
+
             }
-            else {
-                r = new ChooseSeat(this.database, ticketDTO, "first");
+            else
+            {
+                ReserveBuyTicket r = new ReserveBuyTicket(database, loggedUser);
+                window.Content = r;
             }
-            window.Content = r;
         }
 
         private Timetable formTimetablefromDTO(TimetableDTO timetable)
@@ -272,14 +285,33 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("Reservation is not possible more than 5 days before departure date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
-            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO, ticket, loggedUser)
+            int oldTicketsNum = loggedUser.tickets.Count;
+            int oldReservationsNum = loggedUser.reservations.Count;
+
+            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO, ticket,  loggedUser)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
             d.ShowDialog();
             MainWindow window = (MainWindow)Window.GetWindow(this);
-            ChooseSeat r = new ChooseSeat(this.database,ticketDTO,"second");
-            window.Content = r;
+            if (oldReservationsNum == loggedUser.reservations.Count && oldTicketsNum == loggedUser.tickets.Count)
+            {
+                ChooseSeat r;
+                if (ticketDTO.seats.Count == 2)
+                {
+                    r = new ChooseSeat(this.database, ticketDTO, "second");
+                }
+                else
+                {
+                    r = new ChooseSeat(this.database, ticketDTO, "first");
+                }
+                window.Content = r;
+
+            }
+            else {
+                ReserveBuyTicket r = new ReserveBuyTicket(database,loggedUser);
+                window.Content = r;
+            }
 
 
         }

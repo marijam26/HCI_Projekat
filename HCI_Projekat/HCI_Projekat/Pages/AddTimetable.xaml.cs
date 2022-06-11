@@ -103,7 +103,7 @@ namespace HCI_Projekat.Pages
             {
                 if(tr.name.ToLower() == train.Text.Trim().ToLower())
                 {
-                    t = tr;
+                    t = (Train)tr.Clone();
                     break;
                 }
             }

@@ -13,7 +13,6 @@ namespace HCI_Projekat.Model
     {
         public int id { get; set; }
         public int price { get; set; }
-        public Train train { get; set; }
         public List<Station> stations { get; set; }
         public List<int> time { get; set; }
 
@@ -21,22 +20,19 @@ namespace HCI_Projekat.Model
 
         public Station to { get; set; }
 
-        public TrainLine() { }
         public TrainLine(TrainLine trainLine)
         {
             this.id = trainLine.id;
             this.price = trainLine.price;
             this.time = trainLine.time;
-            this.train = trainLine.train;
             this.stations = trainLine.stations;
             this.from = trainLine.from;
             this.to = trainLine.to;
         }
 
-        public TrainLine(int id, int price, Train train) {
+        public TrainLine(int id, int price) {
             this.id = id;
             this.price = price;
-            this.train = train;
             this.stations = new List<Station>();
             this.time = new List<int>();
         }

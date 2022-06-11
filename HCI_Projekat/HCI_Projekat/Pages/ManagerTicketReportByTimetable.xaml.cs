@@ -34,6 +34,22 @@ namespace HCI_Projekat.Pages
             toPlace.ItemsSource = getStations();
             DataContext = this;
             this.tickets = new List<TicketShowDTO>();
+            getAllSoldTickets();
+        }
+
+        private void getAllSoldTickets()
+        {
+            foreach (User u in database.users)
+            {
+                foreach (Ticket ticket in u.tickets)
+                {
+                     
+                    this.tickets.Add(new TicketShowDTO(ticket, u));     
+
+                }
+            }
+            timetable_table.ItemsSource = null;
+            timetable_table.ItemsSource = tickets;
         }
 
         private IEnumerable getStations()

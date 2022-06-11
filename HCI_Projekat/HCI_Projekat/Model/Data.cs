@@ -64,10 +64,10 @@ namespace HCI_Projekat.Model
 
 
             trainLines = new List<TrainLine>();
-            TrainLine tl1 = new TrainLine(1, 200, train1);
-            TrainLine tl2 = new TrainLine(2, 150, train2);
-            TrainLine tl3 = new TrainLine(3, 150, train2);
-            TrainLine tl4 = new TrainLine(4, 150, train2);
+            TrainLine tl1 = new TrainLine(1, 200);
+            TrainLine tl2 = new TrainLine(2, 150);
+            TrainLine tl3 = new TrainLine(3, 150);
+            TrainLine tl4 = new TrainLine(4, 150);
 
             tl3.stations.Add(s2);
             tl3.stations.Add(s12);
@@ -110,16 +110,16 @@ namespace HCI_Projekat.Model
 
 
             this.timetables = new List<Timetable>();
-            Timetable tt1 = new Timetable(1, tl1, new DateTime(2022,6,2,10,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
-            Timetable tt7 = new Timetable(7, tl1, new DateTime(2022,6,2,12,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
-            Timetable tt8 = new Timetable(8, tl3, new DateTime(2022,6,2,12,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
-            Timetable tt9 = new Timetable(9, tl4, new DateTime(2022,6,2,12,10,0), train1, true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
-            Timetable tt2 = new Timetable(2, tl1, new DateTime(2022, 6, 2, 15, 0, 0), train2, false, new DateTime(2022, 6, 2, 17, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // valid
-            Timetable tt3 = new Timetable(3, tl1, new DateTime(2022, 6, 3, 16, 10, 0), train1, true, new DateTime(2022, 6, 15, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // nije jos validan
-            Timetable tt4 = new Timetable(4, tl1, new DateTime(2022, 6, 4, 17, 10, 0), train1, false, new DateTime(2022, 6, 4, 13, 10, 0), new DateTime(2022, 6, 6, 17, 10, 0));   // nije validan
+            Timetable tt1 = new Timetable(1, tl1, new DateTime(2022,6,2,10,10,0), (Train)train1.Clone(), true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt7 = new Timetable(7, tl1, new DateTime(2022,6,2,12,10,0), (Train)train1.Clone(), true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt8 = new Timetable(8, tl3, new DateTime(2022,6,2,12,10,0), (Train)train1.Clone(), true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt9 = new Timetable(9, tl4, new DateTime(2022,6,2,12,10,0), (Train)train1.Clone(), true, new DateTime(2022, 6, 2, 13, 10, 0), new DateTime(2022, 6, 30, 13, 10, 0));     // valid
+            Timetable tt2 = new Timetable(2, tl1, new DateTime(2022, 6, 2, 15, 0, 0), (Train)train2.Clone(), false, new DateTime(2022, 6, 2, 17, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // valid
+            Timetable tt3 = new Timetable(3, tl1, new DateTime(2022, 6, 3, 16, 10, 0), (Train)train1.Clone(), true, new DateTime(2022, 6, 15, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));  // nije jos validan
+            Timetable tt4 = new Timetable(4, tl1, new DateTime(2022, 6, 4, 17, 10, 0), (Train)train1.Clone(), false, new DateTime(2022, 6, 4, 13, 10, 0), new DateTime(2022, 6, 6, 17, 10, 0));   // nije validan
 
-            Timetable tt5 = new Timetable(5, tl2, new DateTime(2022, 6, 2, 17, 10, 0), train2, true,  new DateTime(2022, 6, 2, 19, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));
-            Timetable tt6 = new Timetable(6, tl2, new DateTime(2022, 6, 3, 10, 10, 0), train2, false, new DateTime(2022, 6, 3, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));
+            Timetable tt5 = new Timetable(5, tl2, new DateTime(2022, 6, 2, 17, 10, 0), (Train)train2.Clone(), true,  new DateTime(2022, 6, 2, 19, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));
+            Timetable tt6 = new Timetable(6, tl2, new DateTime(2022, 6, 3, 10, 10, 0), (Train)train2.Clone(), false, new DateTime(2022, 6, 3, 13, 10, 0), new DateTime(2022, 6, 30, 17, 10, 0));
             this.timetables.Add(tt1);
             this.timetables.Add(tt2);
             this.timetables.Add(tt3);
@@ -131,12 +131,12 @@ namespace HCI_Projekat.Model
             this.timetables.Add(tt9);
 
             List<Timetable> timetables = new List<Timetable>();
-            timetables.Add(tt1);
+            timetables.Add((Timetable)tt1.Clone());
 
             Ticket ticket1 = new Ticket(1,timetables, new DateTime(2022, 6, 2, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16) },new List<int>() { 1},"",DateTime.Now);
-            Ticket ticket2 = new Ticket(2,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 5, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
-            Ticket ticket3 = new Ticket(3,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 11, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
-            Ticket ticket4 = new Ticket(4,new List<Timetable>() { tt1, tt7 }, new DateTime(2022, 6, 6, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            Ticket ticket2 = new Ticket(2,new List<Timetable>() { (Timetable)tt1.Clone(), (Timetable)tt7.Clone() }, new DateTime(2022, 6, 5, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            Ticket ticket3 = new Ticket(3,new List<Timetable>() { (Timetable)tt1.Clone(), (Timetable)tt7.Clone() }, new DateTime(2022, 6, 11, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
+            Ticket ticket4 = new Ticket(4,new List<Timetable>() { (Timetable)tt1.Clone(), (Timetable)tt7.Clone() }, new DateTime(2022, 6, 6, 10, 10, 0),new List<Wagon>() { new Wagon(1, Wagon.WagonClass.first, 16), new Wagon(2, Wagon.WagonClass.first, 13) },new List<int>() { 2,3},"Nis",DateTime.Now);
             
             users[1].tickets.Add(ticket1);
             users[1].tickets.Add(ticket2);

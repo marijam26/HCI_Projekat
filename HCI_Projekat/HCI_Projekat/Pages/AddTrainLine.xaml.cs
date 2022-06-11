@@ -45,7 +45,7 @@ namespace HCI_Projekat.Pages
             if(trainLine == null)
             {
                 int index = this.dataBase.trainLines.Max(x => x.id);
-                this.trainLine = new TrainLine(index + 1, 0, null);
+                this.trainLine = new TrainLine(index + 1, 0); //null
                 this.dataBase.trainLines.Add(this.trainLine);
             }
             else
