@@ -84,7 +84,8 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="btn_delete" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,250,0"   Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click">
+            <Button x:Name="btn_delete" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,0,250,0"   Width="120" Height="40" FontSize="20" 
+                    Style="{StaticResource ResourceKey=MyButton}" Content="Delete" Click="btn_delete_Click" ToolTip="Delete the selected train.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -94,7 +95,8 @@
 
             <Button x:Name="btn_add" Grid.Row="1" Grid.Column="1" VerticalAlignment="Top" Margin="7.6,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click"
                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainButtonAdd}"
-                       featureTouring:TourHelper.Placement="TopRight">
+                       featureTouring:TourHelper.Placement="TopRight"
+                    ToolTip="Add a new train.">
             <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -102,7 +104,8 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_edit" Grid.Row="1" Grid.Column="1"  Margin="297.6,0,540,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" >
+            <Button x:Name="btn_edit" Grid.Row="1" Grid.Column="1"  Margin="297.6,0,540,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
+                    Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>

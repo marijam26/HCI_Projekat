@@ -83,7 +83,8 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="btn_delete" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Click="btn_delete_Click" HorizontalAlignment="Right" Margin="0,0,10,0"   Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" >
+            <Button x:Name="btn_delete" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Click="btn_delete_Click" HorizontalAlignment="Right" Margin="0,0,10,0"  
+                    Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" ToolTip="Delete the selected wagon.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -94,7 +95,8 @@
             <Button x:Name="btn_add" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Margin="40,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20"
                     Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click" 
                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.WagonButtonAdd}"
-                     featureTouring:TourHelper.Placement="TopLeft">
+                     featureTouring:TourHelper.Placement="TopLeft"
+                    ToolTip="Add a new wagon">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -102,7 +104,8 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_edit" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="185,0,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click"  >
+            <Button x:Name="btn_edit" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="185,0,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
+                    Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click"  ToolTip="Edit the selected wagon.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -143,10 +146,12 @@
             <Label Grid.Column="0" Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,20,10,0">Capacity:</Label>
             <TextBox x:Name="tb_capacity" Grid.Column="1" Grid.Row="1" Width="70" FontSize="20" Height="35" VerticalAlignment="Top" Margin="0,20,10,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text=""
                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.WagonCapacity}"
-                     featureTouring:TourHelper.Placement="BottomRight"></TextBox>
+                     featureTouring:TourHelper.Placement="BottomRight" 
+                     ToolTip="New wagon capacity"></TextBox>
 
 
-            <Button x:Name="btn_back" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right"  Width="120" Height="40" Margin="0,0,0,0"  Click="btn_back_Click" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Back"   >
+            <Button x:Name="btn_back" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right"  Width="120" Height="40" Margin="0,0,0,0"  Click="btn_back_Click" 
+                    FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Back" ToolTip="Quit editing">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -154,7 +159,8 @@
                 </Button.Resources>
             </Button>
             
-            <Button x:Name="btn_save" Grid.Row="4" Grid.Column="2" Margin="15,0,70,0" HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Save" Click="btn_save_Click"  >
+            <Button x:Name="btn_save" Grid.Row="4" Grid.Column="2" Margin="15,0,70,0" HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" 
+                    Style="{StaticResource ResourceKey=MyButton}" Content="Save" Click="btn_save_Click"  ToolTip="Save changes">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -166,7 +172,8 @@
             <Button x:Name="btn_finish" Grid.Row="5" Grid.Column="2" Background="DarkGoldenrod" Margin="5,0,70,0" HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" 
                     Style="{StaticResource ResourceKey=MyButton}" Content="Finish" Click="btn_finish_Click" 
                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.ButtonFinish}"
-                    featureTouring:TourHelper.Placement="TopRight">
+                    featureTouring:TourHelper.Placement="TopRight"
+                    ToolTip="Finish adding the wagons.">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>

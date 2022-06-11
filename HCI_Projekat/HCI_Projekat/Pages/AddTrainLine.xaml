@@ -45,18 +45,21 @@
                 <Canvas x:Name="start">
                     <Image x:Name="pin_start" Grid.Column="0" Canvas.Top="7" Canvas.Left="30" Source="/Images/start.png"  MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="55"                   
                       featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinStart}"
-                       featureTouring:TourHelper.Placement="TopRight"/>
+                       featureTouring:TourHelper.Placement="TopRight"
+                           ToolTip="Start station mark"/>
                 </Canvas>
 
                 <Canvas x:Name="endd" Grid.Column="1">
                     <Image x:Name="pin_end" Grid.Column="1" Canvas.Top="7" Canvas.Left="30" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" 
                        featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinEnd}"
-                       featureTouring:TourHelper.Placement="TopRight"/>  
+                       featureTouring:TourHelper.Placement="TopRight"
+                           ToolTip="End station mark"/>  
                 </Canvas>
                 
                 <Image x:Name="pin" Grid.Column="0" Source="/Images/blue.png"  MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="55" Visibility="Hidden"
                        featureTouring:TourHelper.ElementID="{x:Static app:ElementID.Pin}"
-                       featureTouring:TourHelper.Placement="TopRight"/>
+                       featureTouring:TourHelper.Placement="TopRight"
+                       ToolTip="Station mark"/>
 
             </Grid>
         </materialDesign:Card>
@@ -75,9 +78,10 @@
 
         </DataGrid>
 
-        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click"></Button>
+        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit adding the train line"></Button>
         <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.AddTrainLineButtonSave}"
-                featureTouring:TourHelper.Placement="TopRight"/>
+                featureTouring:TourHelper.Placement="TopRight"
+                ToolTip="Save the new train line."/>
     </Grid>
 </Page>

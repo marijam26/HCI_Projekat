@@ -39,13 +39,16 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Canvas x:Name="start">
-                    <Image x:Name="pin" Source="/Images/blue.png" Canvas.Top="5" Canvas.Left="10" Grid.Column="0" MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Image x:Name="pin" Source="/Images/blue.png" Canvas.Top="5" Canvas.Left="10" Grid.Column="0" MouseMove="pin_MouseMove" PreviewMouseLeftButtonDown="pin_PreviewMouseLeftButtonDown" 
+                           Width="56" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="Statin mark"/>
                 </Canvas>
                 <Canvas x:Name="end" Grid.Column="1">
-                    <Image x:Name="pin_start" Source="/Images/start.png" Canvas.Top="5" Canvas.Left="10" Grid.Column="1" MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Image x:Name="pin_start" Source="/Images/start.png" Canvas.Top="5" Canvas.Left="10" Grid.Column="1" MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" 
+                           Width="56" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="Start station mark"/>
                 </Canvas>
                 <Canvas x:Name="pin_canvas" Grid.Column="2">
-                    <Image x:Name="pin_end" Source="/Images/end.png" Canvas.Top="5" Canvas.Left="10" Grid.Column="2"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="56" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Image x:Name="pin_end" Source="/Images/end.png" Canvas.Top="5" Canvas.Left="10" Grid.Column="2"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" 
+                           Width="56" HorizontalAlignment="Left" VerticalAlignment="Top" ToolTip="End station mark"/>
                 </Canvas>
 
             </Grid>
@@ -65,8 +68,8 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click"></Button>
-        <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click"/>
+        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit editing the train line."></Button>
+        <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" ToolTip="Save the changes to the train line."/>
 
 
     </Grid>

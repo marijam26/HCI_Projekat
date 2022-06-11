@@ -59,7 +59,8 @@
     <Label Grid.Row="2" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Name:</Label>
         <TextBox x:Name="tb_name" Grid.Row="3" Grid.Column="1" Width="240" FontSize="22" Height="40" VerticalAlignment="Top"
               featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainName}"
-              featureTouring:TourHelper.Placement="BottomRight">
+              featureTouring:TourHelper.Placement="BottomRight"
+                 ToolTip="New train name">
         </TextBox>
         <Label Grid.Row="4" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Rang:</Label>
 
@@ -73,7 +74,8 @@
                          featureTouring:TourHelper.Placement="BottomRight"></RadioButton>
         </Viewbox>
 
-        <Button x:Name="btn_cancel" Grid.Column="1" Grid.Row="6" Margin="20,10,0,0" Width="75" Height="30" FontSize="17" Background="DarkCyan" Foreground="White" Content="Cancel" Click="btn_cancel_Click" >
+        <Button x:Name="btn_cancel" Grid.Column="1" Grid.Row="6" Margin="20,10,0,0" Width="75" Height="30" FontSize="17" Background="DarkCyan" Foreground="White" Content="Cancel" 
+                Click="btn_cancel_Click" ToolTip="Quit adding the train.">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -83,7 +85,8 @@
         <Button x:Name="btn_next" Grid.Column="1" Grid.Row="6" Margin="0,10,20,0" Width="80" HorizontalAlignment="Right" Height="30" FontSize="15" Click="btn_next_Click" Background="DarkCyan" Foreground="White" Content="Next" 
                 Style="{StaticResource ResourceKey=MyButton}" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainButtonAdd}"
-                featureTouring:TourHelper.Placement="BottomRight">
+                featureTouring:TourHelper.Placement="BottomRight"
+                ToolTip="Continue to adding wagons">
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
