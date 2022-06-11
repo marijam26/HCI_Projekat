@@ -135,16 +135,16 @@ namespace HCI_Projekat.Pages
             this.isSaved = true;
             this.Close();
             MessageBox.Show("Successfully added station!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
-            MainWindow window = (MainWindow)App.Current.MainWindow;
+            ManagerHomepage window = (ManagerHomepage)App.Current.Windows[App.Current.Windows.Count-1];
             if (parentPage == "add")
             {
                 AddTrainLine addTrainLine = new AddTrainLine(this.dataBase,this.trainLine, tour);
-                window.Content = addTrainLine;
+                window.managerHomepage.Navigate( addTrainLine);
             }
             else
             {
                 EditTrainLine editLine = new EditTrainLine(this.dataBase, this.trainLine);
-                window.Content = editLine;
+                window.managerHomepage.Navigate(editLine);
             }
             
         }

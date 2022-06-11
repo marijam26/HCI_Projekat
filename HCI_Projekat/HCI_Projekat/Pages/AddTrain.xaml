@@ -59,15 +59,20 @@
         </TextBox>
         <Label Grid.Row="4" Grid.Column="1" FontSize="22" VerticalAlignment="Bottom" Width="240" FontFamily="Century Gothic">Rang:</Label>
 
-        <Viewbox Height="40" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" Margin="105,10,0,0" HorizontalAlignment="Left" >
-            <RadioButton x:Name="rb_simple" Content="Simple" Margin="0,5,0,7"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>
-        </Viewbox>
+        <Grid Grid.Row="5" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Viewbox Height="40" Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,0" HorizontalAlignment="Right" >
+                <RadioButton x:Name="rb_simple" Content="Simple" Margin="0,5,0,7"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>
+            </Viewbox>
 
-        <Viewbox Height="40" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Margin="0,10,120,0" VerticalAlignment="Top">
-            <RadioButton x:Name="rb_soko" Grid.Column="1" Content="Soko"  Margin="0,5,0,7"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}"
-                         featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainRang}"
-                         featureTouring:TourHelper.Placement="BottomRight"></RadioButton>
-        </Viewbox>
+            <Viewbox Height="40" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Center">
+                <RadioButton x:Name="rb_soko" Grid.Column="1" Content="Soko"  Margin="0,5,0,7"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}"></RadioButton>
+            </Viewbox>
+
+        </Grid>
 
         <Button x:Name="btn_cancel" Grid.Column="1" Grid.Row="6" Margin="20,10,0,0" Width="100"  FontSize="17" Background="DarkCyan" Foreground="White" Content="Cancel" BorderThickness="0"
                 Click="btn_cancel_Click" ToolTip="Quit adding the train.">

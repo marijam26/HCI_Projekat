@@ -76,7 +76,7 @@
             </Button>
             
             <DataGrid Background="White" x:Name="timetable_table" Grid.Row="2" ItemsSource="{Binding dataBase.trains}" IsReadOnly="True" ColumnWidth="*"
-                      FontSize="18" Margin="7.6,0,110,50.978"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged"  
+                      FontSize="18" Margin="7.6,0,110,20.978"  Height="350" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged"  
                       Grid.Column="1" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>

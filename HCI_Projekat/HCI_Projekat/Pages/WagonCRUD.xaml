@@ -45,13 +45,27 @@
 
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0"  Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,30,10,0">Train name:</Label>
+            <Label  Grid.Column="1"  Grid.Row="1" FontSize="18"  VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="0,30,0,0" Content="{Binding train.name}" ></Label>
 
-        <Label Grid.Column="0"  Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,40,450,0">Train name:</Label>
-        <Label  Grid.Column="0"  Grid.Row="1" FontSize="18"  VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,40,380,0" Content="{Binding train.name}" ></Label>
+        </Grid>
 
-        <Label Grid.Column="0" Grid.Row="2" FontSize="18" VerticalAlignment="Top"  FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,450,0">Train type:</Label>
-        <Label   Grid.Column="0" Background="Wheat" Grid.Row="2"  FontSize="18"  VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="10,0,380,0" Content="{Binding train.rang}"></Label>
 
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="2" FontSize="18" VerticalAlignment="Top"  FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,10,0">Train type:</Label>
+            <Label   Grid.Column="1" Background="Wheat" Grid.Row="2"  FontSize="18"  VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="10,0,0,0" Content="{Binding train.rang}"></Label>
+
+        </Grid>
+        
         <Label Grid.Column="0" Grid.Row="3" FontSize="20" VerticalAlignment="Top"  FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,450,0">Wagons:</Label>
 
         <Grid Grid.Row="4"  Grid.Column="0"  >
@@ -80,7 +94,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="btn_delete" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Click="btn_delete_Click" HorizontalAlignment="Right" Margin="0,0,10,0"  
+            <Button x:Name="btn_delete" Grid.Row="4" Grid.Column="1" VerticalAlignment="Top" Click="btn_delete_Click" HorizontalAlignment="Right" Margin="0,5,10,0"  
                     Width="120" Height="40" FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Delete" ToolTip="Delete the selected wagon.">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -89,7 +103,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_add" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Margin="40,0,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20"
+            <Button x:Name="btn_add" Grid.Row="4" Grid.Column="0" VerticalAlignment="Top" Margin="40,5,0,0" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20"
                     Style="{StaticResource ResourceKey=MyButton}" Content="Add" Click="btn_add_Click" 
                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.WagonButtonAdd}"
                      featureTouring:TourHelper.Placement="TopLeft"
@@ -101,7 +115,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_edit" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="185,0,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
+            <Button x:Name="btn_edit" Grid.Row="4" Grid.Column="0" HorizontalAlignment="Right" Margin="185,5,0,0" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
                     Style="{StaticResource ResourceKey=MyButton}"  Content="Edit" Click="btn_edit_Click"  ToolTip="Edit the selected wagon.">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -140,14 +154,14 @@
                 <RadioButton x:Name="rb_second" Grid.Column="1" Content="Second"  Margin="0,5,70,5"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>
             </Viewbox>
 
-            <Label Grid.Column="0" Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,20,10,0">Capacity:</Label>
-            <TextBox x:Name="tb_capacity" Grid.Column="1" Grid.Row="1" Width="70" FontSize="20" Height="30" VerticalAlignment="Top" Margin="0,18,10,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text="" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"
+            <Label Grid.Column="0" Grid.Row="1" FontSize="18" VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,10,10,0">Capacity:</Label>
+            <TextBox x:Name="tb_capacity" Grid.Column="1" Grid.Row="1" Width="70" FontSize="20" Height="30" VerticalAlignment="Top" Margin="0,10,10,0" HorizontalAlignment="Left" Grid.ColumnSpan="2" Text="" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"
                      featureTouring:TourHelper.ElementID="{x:Static app:ElementID.WagonCapacity}"
                      featureTouring:TourHelper.Placement="BottomRight" 
                      ToolTip="New wagon capacity"></TextBox>
 
 
-            <Button x:Name="btn_back" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right"  Width="120" Height="40" Margin="0,0,0,0"  Click="btn_back_Click" 
+            <Button x:Name="btn_back" Grid.Row="4" Grid.Column="1" HorizontalAlignment="Right"  Width="120" Height="40" Margin="0,5,0,0"  Click="btn_back_Click" 
                     FontSize="20" Style="{StaticResource ResourceKey=MyButton}" Content="Back" ToolTip="Quit editing">
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -156,7 +170,7 @@
                 </Button.Resources>
             </Button>
             
-            <Button x:Name="btn_save" Grid.Row="4" Grid.Column="2" Margin="15,0,70,0" HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" 
+            <Button x:Name="btn_save" Grid.Row="4" Grid.Column="2" Margin="15,5,70,0" HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" 
                     Style="{StaticResource ResourceKey=MyButton}" Content="Save" Click="btn_save_Click"  ToolTip="Save changes">
                 <Button.Resources>
                     <Style TargetType="Border">
