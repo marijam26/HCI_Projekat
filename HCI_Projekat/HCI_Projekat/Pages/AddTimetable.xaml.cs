@@ -65,9 +65,9 @@ namespace HCI_Projekat.Pages
 
         private void btn_cancel_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = (MainWindow)Window.GetWindow(this);
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             TimetableCRUD t = new TimetableCRUD(this.dataBase);
-            window.Content = t;
+            window.managerHomepage.Navigate(t);
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)

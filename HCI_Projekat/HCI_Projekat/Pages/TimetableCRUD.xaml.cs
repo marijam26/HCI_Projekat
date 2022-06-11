@@ -25,8 +25,6 @@ namespace HCI_Projekat.Pages
     public partial class TimetableCRUD : Page
     {
 
-        private Placement _placement;
-
         public Data dataBase { get; set; }
         public List<TimetableDTO> timetableList { get; set; }
 
@@ -105,13 +103,6 @@ namespace HCI_Projekat.Pages
                 var navigator = FeatureTour.GetNavigator();
                 navigator.IfCurrentStepEquals(ElementID.ComboBoxTo).GoNext();
             }
-        }
-
-
-        public Placement Placement
-        {
-            get { return _placement; }
-            set { Placement = value; }
         }
 
         private void btn_delete_Click(object sender, RoutedEventArgs e)  // promijeni tako da brise i iz dto i iz database
@@ -238,8 +229,8 @@ namespace HCI_Projekat.Pages
             IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
             if (focusedControl is DependencyObject)
             {
-                string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp(str, (MainWindow)Window.GetWindow(this));
+                //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("timetableView", (MainWindow)Window.GetWindow(this));
             }
         }
     }
