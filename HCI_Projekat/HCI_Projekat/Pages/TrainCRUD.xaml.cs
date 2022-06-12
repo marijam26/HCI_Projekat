@@ -71,7 +71,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = train_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select train.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a train.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
           
@@ -88,11 +88,11 @@ namespace HCI_Projekat.Pages
             int selectedCells = train_table.SelectedCells.Count();
             if(selectedCells == 0)
             {
-                MessageBox.Show("Must select train.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a train.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to delete train?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to delete the train?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             { 
                 Train t = (Train)train_table.SelectedItem;

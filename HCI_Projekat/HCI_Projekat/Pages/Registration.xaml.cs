@@ -53,7 +53,7 @@ namespace HCI_Projekat.Pages
             }
             else
             {
-                MessageBox.Show("Please fill in all fields.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please fill in all the fields.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -77,7 +77,7 @@ namespace HCI_Projekat.Pages
             }
             else
             {
-                MessageBox.Show("Please fill in all fields.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please fill in all the fields.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

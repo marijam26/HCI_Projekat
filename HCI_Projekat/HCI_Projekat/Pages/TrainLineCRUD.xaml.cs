@@ -54,11 +54,11 @@ namespace HCI_Projekat.Pages
             int selectedCells = trainLine_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select train line.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a train line.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to delete train line?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to delete the train line?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 TrainLine t = (TrainLine)trainLine_table.SelectedItem;
@@ -87,7 +87,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = trainLine_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select train line.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select train line.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;

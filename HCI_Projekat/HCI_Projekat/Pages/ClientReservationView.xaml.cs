@@ -78,7 +78,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select reservation for canceling.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a reservation for canceling.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -103,7 +103,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select reservation for confirmation.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a reservation for confirmation.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

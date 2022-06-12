@@ -66,7 +66,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select timetable.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select the timetable.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -118,22 +118,22 @@ namespace HCI_Projekat.Pages
             String end = toPlace.Text.Trim().ToLower();
             DateTime? date = startDatePick.SelectedDate;
             if (date == null) { 
-                MessageBox.Show("Must enter date of departure.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter the date of departure.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             DateTime startDate = (DateTime)date;
             if (startDate < DateTime.Now) {
-                MessageBox.Show("Departure date mustn't be in the past.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Departure date can't be in the past.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
 
             }
             if (start == "") { 
-                MessageBox.Show("Must enter date of start place.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a start station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             
             if (end == "") { 
-                MessageBox.Show("Must enter date of start place.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose an end station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             List<TimetableDTO> timetables = new List<TimetableDTO>();

@@ -83,19 +83,19 @@ namespace HCI_Projekat.Pages
             String endStation = toPlace.Text.Trim().ToLower();
 
             if (startStation == "") {
-                MessageBox.Show("Must enter start station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a start station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if (endStation == "") {
-                MessageBox.Show("Must enter end station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose an end station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if (startDatePick.SelectedDate == null) {
-                MessageBox.Show("Must enter departure date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a departure date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if (tb_time.Text.Trim() == "") {
-                MessageBox.Show("Must enter departure time.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a departure time.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             DateTime date = (DateTime)startDatePick.SelectedDate;

@@ -89,6 +89,8 @@ namespace HCI_Projekat.Pages
                 var navigator = FeatureTour.GetNavigator();
                 navigator.OnStepLeft(ElementID.Pin).Execute(s => bt_save.IsEnabled = true);
                 navigator.OnStepEntering(ElementID.PinStart).Execute(s => pin_end.Visibility = Visibility.Hidden);
+                navigator.OnStepEntered(ElementID.AddTrainLineButtonSave).Execute(s => canvas.IsEnabled = false);
+
             }
 
         }
@@ -139,6 +141,8 @@ namespace HCI_Projekat.Pages
             navigator.OnStepEntered(ElementID.Pin).Execute(s => pin.Focus());
 
             navigator.OnStepEntered(ElementID.AddTrainLineButtonSave).Execute(s => bt_save.Focus());
+            navigator.OnStepEntered(ElementID.AddTrainLineButtonSave).Execute(s => canvas.IsEnabled = false) ;
+
             TourStarter.StartAddTrainLineTour();
         }
 

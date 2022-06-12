@@ -62,24 +62,24 @@
             <Label Grid.ColumnSpan="2" Grid.Column="2" Margin="15,0,0,20" FontSize="30" Width="300" FontFamily="Century Gothic" HorizontalAlignment="Center" VerticalAlignment="Bottom">New depature time</Label>
 
             <Label Grid.Row="1" Grid.Column="2" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">From:</Label>
-            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="1" Grid.Column="2" Width="205" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan"></ComboBox>
+            <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="1" Grid.Column="2" Width="205" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" ToolTip="Start station"></ComboBox>
 
             <Label Grid.Row="1" Grid.Column="3" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">To:</Label>
-            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="1" Grid.Column="3" Width="200" FontSize="20" Height="35" Margin="80,0,0,0" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
+            <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="1" Grid.Column="3" Width="200" FontSize="20" Height="35" Margin="80,0,0,0" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" ToolTip="End station"></ComboBox>
 
 
             <Label Grid.Row="2" Grid.Column="2" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Departure time:</Label>
-            <materialDesign:TimePicker x:Name="tb_time" Grid.Row="2" Grid.Column="2" Width="105" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="180,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
+            <materialDesign:TimePicker x:Name="tb_time" Grid.Row="2" Grid.Column="2" Width="105" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="180,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" ToolTip="Train departure time"></materialDesign:TimePicker>
 
             <Label Grid.Row="2" Grid.Column="3" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Train:</Label>
-            <ComboBox x:Name="train"  Grid.Row="2" Grid.Column="3" Width="200" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></ComboBox>
+            <ComboBox x:Name="train"  Grid.Row="2" Grid.Column="3" Width="200" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" FontSize="20" Height="35" Margin="80,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" ToolTip="Choose the train."></ComboBox>
 
 
             <Label Grid.Row="3" Grid.Column="2" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Valid since:</Label>
-            <DatePicker x:Name="tb_valid_since" Grid.Row="3" Grid.Column="2" Width="155" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></DatePicker>
+            <DatePicker x:Name="tb_valid_since" Grid.Row="3" Grid.Column="2" Width="155" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" ToolTip="Start date of the timetable validity"></DatePicker>
 
             <Label Grid.Row="3" Grid.Column="3" FontSize="22" FontFamily="Century Gothic" VerticalAlignment="Center">Valid until:</Label>
-            <DatePicker x:Name="tb_valid_until" Grid.Row="3" Grid.Column="3" Width="155" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></DatePicker>
+            <DatePicker x:Name="tb_valid_until" Grid.Row="3" Grid.Column="3" Width="155" FontSize="20" Height="35" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Margin="130,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text="" ToolTip="End date of the timetable validity"></DatePicker>
 
             <Viewbox Height="40" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" Margin="0,0,0,0"   HorizontalAlignment="Center">
                 <RadioButton x:Name="rb_weekday" Grid.Column="1" Content="Weekday" Margin="0,0,0,5"  GroupName="class" Style="{StaticResource MaterialDesignAccentRadioButton}" ></RadioButton>

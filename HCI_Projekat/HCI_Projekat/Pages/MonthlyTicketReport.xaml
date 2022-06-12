@@ -34,7 +34,7 @@
                 <DataGridTextColumn Header="Wagon" Width="1.2*" Binding="{Binding wagon}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Seat" Width="*" Binding="{Binding seat}"></DataGridTextColumn>
                 <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
-                <DataGridTextColumn Header="Purchasement date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
+                <DataGridTextColumn Header="Purchase date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 

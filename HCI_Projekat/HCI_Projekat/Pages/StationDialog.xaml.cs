@@ -62,12 +62,12 @@ namespace HCI_Projekat.Pages
             bool t2 = int.TryParse(time_after.Text, out res2);
             if((!t1 && time_before.IsEnabled) || (!t2 && time_after.IsEnabled ))
             {
-                MessageBox.Show("Time must be number.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Time must be a number.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if(name == "")
             {
-                MessageBox.Show("Must enter name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if (this.trainLine.stations.Select(x => x.name).ToArray().Contains(name))

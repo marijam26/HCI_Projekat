@@ -60,7 +60,7 @@
                 <DatePicker Margin="0,0,0,0" Grid.Row="0" HorizontalAlignment="Left" Grid.Column="6" Width="115" x:Name="startDatePick" VerticalAlignment="Center"  FontSize="16"/>
 
                 <Label Grid.Row="0" Grid.Column="7"  HorizontalAlignment="Right" FontSize="15" VerticalAlignment="Center"  Margin="0,0,0,0">Time:</Label>
-                <materialDesign:TimePicker x:Name="tb_time" Grid.Row="0" Grid.Column="8" Width="105" FontSize="20" Height="35" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
+                <materialDesign:TimePicker x:Name="tb_time" Grid.Row="0" Grid.Column="8" Width="105" FontSize="15" Height="25" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
 
 
                 <Button x:Name="btn_search" Grid.Row="0"  VerticalAlignment="Center" Grid.Column="9" HorizontalAlignment="Left" Background="DarkCyan" BorderThickness="0" Margin="0,0,0,0"   Width="100" Height="30" FontSize="15"  Content="Search" Click="btn_search_Click">
@@ -83,7 +83,7 @@
                     <DataGridTextColumn Header="Wagon" Width="1.2*" Binding="{Binding wagon}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Seat" Width="*" Binding="{Binding seat}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
-                    <DataGridTextColumn Header="Purchasement date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
+                    <DataGridTextColumn Header="Purchase date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
 
                 </DataGrid.Columns>
             </DataGrid>
