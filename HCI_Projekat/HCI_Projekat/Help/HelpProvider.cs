@@ -30,5 +30,17 @@ namespace HCI_Projekat.help
             HelpViewer hh = new HelpViewer(key, originator);
             hh.Show();
         }
+
+        public static void ShowHelp(string key, ManagerHomepage originator)
+        {
+            HelpViewer hh = new HelpViewer(key, originator);
+            hh.Show();
+        }
+
+        public static void ShowHelp(string key, ClientHomepage originator)
+        {
+            HelpViewer hh = new HelpViewer(key, originator);
+            hh.Show();
+        }
     }
 }

@@ -230,7 +230,7 @@ namespace HCI_Projekat.Pages
             if (focusedControl is DependencyObject)
             {
                 //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp("timetableView", (MainWindow)Window.GetWindow(this));
+                HelpProvider.ShowHelp("timetableView", (ManagerHomepage)Window.GetWindow(this));
             }
         }
     }

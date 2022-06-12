@@ -12,9 +12,24 @@ namespace HCI_Projekat.help
     public class JavaScriptControlHelper
     {
         MainWindow prozor;
+
+        ManagerHomepage mh;
+
+        ClientHomepage ch;
+
         public JavaScriptControlHelper(MainWindow w)
         {
             prozor = w;
+        }
+
+        public JavaScriptControlHelper(ManagerHomepage w)
+        {
+            mh = w;
+        }
+
+        public JavaScriptControlHelper(ClientHomepage w)
+        {
+            ch = w;
         }
 
         public void RunFromJavascript(string param)
