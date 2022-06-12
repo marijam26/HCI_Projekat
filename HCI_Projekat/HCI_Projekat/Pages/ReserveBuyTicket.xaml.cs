@@ -41,8 +41,10 @@ namespace HCI_Projekat.Pages
         {
             List<string> stations = new List<string>();
             foreach (TrainLine line in dataBase.trainLines) {
-                foreach (Station place in line.stations) {
-                    if (!stations.Contains(place.name) || !stations.Contains(place.name.ToLower()))
+                foreach (Station place in line.stations)
+                {
+                    var elements = stations.Where(x => x.ToLower() == place.name.ToLower());
+                    if (elements.Count() ==0)
                     {
                         stations.Add(place.name);
                     }
@@ -120,7 +122,11 @@ namespace HCI_Projekat.Pages
                 return;
             }
             DateTime startDate = (DateTime)date;
-            
+            if (startDate < DateTime.Now) {
+                MessageBox.Show("Departure date mustn't be in the past.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+
+            }
             if (start == "") { 
                 MessageBox.Show("Must enter date of start place.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;

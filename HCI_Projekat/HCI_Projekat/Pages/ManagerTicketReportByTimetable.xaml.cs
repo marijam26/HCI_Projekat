@@ -60,7 +60,8 @@ namespace HCI_Projekat.Pages
             {
                 foreach (Station place in line.stations)
                 {
-                    if (!stations.Contains(place.name) || !stations.Contains(place.name.ToLower()))
+                    var elements = stations.Where(x => x.ToLower() == place.name.ToLower());
+                    if (elements.Count() == 0)
                     {
                         stations.Add(place.name);
                     }

@@ -82,9 +82,14 @@ namespace HCI_Projekat
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
-            window.Show();
-            Close();
+            var Result = MessageBox.Show("Are you sure?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (Result == MessageBoxResult.Yes)
+            {
+
+                MainWindow window = new MainWindow();
+                window.Show();
+                Close();
+            }
 
         }
 
