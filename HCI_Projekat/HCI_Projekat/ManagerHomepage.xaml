@@ -12,37 +12,47 @@
             <RowDefinition></RowDefinition>
             <RowDefinition Height="0.1*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
 
-        <DockPanel Grid.Row="0" Grid.ColumnSpan="4">
+        <DockPanel Grid.Row="0" >
+            
             <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top" FontFamily="Century Gothic">
-                <MenuItem Header="Train" Height="41" >
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Train" Click="MenuItem_Click_train"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Train line" IsCheckable="True" Click="MenuItem_Click_train_line"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="Timetable" Click="MenuItem_Click_timetable" ></MenuItem>
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
+                <MenuItem Header="Train" Grid.Column="0" Height="41"  >
+                    <MenuItem  x:Name="TrainView" Background="#FFF3E09A" Foreground="White" Click="TrainView_Click">
+                        <MenuItem.Header>
+                            <TextBlock Text="View      " HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                        </MenuItem.Header>
+                    </MenuItem>
+                    <MenuItem  HorizontalAlignment="Left" x:Name="TrainAdd" Background="#FFF3E09A" Foreground="White" Header="Add      " IsCheckable="True" Click="TrainAdd_Click"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
                 </MenuItem>
-                <MenuItem Name="train_line" Header="Train line" Height="41" Click="MenuItem_Click_train_line" FontFamily="Century Gothic"></MenuItem>
-                <MenuItem Name="timetable" Header="Timetable" Height="41" Click="MenuItem_Click_timetable" FontFamily="Century Gothic"></MenuItem>
+                <MenuItem Name="train_line" Grid.Column="1" Header="Train line" Height="41"  FontFamily="Century Gothic">
+                    <MenuItem x:Name="TrainLineView" Background="#FFF3E09A" Foreground="White" Header="View      " Click="MenuItem_Click_train_line"></MenuItem>
+                    <MenuItem x:Name="TrainLineAdd" Background="#FFF3E09A" Foreground="White" Header="Add      " IsCheckable="True" Click="TrainLineAdd_Click"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
+                </MenuItem>
+                <MenuItem Name="timetable" Grid.Column="2" Header="Timetable" Height="41"  FontFamily="Century Gothic">
+                    <MenuItem x:Name="TimetableView" Background="#FFF3E09A" Foreground="White" Header="View      " Click="MenuItem_Click_timetable"></MenuItem>
+                    <MenuItem x:Name="TimetableAdd" Background="#FFF3E09A" Foreground="White" Header="Add      " IsCheckable="True" Click="TimetableAdd_Click"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
+                </MenuItem>
 
-                <MenuItem Name="mi_railmap"  Header="Railway map" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic"></MenuItem>
-
-                <MenuItem Header="Report" Height="41" >
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="By month" Click="MenuItem_Click_month_report"></MenuItem>
-                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="By timetable" IsCheckable="True" Click="MenuItem_Click_timetable_report"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
-                </MenuItem>
-                
-                <MenuItem Header="Logout" Click="MenuItem_Click_1" Height="41" >
+                <MenuItem Name="mi_railmap" Grid.Column="3"  Header="Railway map" Height="41"  FontFamily="Century Gothic">
+                    <MenuItem x:Name="ViewMap" Background="#FFF3E09A" Foreground="White" Header="View      " IsCheckable="True" Click="mi_railmap_Click"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
                 </MenuItem>
 
-                <MenuItem Header="Help" HorizontalAlignment="Right"  Height="41" FontFamily="Century Gothic">
-                    <MenuItem Header="nesto" Click="MenuItem_Click" ></MenuItem>
+                <MenuItem Header="Sold ticket report" Grid.Column="4" Height="41" >
+                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="By month   " Click="MenuItem_Click_month_report"></MenuItem>
+                    <MenuItem Background="#FFF3E09A" Foreground="White" Header="By timetable   " IsCheckable="True" Click="MenuItem_Click_timetable_report"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
                 </MenuItem>
-                    
+
+                <MenuItem Header="Logout" Grid.Column="5" Click="MenuItem_Click_1" Height="41" >
+                </MenuItem>
+
+
+                <MenuItem x:Name="help" Header="Help" Grid.Column="6" HorizontalAlignment="Right" Height="41" FontFamily="Century Gothic"/>
+
             </Menu>
             
         </DockPanel>

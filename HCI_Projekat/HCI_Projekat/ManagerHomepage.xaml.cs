@@ -87,5 +87,29 @@ namespace HCI_Projekat
             Close();
 
         }
+
+        private void TrainView_Click(object sender, RoutedEventArgs e)
+        {
+            TrainCRUD r = new TrainCRUD(dataBase);
+            this.managerHomepage.Navigate(r);
+        }
+
+        private void TrainAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddTrain r = new AddTrain(dataBase);
+            this.managerHomepage.Navigate(r);
+        }
+
+        private void TrainLineAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddTrainLine r = new AddTrainLine(dataBase,null);
+            this.managerHomepage.Navigate(r);
+        }
+
+        private void TimetableAdd_Click(object sender, RoutedEventArgs e)
+        {
+            AddTimetable r = new AddTimetable(dataBase);
+            this.managerHomepage.Navigate(r);
+        }
     }
 }

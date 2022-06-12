@@ -20,20 +20,26 @@
         </Grid.ColumnDefinitions>
         <DockPanel  Grid.ColumnSpan="4">
             <Menu Height="40" Foreground="White" BorderThickness="1" Background="DarkGoldenrod" DockPanel.Dock ="Top" FontFamily="Century Gothic">
+                <Menu.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <DockPanel HorizontalAlignment="Stretch"/>
+                    </ItemsPanelTemplate>
+                </Menu.ItemsPanel>
                 <MenuItem Header="Tickets" Height="41" >
                     <MenuItem Background="#FFF3E09A" Foreground="White" Header="Reserve/Buy ticket" Click="MenuItem_Click_reserve_buy"></MenuItem>
                     <MenuItem Background="#FFF3E09A" Foreground="White" Header="My tickets" IsCheckable="True" Click="MenuItem_Click_ticket_view"  IsChecked="{Binding Path=MenuEnabled}"></MenuItem>
                     <MenuItem Background="#FFF3E09A" Foreground="White" Header="My reservations" Click="MenuItem_Click_reservation_view" ></MenuItem>
                     <Separator></Separator>
                 </MenuItem>
-                <MenuItem Name="mi_railmap" Header="Railway map" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic">
+                <MenuItem Name="mi_railmap" Header="Railway map" Height="41"  FontFamily="Century Gothic">
+                    <MenuItem Name="mi_railmapsub" Header="View" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic"/>
                 </MenuItem>
                 
                 <MenuItem Name="logout" Header="Logout" Height="41" Click="logout_Click" FontFamily="Century Gothic">
                 </MenuItem>
                 
                 
-                <MenuItem Header="Help" Height="41" FontFamily="Century Gothic">
+                <MenuItem Header="Help" Height="41" FontFamily="Century Gothic" HorizontalAlignment="Right">
                     <MenuItem Header="nesto" Click="MenuItem_Click_report_timetable" ></MenuItem>
                 </MenuItem>
 
