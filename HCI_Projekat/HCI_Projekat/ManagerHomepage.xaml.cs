@@ -82,7 +82,7 @@ namespace HCI_Projekat
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
-            var Result = MessageBox.Show("Are you sure?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Are you sure you want to log out?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
 

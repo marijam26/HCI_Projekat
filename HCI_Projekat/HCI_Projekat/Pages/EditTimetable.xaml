@@ -9,9 +9,11 @@
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="EditTimetable">
 
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Page.CommandBindings>
 
-
-	<Page.Resources>
+    <Page.Resources>
 		<Style TargetType="Border" x:Key="radius">
 			<Setter Property="CornerRadius" Value="5"></Setter>
 		</Style>

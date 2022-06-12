@@ -39,7 +39,7 @@ namespace HCI_Projekat.Pages
             this.dataBase = database;
             DataContext = this;
 
-            this.controlList = new List<Control>() { fromPlace, toPlace, rb_weekday, rb_weekend, btn_search, timetable_table, btn_edit, btn_delete, btn_add };
+            this.controlList = new List<Control>() { fromPlace, toPlace, rb_weekday, rb_weekend, btn_search, timetable_table, btn_edit, btn_delete, btn_add, btn_tutorial };
 
             this.timetableList = new List<TimetableDTO>();
             this.allTimetables = new List<TimetableDTO>();
@@ -85,7 +85,7 @@ namespace HCI_Projekat.Pages
 
         private void fromPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(fromPlace.SelectedItem.ToString() == "beograd")
+            if(fromPlace.SelectedItem.ToString() == "novi sad")
             {
                 fromPlace.IsEnabled = false;
                 toPlace.IsEnabled = true;
@@ -96,7 +96,7 @@ namespace HCI_Projekat.Pages
 
         private void toPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (toPlace.SelectedItem.ToString() == "novi sad")
+            if (toPlace.SelectedItem.ToString() == "beograd")
             {
                 toPlace.IsEnabled = false;
                 rb_weekend.IsEnabled = true;
@@ -136,8 +136,8 @@ namespace HCI_Projekat.Pages
         {
             var navigator = FeatureTour.GetNavigator();
 
-            navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "beograd");
-            navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "novi sad");
+            navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "novi sad");
+            navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "beograd");
 
 
             navigator.OnStepEntered(ElementID.ComboBoxFrom).Execute(s => fromPlace.Focus());

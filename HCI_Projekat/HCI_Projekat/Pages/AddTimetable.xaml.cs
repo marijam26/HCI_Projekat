@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -121,8 +122,9 @@ namespace HCI_Projekat.Pages
 
             MessageBox.Show("Successfully added a new departure time!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
             TimetableCRUD tc = new TimetableCRUD(this.dataBase);
-            MainWindow window = (MainWindow)Window.GetWindow(this);
-            window.Content = tc;
+
+            ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
+            window.managerHomepage.Navigate(tc);
 
         }
 
@@ -180,7 +182,23 @@ namespace HCI_Projekat.Pages
                 return false;
             }
 
+            if(validSince < DateTime.Now || validUntil < DateTime.Now)
+            {
+                MessageBox.Show("You must choose a validity period in the future.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return false;
+            }
+
             return true;
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("timetableAdd", (ManagerHomepage)Window.GetWindow(this));
+            }
         }
     }
 }

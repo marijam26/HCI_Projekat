@@ -18,8 +18,8 @@ namespace HCI_Projekat.touring
                 ShowNextButtonDefault = false,
                 Steps = new[]
                 {
-                    new Step(ElementID.ComboBoxFrom, "Choose start station", "Choose \"Beograd\". "),
-                    new Step(ElementID.ComboBoxTo, "Choose end station", "Choose \"Novi Sad\". "),
+                    new Step(ElementID.ComboBoxFrom, "Choose start station", "Choose \"Novi Sad\". "),
+                    new Step(ElementID.ComboBoxTo, "Choose end station", "Choose \"Beograd\". "),
                     new Step(ElementID.RadioWeekend, "Choose departure day", "Choose \"Weekend\". "),
                     new Step(ElementID.ButtonSearch, "Search", "Press the button to search in the timetable."),
                 }

@@ -155,12 +155,8 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_tutorial" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Margin="0, 0, 20, 0" Background="DarkCyan" BorderThickness="0"  Content="Tutorial" Click="btn_tutorial_Click" >
-            <Button.Resources>
-                <Style TargetType="Border">
-                    <Setter Property="CornerRadius" Value="5"></Setter>
-                </Style>
-            </Button.Resources>
+        <Button x:Name="btn_tutorial" Grid.Row="2" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" Margin="0, 0, 20, 0" BorderThickness="0"  Content="Tutorial" Click="btn_tutorial_Click" Style="{StaticResource MaterialDesignFlatLightButton}" Foreground="DarkCyan">
+           
         </Button>
 
     </Grid>
