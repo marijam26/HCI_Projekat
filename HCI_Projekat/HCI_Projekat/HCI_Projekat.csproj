@@ -132,11 +132,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Help\HelpProvider.cs" />
-    <Compile Include="Help\HelpViewer.xaml.cs">
-      <DependentUpon>HelpViewer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Help\JavaScriptControlHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -384,6 +379,20 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Help\chooseSeat.htm" />
+    <Content Include="Help\MonthlyReport.htm" />
+    <Content Include="Help\stationsView.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\trainLineEdit.htm" />
+    <Content Include="Help\trainLineAdd.htm" />
+    <Content Include="Help\trainLineView.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\trainAdd.htm" />
+    <Content Include="Help\trainEdit.htm" />
+    <Content Include="Help\trainView.htm" />
+    <Content Include="Help\wagonView.htm" />
     <Resource Include="Images\help\timetable1.png" />
     <Resource Include="Images\help\timetable2.png" />
     <Resource Include="Images\help\timetable3.png" />
@@ -395,6 +404,8 @@
     <Content Include="Help\index.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Help\report2.htm" />
+    <Content Include="Help\reserveBuy.htm" />
     <Content Include="Help\timetableAdd.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

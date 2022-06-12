@@ -9,10 +9,6 @@
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="Sold tickets report by timetable">
 
-    <Page.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
-    </Page.CommandBindings>
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -51,7 +47,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Label Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,0,0" FontSize="15" Width="Auto" FontFamily="Century Gothic" VerticalAlignment="Center"  Grid.Column="1">From:</Label>
-                <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Height="25" Width="115" FontSize="15" ></ComboBox>
+                <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Height="25" Width="115" FontSize="13" ></ComboBox>
 
                 <Label Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15" Grid.Column="3" Margin="0,0,0,0">To:</Label>
                 <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" Margin="0,0,0,0" Height="25" Width="115" FontSize="15" ></ComboBox>
@@ -63,7 +59,8 @@
                 <materialDesign:TimePicker x:Name="tb_time" Grid.Row="0" Grid.Column="8" Width="105" FontSize="15" Height="25" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
 
 
-                <Button x:Name="btn_search" Grid.Row="0"  VerticalAlignment="Center" Grid.Column="9" HorizontalAlignment="Left" Background="DarkCyan" BorderThickness="0" Margin="0,0,0,0"   Width="100" Height="30" FontSize="15"  Content="Search" Click="btn_search_Click">
+
+                <Button x:Name="btn_search" Grid.Row="0"  VerticalAlignment="Center" Grid.Column="9" HorizontalAlignment="Left" Background="DarkCyan" Margin="0,0,0,0" Width="100" Height="30" FontSize="15"  Content="Search" Click="btn_search_Click" BorderThickness="0">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"></Setter>
@@ -80,7 +77,7 @@
                     <DataGridTextColumn Header="From" Width="1.5*" Binding="{Binding startStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="To" Width="1.5*" Binding="{Binding endStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Departure time" Width="2.5*" Binding="{Binding startDateTime}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Wagon" Width="1.2*" Binding="{Binding wagon}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Wagon" Width="*" Binding="{Binding wagon}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Seat" Width="*" Binding="{Binding seat}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
                     <DataGridTextColumn Header="Purchase date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
