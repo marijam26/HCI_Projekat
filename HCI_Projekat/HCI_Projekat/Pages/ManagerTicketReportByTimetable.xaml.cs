@@ -60,9 +60,9 @@ namespace HCI_Projekat.Pages
             {
                 foreach (Station place in line.stations)
                 {
-                    if (!stations.Contains(place.name.ToLower()))
+                    if (!stations.Contains(place.name) || !stations.Contains(place.name.ToLower()))
                     {
-                        stations.Add(place.name.ToLower());
+                        stations.Add(place.name);
                     }
                 }
             }

@@ -42,8 +42,9 @@ namespace HCI_Projekat.Pages
             List<string> stations = new List<string>();
             foreach (TrainLine line in dataBase.trainLines) {
                 foreach (Station place in line.stations) {
-                    if (!stations.Contains(place.name.ToLower())) {
-                        stations.Add(place.name.ToLower());
+                    if (!stations.Contains(place.name) || !stations.Contains(place.name.ToLower()))
+                    {
+                        stations.Add(place.name);
                     }
                 }
             }

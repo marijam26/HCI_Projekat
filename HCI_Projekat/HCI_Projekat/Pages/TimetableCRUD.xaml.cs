@@ -215,9 +215,10 @@ namespace HCI_Projekat.Pages
             {
                 foreach (Station s in line.stations)
                 {
-                    if (!stations.Contains(s.name.ToLower()))
+                    String place = s.name;
+                   if (!stations.Contains(place) || !stations.Contains(place.ToLower()))
                     {
-                        stations.Add(s.name.ToLower());
+                        stations.Add(place);
                     }
                 }
             }
