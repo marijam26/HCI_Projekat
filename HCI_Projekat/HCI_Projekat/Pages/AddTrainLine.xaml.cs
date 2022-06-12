@@ -176,17 +176,26 @@ namespace HCI_Projekat.Pages
             var navigator = FeatureTour.GetNavigator();
             if(name == "pin_start")
             {
-                navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
-              
+                if(this.trainLine.stations.Count == 1)
+                {
+                    navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
+
+                }
+
             }
             else if(name == "pin_end")
             {
-                navigator.IfCurrentStepEquals(ElementID.PinEnd).GoNext();
-               
+                if (this.trainLine.stations.Count == 2)
+                {
+                    navigator.IfCurrentStepEquals(ElementID.PinEnd).GoNext();
+
+                }
+
             }
             else
             {
-                navigator.IfCurrentStepEquals(ElementID.Pin).GoNext();
+                if (this.trainLine.stations.Count == 3)
+                    navigator.IfCurrentStepEquals(ElementID.Pin).GoNext();
             }
 
         }
