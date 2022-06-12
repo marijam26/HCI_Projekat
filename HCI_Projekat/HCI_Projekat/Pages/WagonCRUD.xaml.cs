@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
@@ -299,6 +300,15 @@ namespace HCI_Projekat.Pages
             window.managerHomepage.Navigate(r);
         }
 
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("wagonView", (ManagerHomepage)Window.GetWindow(this));
+            }
+        }
 
 
     }

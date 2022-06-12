@@ -32,7 +32,7 @@
                     <Separator></Separator>
                 </MenuItem>
                 <MenuItem Name="mi_railmap" Header="Railway map" Height="41"  FontFamily="Century Gothic">
-                    <MenuItem Name="mi_railmapsub" Header="View" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic"/>
+                    <MenuItem Name="mi_railmapsub"  Background="#FFF3E09A" Foreground="White" Header="View" Height="41" Click="mi_railmap_Click" FontFamily="Century Gothic"/>
                 </MenuItem>
                 
                 <MenuItem Name="logout" Header="Logout" Height="41" Click="logout_Click" FontFamily="Century Gothic">

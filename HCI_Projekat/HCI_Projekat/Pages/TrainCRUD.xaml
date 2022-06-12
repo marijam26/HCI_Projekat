@@ -11,7 +11,10 @@
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="TrainCRUD">
 
-    
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Page.CommandBindings>
+
 
     <Grid>
 

@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -368,6 +369,16 @@ namespace HCI_Projekat.Pages
                 ticketDTO.wagons[1] = previousSelectedWagon;
                 ticketDTO.wagonBtns[1] = previousSelectedWagonBtn;
                 ticketDTO.seatBtns[1] = previousSelectedSeatBtn;
+            }
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
+                HelpProvider.ShowHelp("chooseSeat", (ClientHomepage)Window.GetWindow(this));
             }
         }
     }
