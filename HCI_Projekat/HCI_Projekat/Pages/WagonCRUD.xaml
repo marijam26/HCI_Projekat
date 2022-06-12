@@ -71,8 +71,15 @@
             <Label   Grid.Column="1" Background="Wheat" Grid.Row="2"  FontSize="18"  VerticalAlignment="Top" FontFamily="Century Gothic" HorizontalAlignment="Left" Margin="10,0,0,0" Content="{Binding train.rang}"></Label>
 
         </Grid>
-        
-        <Label Grid.Column="0" Grid.Row="3" FontSize="20" VerticalAlignment="Top"  FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,450,0">Wagons:</Label>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+                <ColumnDefinition Width="12*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" Grid.Row="3" FontSize="20" VerticalAlignment="Top"  FontFamily="Century Gothic" HorizontalAlignment="Right" Margin="0,0,10,0">Wagons:</Label>
+
+        </Grid>
+
 
         <Grid Grid.Row="4"  Grid.Column="0"  >
 
