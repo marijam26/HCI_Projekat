@@ -44,6 +44,7 @@ namespace HCI_Projekat.Pages
             this.placeNum = placeNum;
             this.relation = formRelation();
             DataContext = this;
+            previousSelectedSeat = -1;
             if (placeNum == "first")
             {
                 this.timetable = formTimetableDTO( ticketDTO.timetableDTO.timetables[0]);

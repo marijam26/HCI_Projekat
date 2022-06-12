@@ -39,7 +39,7 @@ namespace HCI_Projekat.Pages
             List<Ticket> deleteTickets = new List<Ticket>();
             foreach (Ticket ticket in tickets)
             {
-                if ((ticket.timetable[0].start - DateTime.Now.Date).TotalDays <= 1) {
+                if ((ticket.date.Date - DateTime.Now.Date).TotalDays <= 1) {
                     deleteTickets.Add(ticket);
                 }
                 else { 

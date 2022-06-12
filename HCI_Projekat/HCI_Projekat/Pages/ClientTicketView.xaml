@@ -35,8 +35,8 @@
             <DataGrid Background="White" x:Name="timetable_table" Grid.Row="1" ItemsSource="{Binding tickets}" IsReadOnly="True" 
                       FontSize="13" Margin="60,0,60,50"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="To" Width="*" Binding="{Binding endStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="From" Width="2*" Binding="{Binding startStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="To" Width="2*" Binding="{Binding endStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Transfer" Width="1.5*" Binding="{Binding transferPlace}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Departure time" Width="2.5*" Binding="{Binding startDateTime}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Wagon" Width="*" Binding="{Binding wagon}"></DataGridTextColumn>

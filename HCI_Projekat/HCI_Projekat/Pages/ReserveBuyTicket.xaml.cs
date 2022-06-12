@@ -235,7 +235,7 @@ namespace HCI_Projekat.Pages
         {
             String stringBuilder = "";
             stringBuilder +="\tFirst train".PadRight(80)+"Second train".PadRight(50)+ "\n\n";
-            stringBuilder += "       Station".PadRight(30)+"Departure time".PadRight(42)+"Station".PadRight(20)+"Departure time".PadRight(30)+"Transfer place".PadRight(20)+"\n\n";
+            stringBuilder += "       Station".PadRight(30)+"Departure time".PadRight(42)+"Station".PadRight(20)+"Departure time".PadRight(30)+"Transfer".PadRight(20)+"\n\n";
             String time = departuresFirstTrain[0].ToString().Split(' ')[1].Substring(0, 5);
             stringBuilder += ("      " + timetable.line.stations[0].name).PadRight(43 - timetable.line.stations[0].name.Length) + time.PadRight(40);
             time = departuresSecondTrain[0].ToString().Split(' ')[1].Substring(0, 5);

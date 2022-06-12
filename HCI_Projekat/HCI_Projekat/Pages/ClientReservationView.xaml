@@ -35,8 +35,8 @@
             <DataGrid Background="White" x:Name="timetable_table" Grid.Row="1" ItemsSource="{Binding tickets}" IsReadOnly="True" 
                       FontSize="13" Margin="60,0,60,10"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="From" Width="*" Binding="{Binding startStation}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="To" Width="*" Binding="{Binding endStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="From" Width="2*" Binding="{Binding startStation}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="To" Width="2*" Binding="{Binding endStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Transfer" Width="1.5*" Binding="{Binding transferPlace}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Departure time" Width="2.5*" Binding="{Binding startDateTime}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Wagon" Width="*" Binding="{Binding wagon}"></DataGridTextColumn>
@@ -47,7 +47,7 @@
                 </DataGrid.Columns>
             </DataGrid>
 
-            <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,180,5"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Cancel" Click="btn_cancel_Click" BorderThickness="0">
+            <Button x:Name="btn_cancel" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,180,5"   Width="83" Height="30" FontSize="13" Background="DarkCyan" Content="Cancel" Click="btn_cancel_Click" BorderThickness="0">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
@@ -55,7 +55,7 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,80,5"   Width="80" Height="30" FontSize="13" Background="DarkCyan" Content="Confirm" Click="btn_confirm_Click" BorderThickness="0">
+            <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,80,0"   Width="83" Height="30" FontSize="13" Background="DarkCyan" Content="Confirm" Click="btn_confirm_Click" BorderThickness="0">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>
