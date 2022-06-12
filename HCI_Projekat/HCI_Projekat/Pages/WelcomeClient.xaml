@@ -9,6 +9,6 @@
       Title="WelcomeClient">
 
     <Grid>
-        <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Century Gothic" FontSize="30" Content="Welcome,client! Enjoy!" ></Label>
+        <Label VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Century Gothic" FontSize="32" Content="Welcome,client! Enjoy!" ></Label>
     </Grid>
 </Page>

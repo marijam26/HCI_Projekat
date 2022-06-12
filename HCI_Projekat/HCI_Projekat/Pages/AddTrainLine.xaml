@@ -71,7 +71,7 @@
 
         </DataGrid>
 
-        <Button x:Name="bt_cancle" Grid.Row="2" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancle" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit adding the train line"></Button>
+        <Button x:Name="bt_cancle" Grid.Row="2" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancel" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit adding the train line" Margin="30,0,0,0"></Button>
         <Button x:Name="bt_save" Grid.Row="2" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.AddTrainLineButtonSave}"
                 featureTouring:TourHelper.Placement="TopRight"

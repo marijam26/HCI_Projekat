@@ -39,8 +39,12 @@ namespace HCI_Projekat.Pages
             List<string> cbItems = new List<string>();
             foreach(TrainLine tl in dataBase.trainLines)
             {
-                string text = tl.from.name + " - " + tl.to.name;
-                cbItems.Add(text);
+                if(tl.from != null)
+                {
+                    string text = tl.from.name + " - " + tl.to.name;
+                    cbItems.Add(text);
+                }
+                
             }
             cb_lines.ItemsSource = cbItems;
         }

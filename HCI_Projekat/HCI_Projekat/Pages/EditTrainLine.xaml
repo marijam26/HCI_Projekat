@@ -63,7 +63,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancel" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit editing the train line."></Button>
+        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancel" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit editing the train line." Margin="30,0,0,0"></Button>
         <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" ToolTip="Save the changes to the train line."/>
 
 

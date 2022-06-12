@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
+      TextElement.FontFamily="Century Gothic"
+      d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="Sold tickets report by timetable">
 
     <Page.CommandBindings>
@@ -49,20 +50,20 @@
                     
                 </Grid.ColumnDefinitions>
 
-                <Label Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,0,0" FontSize="13" Width="Auto" FontFamily="Century Gothic" VerticalAlignment="Center"  Grid.Column="1">From:</Label>
-                <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Height="25" Width="115" FontSize="13" ></ComboBox>
+                <Label Grid.Row="0" HorizontalAlignment="Right" Margin="0,0,0,0" FontSize="15" Width="Auto" FontFamily="Century Gothic" VerticalAlignment="Center"  Grid.Column="1">From:</Label>
+                <ComboBox x:Name="fromPlace" IsEditable="True" Grid.Row="0" Grid.Column="2" HorizontalAlignment="Right" Height="25" Width="115" FontSize="15" ></ComboBox>
 
-                <Label Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="13" Grid.Column="3" Margin="0,0,0,0">To:</Label>
+                <Label Grid.Row="0"  HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="15" Grid.Column="3" Margin="0,0,0,0">To:</Label>
                 <ComboBox x:Name="toPlace" IsEditable="True" Grid.Row="0" Grid.Column="4" HorizontalAlignment="Left" Margin="0,0,0,0" Height="25" Width="115" FontSize="15" ></ComboBox>
 
-                <Label Grid.Row="0" Grid.Column="5"   HorizontalAlignment="Right" FontSize="13" VerticalAlignment="Center"  Margin="0,0,0,0">Date:</Label>
+                <Label Grid.Row="0" Grid.Column="5"   HorizontalAlignment="Right" FontSize="15" VerticalAlignment="Center"  Margin="0,0,0,0">Date:</Label>
                 <DatePicker Margin="0,0,0,0" Grid.Row="0" HorizontalAlignment="Left" Grid.Column="6" Width="115" x:Name="startDatePick" VerticalAlignment="Center"  FontSize="16"/>
 
-                <Label Grid.Row="0" Grid.Column="7"  HorizontalAlignment="Right" FontSize="13" VerticalAlignment="Center"  Margin="0,0,0,0">Time:</Label>
+                <Label Grid.Row="0" Grid.Column="7"  HorizontalAlignment="Right" FontSize="15" VerticalAlignment="Center"  Margin="0,0,0,0">Time:</Label>
                 <materialDesign:TimePicker x:Name="tb_time" Grid.Row="0" Grid.Column="8" Width="105" FontSize="20" Height="35" Margin="0,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Left" Text=""></materialDesign:TimePicker>
 
 
-                <Button x:Name="btn_search" Grid.Row="0"  VerticalAlignment="Center" Grid.Column="9" HorizontalAlignment="Left" Background="DarkCyan" Margin="0,0,0,0"   Width="75" Height="30" FontSize="13"  Content="Search" Click="btn_search_Click">
+                <Button x:Name="btn_search" Grid.Row="0"  VerticalAlignment="Center" Grid.Column="9" HorizontalAlignment="Left" Background="DarkCyan" BorderThickness="0" Margin="0,0,0,0"   Width="100" Height="30" FontSize="15"  Content="Search" Click="btn_search_Click">
                     <Button.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"></Setter>
@@ -72,14 +73,14 @@
             </Grid>
 
             <DataGrid Background="White" x:Name="timetable_table" Grid.Row="1" ItemsSource="{Binding tickets}" IsReadOnly="True" 
-                      FontSize="13" Margin="60,0,60,30"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
+                      FontSize="15" Margin="60,0,60,30"  Height="300" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" IsSynchronizedWithCurrentItem="True" SelectionChanged="timetable_table_SelectionChanged" RowDetailsVisibilityMode="VisibleWhenSelected" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"  >
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Name" Width="*" Binding="{Binding userName}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Surname" Width="1.5*" Binding="{Binding userSurname}"></DataGridTextColumn>
                     <DataGridTextColumn Header="From" Width="1.5*" Binding="{Binding startStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="To" Width="1.5*" Binding="{Binding endStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Departure time" Width="2.5*" Binding="{Binding startDateTime}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Wagon" Width="*" Binding="{Binding wagon}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Wagon" Width="1.2*" Binding="{Binding wagon}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Seat" Width="*" Binding="{Binding seat}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
                     <DataGridTextColumn Header="Purchasement date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>

@@ -31,6 +31,16 @@ namespace HCI_Projekat.Pages
             this.dataBase = dataBase;
             DataContext = this;
             this.tickets = new List<TicketShowDTO>();
+            foreach (User u in this.dataBase.users)
+            {
+                if (u.type == UserType.Client)
+                {
+                    foreach (Ticket t in u.tickets)
+                    {
+                        this.tickets.Add(new TicketShowDTO(t,u));
+                    }
+                }
+            }
             this.months = new List<String> { "January","February","March","April","May","June","July","August","September","October","November","December" };
             cb_months.ItemsSource = this.months;
         }
@@ -47,7 +57,7 @@ namespace HCI_Projekat.Pages
                     {
                         if(t.purchasementDate.Month == this.months.IndexOf(month) + 1)
                         {
-                            this.tickets.Add(new TicketShowDTO(t));
+                            this.tickets.Add(new TicketShowDTO(t,u));
                         }
                     }
                 }
