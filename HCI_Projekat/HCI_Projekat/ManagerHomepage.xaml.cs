@@ -59,7 +59,7 @@ namespace HCI_Projekat
 
         private void mi_railmap_Click(object sender, RoutedEventArgs e)
         {
-            RailwayMap r = new RailwayMap(dataBase);
+            RailwayMap r = new RailwayMap(dataBase,"manager");
             this.managerHomepage.Navigate(r);
         }
 

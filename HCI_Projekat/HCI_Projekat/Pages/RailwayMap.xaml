@@ -16,7 +16,6 @@
             <RowDefinition Height="0.3*"></RowDefinition>
             <RowDefinition Height="1.7*"></RowDefinition>
             <RowDefinition Height="0.3*"></RowDefinition>
-            <RowDefinition Height="0.3*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -25,7 +24,7 @@
         </Grid.ColumnDefinitions>
         
         
-        <m:Map Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="4" x:Name="myMap" CredentialsProvider="AcBtthiHq9NeAFlz5zoV~8h70_veH38L5WONtSEaQow~AmAcErGNAXLmB0Ru2U1F6DWg0yWaY3F2bS99-tkN42zDFUc2KlyBZNE4sNGwycmu" Mode="Road" ZoomLevel="7.2" Center="44.459663851961594, 20.804401343598798" Margin="20,70,20,30">
+        <m:Map Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="4" x:Name="myMap" CredentialsProvider="AcBtthiHq9NeAFlz5zoV~8h70_veH38L5WONtSEaQow~AmAcErGNAXLmB0Ru2U1F6DWg0yWaY3F2bS99-tkN42zDFUc2KlyBZNE4sNGwycmu" Mode="Road" ZoomLevel="7.2" Center="44.459663851961594, 20.804401343598798" Margin="20,50,20,20">
         </m:Map>
 
         <Label Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Content="Choose train line:" FontSize="20" VerticalAlignment="Bottom" Margin="80,0,100,0"></Label>
@@ -46,6 +45,7 @@
         </DataGrid>
 
         <Button x:Name="bt_back" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="20" Content="Back" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Right" Margin="0,0,50,0" Click="bt_back_Click"/>
+        <Button x:Name="bt_clear" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="20" Content="Clear" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Right" Margin="0,0,220,0" Click="bt_clear_Click"/>
 
 
     </Grid>

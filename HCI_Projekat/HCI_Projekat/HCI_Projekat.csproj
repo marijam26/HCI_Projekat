@@ -82,28 +82,44 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ClientHomepage.xaml.cs">
+      <DependentUpon>ClientHomepage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Help\HelpProvider.cs" />
     <Compile Include="Help\HelpViewer.xaml.cs">
       <DependentUpon>HelpViewer.xaml</DependentUpon>
     </Compile>
     <Compile Include="Help\JavaScriptControlHelper.cs" />
+    <Compile Include="ManagerHomepage.xaml.cs">
+      <DependentUpon>ManagerHomepage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ClientReservationView.xaml.cs">
       <DependentUpon>ClientReservationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ClientTicketView.xaml.cs">
       <DependentUpon>ClientTicketView.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Pages\MonthlyTicketReport.xaml.cs">
-		<DependentUpon>MonthlyTicketReport.xaml</DependentUpon>
-	</Compile>
+    <Compile Include="Pages\MonthlyTicketReport.xaml.cs">
+      <DependentUpon>MonthlyTicketReport.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ManagerTicketReportByTimetable.xaml.cs">
       <DependentUpon>ManagerTicketReportByTimetable.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RailwayMap.xaml.cs">
       <DependentUpon>RailwayMap.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\WelcomeClient.xaml.cs">
+      <DependentUpon>WelcomeClient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WelcomeManager.xaml.cs">
+      <DependentUpon>WelcomeManager.xaml</DependentUpon>
+    </Compile>
     <Compile Include="touring\ElementID.cs" />
     <Compile Include="touring\TourStarter.cs" />
+    <Page Include="ClientHomepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Help\HelpViewer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -125,6 +141,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="ManagerHomepage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\AddTimetable.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,35 +177,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Pages\ClientHomepage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ClientReservationView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ClientTicketView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\EditTimetable.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\EditTrain.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EditTrainLine.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Pages\Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\ManagerHomepage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -205,10 +201,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RailwayMap.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Pages\Registration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -216,10 +208,6 @@
     <Page Include="Pages\ReserveBuyConfirmDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\ReserveBuyConfirmDialog.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\ReserveBuyTicket.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -249,6 +237,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\WelcomeClient.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Pages\WelcomeManager.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\Address.cs" />
@@ -277,23 +273,11 @@
     <Compile Include="Pages\ChooseSeat.xaml.cs">
       <DependentUpon>ChooseSeat.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ClientHomepage.xaml.cs">
-      <DependentUpon>ClientHomepage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\EditTimetable.xaml.cs">
-      <DependentUpon>EditTimetable.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\EditTrain.xaml.cs">
       <DependentUpon>EditTrain.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EditTrainLine.xaml.cs">
-      <DependentUpon>EditTrainLine.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ManagerHomepage.xaml.cs">
-      <DependentUpon>ManagerHomepage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\ManagerNavbar.xaml.cs">
       <DependentUpon>ManagerNavbar.xaml</DependentUpon>
@@ -400,11 +384,26 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Help\error.htm" />
-    <Content Include="Help\index.htm" />
-    <Content Include="Help\timetableAdd.htm" />
-    <Content Include="Help\timetableEdit.htm" />
-    <Content Include="Help\timetableView.htm" />
+    <Resource Include="Images\help\timetable1.png" />
+    <Resource Include="Images\help\timetable2.png" />
+    <Resource Include="Images\help\timetable3.png" />
+    <Resource Include="Images\help\timetable4.png" />
+    <Resource Include="Images\help\timetable5.png" />
+    <Content Include="Help\error.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\index.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\timetableAdd.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\timetableEdit.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\timetableView.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.5.0\build\MaterialDesignThemes.targets')" />

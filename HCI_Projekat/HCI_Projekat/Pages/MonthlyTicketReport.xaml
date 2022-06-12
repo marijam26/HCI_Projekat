@@ -20,7 +20,7 @@
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <ComboBox x:Name="cb_months" Grid.Row="1" Grid.Column="1" Height="30" FontSize="18" Margin="20,0,730,0" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" SelectionChanged="cb_months_SelectionChanged" ></ComboBox>
+        <ComboBox x:Name="cb_months" Grid.Row="1" Grid.Column="1" Height="30" FontSize="18" Width="200" Margin="20,0,0,0" HorizontalAlignment="Left" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" SelectionChanged="cb_months_SelectionChanged" ></ComboBox>
         <Label Content="Month:" FontSize="20" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Right"></Label>
 
         <DataGrid x:Name="dg_tickets" Background="White" Grid.Row="2" Grid.ColumnSpan="2" ItemsSource="{Binding tickets}" IsReadOnly="True" HorizontalContentAlignment="Center"
