@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
+        xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
+        xmlns:app="clr-namespace:HCI_Projekat.touring"
         TextElement.FontFamily="Century Gothic"
         Title="StationDialog" Height="280" Width="350">
     <materialDesign:Card Padding="20" FontFamily="Century Gothic" >
@@ -15,10 +17,18 @@
             <RowDefinition Height="0.7*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-            <TextBox x:Name="station_name" Grid.Row="0" materialDesign:HintAssist.Hint="Name" FontSize="23" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" />
-        <TextBox x:Name="time_before" Grid.Row="1" materialDesign:HintAssist.Hint="Time before (min)" FontSize="23" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" />
-        <TextBox x:Name="time_after" Grid.Row="2" materialDesign:HintAssist.Hint="Time after (min)" FontSize="23"  materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" ></TextBox>
-        <Button x:Name="btn_save" Grid.Row="3" Content="Save" Background="DarkCyan" Width="90" HorizontalAlignment="Right" FontSize="18" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Click="btn_save_Click" BorderThickness="0"></Button>
+            <TextBox x:Name="station_name" Grid.Row="0" materialDesign:HintAssist.Hint="Name" FontSize="23" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" 
+                     featureTouring:TourHelper.Placement="BottomLeft"
+                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.StationName}"/>
+        <TextBox x:Name="time_before" Grid.Row="1" materialDesign:HintAssist.Hint="Time before (min)" FontSize="23" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" 
+                  featureTouring:TourHelper.Placement="BottomLeft"
+                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TimeBefore}"/>
+        <TextBox x:Name="time_after" Grid.Row="2" materialDesign:HintAssist.Hint="Time after (min)" FontSize="23"  materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" 
+                  featureTouring:TourHelper.Placement="BottomLeft"
+                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TimeAfter}"></TextBox>
+        <Button x:Name="btn_save" Grid.Row="3" Content="Save" Background="DarkCyan" Width="90" HorizontalAlignment="Right" FontSize="18" materialDesign:TextFieldAssist.UnderlineBrush="DarkCyan" Click="btn_save_Click" BorderThickness="0"
+                 featureTouring:TourHelper.Placement="BottomLeft"
+                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.StationSave}"></Button>
     </Grid>
     </materialDesign:Card>
     

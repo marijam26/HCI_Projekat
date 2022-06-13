@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -139,8 +141,13 @@ namespace HCI_Projekat.Pages
             
             if (parentPage == "add")
             {
+                if (tour)
+                {
+                    
+                }
                 AddTrainLine addTrainLine = new AddTrainLine(this.dataBase,this.trainLine, tour);
                 window.managerHomepage.Navigate(addTrainLine);
+                addTrainLine.ContinueTour();
             }
             else
             {
@@ -191,6 +198,78 @@ namespace HCI_Projekat.Pages
                 this.trainLine.time.Insert(0, res1);
             }
 
+        }
+
+        public void ContinueTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
+            navigator.IfCurrentStepEquals(ElementID.PinEnd).GoNext();
+            navigator.IfCurrentStepEquals(ElementID.Pin).GoNext();
+
+            navigator.OnStepEntered(ElementID.StationName).Execute(s => station_name.Focus());
+            if (trainLine.stations.Count == 1)
+            {
+                time_before.IsEnabled = false;
+            }
+            if (trainLine.stations.Count == 2)
+            {
+                time_before.IsEnabled = false;
+                time_after.IsEnabled = false;
+            }
+            station_name.SelectionChanged += Station_name_SelectionChanged;
+            time_before.TextChanged += Time_before_TextChanged;
+            time_after.TextChanged += Time_after_TextChanged;
+            btn_save.IsEnabled = false;
+        }
+
+        private void Time_after_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(time_after.Text.ToString() == "40")
+            {
+                time_after.IsEnabled = false;
+                btn_save.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.TimeAfter).GoNext();
+            }
+        }
+
+        private void Time_before_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if(time_before.Text.ToString() == "20")
+            {
+                time_before.IsEnabled = false;
+                if (trainLine.stations.Count == 2)
+                {
+                    time_after.IsEnabled = true;
+                }
+                else
+                {
+                    btn_save.IsEnabled = true;
+                }
+
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.TimeBefore).GoNext();
+            }
+        }
+
+        private void Station_name_SelectionChanged(object sender, RoutedEventArgs e)
+        {
+            if ((station_name.Text.ToString() == "Novi Sad" && trainLine.stations.Count == 0) || (station_name.Text.ToString() == "Loznica" && trainLine.stations.Count == 1) || (station_name.Text.ToString() == "Sabac" && trainLine.stations.Count == 2))
+            {
+                station_name.IsEnabled = false;
+                var navigator = FeatureTour.GetNavigator();
+                if (trainLine.stations.Count == 1 || trainLine.stations.Count == 2)
+                {
+                    time_before.IsEnabled = true;
+                }
+                if (trainLine.stations.Count == 0)
+                {
+                    btn_save.IsEnabled = true;
+                }
+                navigator.IfCurrentStepEquals(ElementID.StationName).GoNext();
+
+            }
         }
     }
 }

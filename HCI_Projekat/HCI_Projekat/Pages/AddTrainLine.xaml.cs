@@ -174,15 +174,32 @@ namespace HCI_Projekat.Pages
 
             StationDialog d = new StationDialog(this.dataBase, this.trainLine, pinLocation, name,"add", tour);
             d.WindowStartupLocation = WindowStartupLocation.CenterScreen;
-            d.ShowDialog();
 
-            
             var navigator = FeatureTour.GetNavigator();
-            if(name == "pin_start")
+
+            if (!tour)
+            {
+                d.ShowDialog();
+            }
+            else
+            {
+                if (name == "pin_start")
+                {
+                    //navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
+                }
+                d.Owner = (ManagerHomepage)Window.GetWindow(this);
+                d.Show();
+                d.BringIntoView();
+                d.ContinueTour();
+            }
+
+
+          //  var navigator = FeatureTour.GetNavigator();
+            if (name == "pin_start")
             {
                 if(this.trainLine.stations.Count == 1)
                 {
-                    navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
+                    navigator.IfCurrentStepEquals(ElementID.StationSave).GoNext();
 
                 }
 
@@ -191,7 +208,7 @@ namespace HCI_Projekat.Pages
             {
                 if (this.trainLine.stations.Count == 2)
                 {
-                    navigator.IfCurrentStepEquals(ElementID.PinEnd).GoNext();
+                    navigator.IfCurrentStepEquals(ElementID.StationSave).GoNext();
 
                 }
 
@@ -199,9 +216,19 @@ namespace HCI_Projekat.Pages
             else
             {
                 if (this.trainLine.stations.Count == 3)
-                    navigator.IfCurrentStepEquals(ElementID.Pin).GoNext();
+                    navigator.IfCurrentStepEquals(ElementID.StationSave).GoNext();
             }
 
+        }
+
+        public void ContinueTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+            if(trainLine.stations.Count == 3)
+            {
+                bt_save.IsEnabled = true;
+            }
+            navigator.IfCurrentStepEquals(ElementID.StationSave).GoNext();
         }
 
 
