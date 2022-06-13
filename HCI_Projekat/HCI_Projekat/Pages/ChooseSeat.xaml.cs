@@ -307,7 +307,11 @@ namespace HCI_Projekat.Pages
                 return;
             }
             currentlySaveSeat();
-            int id = this.loggedUser.tickets.Max(x => x.id);
+            int id = 1;
+            if (this.loggedUser.tickets.Count != 0)
+            {
+                id = this.loggedUser.tickets.Max(x => x.id);
+            }
             Ticket ticket = new Ticket(id,ticketDTO.timetableDTO.timetables,ticketDTO.dateReserved,ticketDTO.wagons,ticketDTO.seats,ticketDTO.transferPlace,DateTime.Now);
             TicketShowDTO ticketShowDTO = new TicketShowDTO( ticketDTO,loggedUser,false);
             int oldTicketsNum = loggedUser.tickets.Count;
@@ -381,7 +385,12 @@ namespace HCI_Projekat.Pages
             }
 
             currentlySaveSeat();
-            int id = this.loggedUser.tickets.Max(x => x.id);
+            int id = 1;
+            if(this.loggedUser.tickets.Count != 0)
+            {
+                id = this.loggedUser.tickets.Max(x => x.id);
+            }
+            
             Ticket ticket = new Ticket(id,ticketDTO.timetableDTO.timetables, ticketDTO.dateReserved, ticketDTO.wagons, ticketDTO.seats,ticketDTO.transferPlace,DateTime.Now);
             TicketShowDTO ticketShowDTO = new TicketShowDTO(ticketDTO, loggedUser, true);
             if ((date - DateTime.Now).TotalDays >= 5) {

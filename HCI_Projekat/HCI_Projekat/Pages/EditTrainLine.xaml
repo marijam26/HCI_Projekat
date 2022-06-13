@@ -5,10 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
       xmlns:local="clr-namespace:HCI_Projekat.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:l="clr-namespace:HCI_Projekat.help"
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat" 
-      Title="trainLineEdit">
+      Title="trainLineEdit" l:HelpProvider.HelpKey="trainLineEdit">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.8*"></RowDefinition>
@@ -50,7 +52,7 @@
             
         </materialDesign:Card>
 
-        <DataGrid Grid.Row="1" Grid.Column="2" Background="White" Margin="70,0,70,20" Grid.ColumnSpan="2" ItemsSource="{Binding stationsDto}" IsReadOnly="True" ColumnWidth="*" FontSize="18" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" Grid.Column="2" Background="White" Margin="70,0,70,20" Grid.ColumnSpan="2" l:HelpProvider.HelpKey="trainLineEdit" ItemsSource="{Binding stationsDto}" IsReadOnly="True" ColumnWidth="*" FontSize="18" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Station name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
                 <DataGridTemplateColumn x:Name="dtTemp" Header="" Width="SizeToCells" IsReadOnly="True">
@@ -63,7 +65,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancel" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit editing the train line." Margin="30,0,0,0"></Button>
+        <Button x:Name="bt_cancle" Grid.Row="3" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancel" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit editing the train line." Margin="30,0,0,0" ></Button>
         <Button x:Name="bt_save" Grid.Row="3" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" ToolTip="Save the changes to the train line."/>
 
 

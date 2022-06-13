@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
@@ -125,5 +126,7 @@ namespace HCI_Projekat.Pages
             btn_add.IsEnabled = true;
             TourStarter.StartTrainLineTour();
         }
+
+        
     }
 }

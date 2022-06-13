@@ -380,12 +380,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Help\chooseSeat.htm" />
-    <Content Include="Help\MonthlyReport.htm" />
+    <Content Include="Help\MonthlyReport.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\clientReservations.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Help\stationsView.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Help\trainLineEdit.htm" />
-    <Content Include="Help\trainLineAdd.htm" />
+    <Content Include="Help\trainLineEdit.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Help\trainLineAdd.htm">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Help\trainLineView.htm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -393,6 +402,26 @@
     <Content Include="Help\trainEdit.htm" />
     <Content Include="Help\trainView.htm" />
     <Content Include="Help\wagonView.htm" />
+    <Resource Include="Images\help\reservations1.png" />
+    <Resource Include="Images\help\reservations2.png" />
+    <Resource Include="Images\help\monthlyReport1.png" />
+    <Resource Include="Images\help\monthlyReport2.png" />
+    <Resource Include="Images\help\trainLineEdit1.png" />
+    <Resource Include="Images\help\trainLineEdit2.png" />
+    <Resource Include="Images\help\trainLineEdit3.png" />
+    <Resource Include="Images\help\trainLineAdd1.png" />
+    <Resource Include="Images\help\trainLineAdd2.png" />
+    <Resource Include="Images\help\trainLineAdd3.png" />
+    <Resource Include="Images\help\trainLineAdd4.png" />
+    <Resource Include="Images\help\trainLineAdd5.png" />
+    <Resource Include="Images\help\trainLineAdd6.png" />
+    <Resource Include="Images\help\stationsView1.png" />
+    <Resource Include="Images\help\stationsView2.png" />
+    <Resource Include="Images\help\trainLineView1.png" />
+    <Resource Include="Images\help\trainLineView2.png" />
+    <Resource Include="Images\help\trainLineView3.png" />
+    <Resource Include="Images\help\trainLineView4.png" />
+    <Resource Include="Images\help\trainLineView5.png" />
     <Resource Include="Images\help\timetable1.png" />
     <Resource Include="Images\help\timetable2.png" />
     <Resource Include="Images\help\timetable3.png" />

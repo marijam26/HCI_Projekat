@@ -8,9 +8,10 @@
       xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
       xmlns:app="clr-namespace:HCI_Projekat.touring"
       mc:Ignorable="d" 
+      xmlns:l="clr-namespace:HCI_Projekat.help"
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="trainLineAdd">
+      Title="trainLineAdd" l:HelpProvider.HelpKey="trainLineAdd">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -35,14 +36,14 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Canvas x:Name="start">
+                <Canvas x:Name="start" >
                     <Image x:Name="pin_start" Grid.Column="0" Canvas.Top="7" Canvas.Left="30" Source="/Images/start.png"  MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="55"                   
                       featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinStart}"
                        featureTouring:TourHelper.Placement="TopRight"
                            ToolTip="Start station mark"/>
                 </Canvas>
 
-                <Canvas x:Name="endd" Grid.Column="1">
+                <Canvas x:Name="endd" Grid.Column="1" >
                     <Image x:Name="pin_end" Grid.Column="1" Canvas.Top="7" Canvas.Left="30" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" 
                        featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinEnd}"
                        featureTouring:TourHelper.Placement="TopRight"
@@ -57,7 +58,7 @@
             </Grid>
         </materialDesign:Card>
 
-        <DataGrid Grid.Row="1" Grid.Column="2" Background="White" Margin="70,0,70,20" ItemsSource="{Binding stationsDto}" VerticalContentAlignment="Center" Grid.ColumnSpan="2" IsReadOnly="True" ColumnWidth="*" FontSize="18" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="1" Grid.Column="2" Background="White" Margin="70,0,70,20" ItemsSource="{Binding stationsDto}"  VerticalContentAlignment="Center" Grid.ColumnSpan="2" IsReadOnly="True" ColumnWidth="*" FontSize="18" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Station name" Width="*" Binding="{Binding name}"></DataGridTextColumn>
                 <DataGridTemplateColumn x:Name="dtTemp" Header="" Width="SizeToCells" IsReadOnly="True">
@@ -72,7 +73,7 @@
         </DataGrid>
 
         <Button x:Name="bt_cancle" Grid.Row="2" Grid.Column="2" Width="105" Height="40" FontSize="19" Content="Cancel" Background="DarkCyan" BorderBrush="DarkCyan" Click="bt_cancle_Click" ToolTip="Quit adding the train line" Margin="30,0,0,0"></Button>
-        <Button x:Name="bt_save" Grid.Row="2" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save" Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" 
+        <Button x:Name="bt_save" Grid.Row="2" Grid.Column="3" Width="105" Height="40" FontSize="20" Content="Save"  Background="DarkCyan" BorderBrush="DarkCyan" HorizontalAlignment="Left" Click="bt_save_Click" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.AddTrainLineButtonSave}"
                 featureTouring:TourHelper.Placement="TopRight"
                 ToolTip="Save the new train line."/>

@@ -4,10 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
+      xmlns:l="clr-namespace:HCI_Projekat.help"
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="Stations">
+      Title="stationsView" l:HelpProvider.HelpKey="stationsView">
+
     <Page.Resources>
         <Style TargetType="Border" x:Key="radius">
             <Setter Property="CornerRadius" Value="5"></Setter>
@@ -37,7 +39,7 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
+
         <DataGrid x:Name="station_table" Grid.Row="1" ItemsSource="{Binding stationsList}" Grid.ColumnSpan="3" IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="300,0,300,0" Height="250" BorderBrush="Wheat" BorderThickness="1" AutoGenerateColumns="False">
  
             <DataGrid.Columns>
@@ -46,7 +48,7 @@
                 <DataGridTextColumn Header="Time (min)" Width="*" Binding="{Binding time}"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top"  HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Background="DarkCyan" Content="Delete" Click="btn_delete_Click" BorderThickness="0" >
+        <Button x:Name="btn_delete" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120" Height="40" FontSize="20" Background="DarkCyan" Content="Delete" Click="btn_delete_Click" BorderThickness="0" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>
@@ -54,7 +56,7 @@
             </Button.Resources>
         </Button>
 
-        <Button x:Name="btn_back" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  Margin="0,0,100,0" Width="100" Height="40" FontSize="20" Background="DarkCyan" Content="Back" Click="btn_back_Click" BorderThickness="0" >
+        <Button x:Name="btn_back" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top" Margin="0,0,100,0" Width="100" Height="40" FontSize="20" Background="DarkCyan" Content="Back" Click="btn_back_Click" BorderThickness="0" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -65,5 +66,7 @@ namespace HCI_Projekat.Pages
             dg_tickets.ItemsSource = null;
             dg_tickets.ItemsSource = this.tickets;
         }
+
+
     }
 }

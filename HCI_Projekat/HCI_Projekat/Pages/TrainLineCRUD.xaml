@@ -6,11 +6,12 @@
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
       xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
       xmlns:app="clr-namespace:HCI_Projekat.touring"
+      xmlns:l="clr-namespace:HCI_Projekat.help"
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="trainLineView">
-   
+      Title="trainLineView" l:HelpProvider.HelpKey="trainLineView">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"></RowDefinition>
@@ -23,9 +24,9 @@
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        
-        
-        <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3" 
+
+
+        <DataGrid x:Name="trainLine_table" Grid.Row="1" ItemsSource="{Binding dataBase.trainLines}" Grid.ColumnSpan="3"
                   IsReadOnly="True" ColumnWidth="*" FontSize="18" Margin="200,0,200,0" Style="{DynamicResource MaterialDesignDataGrid}" 
                   Height="250" BorderBrush="Wheat" BorderThickness="0" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
                   featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainLineTable}"
@@ -60,7 +61,7 @@
         </Button>
 
         <Button x:Name="btn_add" Grid.Row="2" Grid.Column="0" VerticalAlignment="Top"  HorizontalAlignment="Right" Width="120" Height="40" FontSize="20" 
-                Background="DarkCyan" BorderThickness="0" Content="Add" Click="btn_add_Click"  
+                Background="DarkCyan" BorderThickness="0" Content="Add" Click="btn_add_Click" 
                 featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TrainLineButtonAdd}"
                 ToolTip="Add a new train line.">
             <Button.Resources>
@@ -71,7 +72,7 @@
         </Button>
 
         <Button x:Name="btn_edit"  Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Width="120" Height="40" FontSize="20" 
-                Background="DarkCyan" BorderThickness="0"  Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train line.">
+                Background="DarkCyan" BorderThickness="0"  Content="Edit" Click="btn_edit_Click" ToolTip="Edit the selected train line." >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

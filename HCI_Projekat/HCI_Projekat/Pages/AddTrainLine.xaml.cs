@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using HCI_Projekat.touring;
 using Microsoft.Maps.MapControl.WPF;
 using System;
@@ -296,5 +297,7 @@ namespace HCI_Projekat.Pages
             navigator.IfCurrentStepEquals(ElementID.AddTrainLineButtonSave).GoNext();
 
         }
+
+
     }
 }

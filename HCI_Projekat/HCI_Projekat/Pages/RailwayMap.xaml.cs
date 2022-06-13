@@ -140,5 +140,7 @@ namespace HCI_Projekat.Pages
             cb_lines.SelectedIndex = -1;
             dg_stations.ItemsSource = null;
         }
+
+
     }
 }
