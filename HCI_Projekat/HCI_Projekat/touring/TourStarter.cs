@@ -53,8 +53,25 @@ namespace HCI_Projekat.touring
                 Steps = new[]
                 {
                     new Step(ElementID.PinStart, "Choose start station", "Take this pin and drag it to the map where you want to put the start station."),
+
+                    new Step(ElementID.StationName, "StationName", "Enter the station name. Try \"Novi Sad\""),
+                    new Step(ElementID.StationSave, "Save", "Click the button to add the station."),
+
+
                     new Step(ElementID.PinEnd, "Choose end station", "Take this pin and drag it to the map where you want to put the end station."),
+
+                    new Step(ElementID.StationName, "StationName", "Enter the station name. Try \"Loznica\""),
+                    new Step(ElementID.TimeBefore, "Time before", "Enter the time between the previous and this station. Try \"20\""),
+                    new Step(ElementID.StationSave, "Save", "Click the button to add the station."),
+
                     new Step(ElementID.Pin, "Add station", "Drag the pin to the map to add a new station. "),
+
+                    new Step(ElementID.StationName, "StationName", "Enter the station name. Try \"Sabac\""),
+                    new Step(ElementID.TimeBefore, "Time before", "Enter the time between the previous and this station. Try \"20\""),
+                    new Step(ElementID.TimeAfter, "Time after", "Enter the time between this station and the next one. Try \"40\""),
+                    new Step(ElementID.StationSave, "Save", "Click the button to add the station."),
+
+
                     new Step(ElementID.AddTrainLineButtonSave, "Save", "Click the button to add the line."),
                 }
             };

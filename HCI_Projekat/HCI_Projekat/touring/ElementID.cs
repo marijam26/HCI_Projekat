@@ -24,6 +24,12 @@ namespace HCI_Projekat.touring
         public static readonly string Pin = "Pin";
         public static readonly string AddTrainLineButtonSave = "AddTrainLineButtonSave";
 
+        public static readonly string StationName = "StationName";
+        public static readonly string TimeBefore = "TimeBefore";
+        public static readonly string TimeAfter = "TimeAfter";
+        public static readonly string StationSave = "StationSave";
+
+
 
         // Train
         public static readonly string TrainButtonAdd = "TrainButtonAdd";
