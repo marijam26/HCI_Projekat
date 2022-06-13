@@ -40,7 +40,7 @@
                     <DataGridTextColumn Header="To" Width="2*" Binding="{Binding endStation}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Transfer" Width="1.5*" Binding="{Binding transferPlace}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Departure time" Width="2.5*" Binding="{Binding startDateTime}"></DataGridTextColumn>
-                    <DataGridTextColumn Header="Wagon" Width="*" Binding="{Binding wagon}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Wagon" Width="1.5*" Binding="{Binding wagon}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Seat" Width="*" Binding="{Binding seat}"></DataGridTextColumn>
                     <DataGridTextColumn Header="Price" Width="*" Binding="{Binding price}" ></DataGridTextColumn>
                     <DataGridTextColumn Header="Reservation date" Width="2.5*" Binding="{Binding purchasementDate}" ></DataGridTextColumn>
