@@ -7,11 +7,9 @@
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200"
-      Title="Registration" Background="DarkCyan">
+      Title="register" Background="DarkCyan">
 
-    <Page.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
-    </Page.CommandBindings>
+    
 
     <Grid>
         <Grid.Background>

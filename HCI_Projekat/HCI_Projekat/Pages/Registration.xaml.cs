@@ -83,13 +83,6 @@ namespace HCI_Projekat.Pages
             }
 
         }
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
-            if (focusedControl is DependencyObject)
-            {
-                HelpProvider.ShowHelp("register", (MainWindow)Window.GetWindow(this));
-            }
-        }
+        
     }
 }

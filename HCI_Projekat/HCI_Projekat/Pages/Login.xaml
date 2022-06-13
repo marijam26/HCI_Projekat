@@ -11,9 +11,7 @@
       Title="login">
 
 
-    <Page.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
-    </Page.CommandBindings>
+   
 
 
     <Grid>

@@ -88,13 +88,6 @@ namespace HCI_Projekat.Pages
             window.managerHomepage.Navigate(r);
         }
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
-            if (focusedControl is DependencyObject)
-            {
-                HelpProvider.ShowHelp("trainEdit", (ManagerHomepage)Window.GetWindow(this));
-            }
-        }
+        
     }
 }

@@ -11,10 +11,7 @@
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="reserveBuy">
 
-    <Page.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
-    </Page.CommandBindings>
-
+    
     <Page.Resources>
         <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"  Color="#FF6E5151" />
         <Style TargetType="Border" x:Key="radius">

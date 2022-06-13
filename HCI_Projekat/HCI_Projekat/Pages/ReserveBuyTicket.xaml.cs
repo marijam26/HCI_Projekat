@@ -292,15 +292,7 @@ namespace HCI_Projekat.Pages
             return stringBuilder.ToString();
         }
 
-        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
-        {
-            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
-            if (focusedControl is DependencyObject)
-            {
-                //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
-                HelpProvider.ShowHelp("reserveBuy", (ClientHomepage)Window.GetWindow(this));
-            }
-        }
+       
 
 
         private void btn_tutorial_Click(object sender, RoutedEventArgs e)
