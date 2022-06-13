@@ -5,6 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat.Pages"
         mc:Ignorable="d"
+        xmlns:app="clr-namespace:HCI_Projekat.touring"
+        xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
         TextElement.FontFamily="Century Gothic"
         Title="Confirmation" Height="450" Width="500" Background="Beige">
     
@@ -65,7 +67,9 @@
                 </Button.Resources>
             </Button>
 
-            <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,20,0"   Width="90" Height="30" FontSize="13" Background="DarkCyan" Content="Confirm" Click="btn_confirm_Click" BorderThickness="0">
+            <Button x:Name="btn_confirm" Grid.Row="5" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,20,20,0"   Width="90" Height="30" FontSize="13" Background="DarkCyan"
+                    Content="Confirm" Click="btn_confirm_Click" BorderThickness="0" featureTouring:TourHelper.Placement="TopRight"
+                    featureTouring:TourHelper.ElementID="{x:Static app:ElementID.ConfirmPurchase}">
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="5"></Setter>

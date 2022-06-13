@@ -115,6 +115,30 @@ namespace HCI_Projekat.touring
             tour.Start();
         }
 
+        public static void StartTicketTour()
+        {
+            var tour = new Tour
+            {
+                Name = "Ticket tour",
+                ShowNextButtonDefault = false,
+                Steps = new[]
+                {
+                    new Step(ElementID.TicketFrom, "Choose start station", "Choose \"Novi Sad\". "),
+                    new Step(ElementID.TicketTo, "Choose end station", "Choose \"Beograd\". "),
+                    new Step(ElementID.TicketDate, "Choose the date", "Choose a date for the ride. Try \"20-Jun-2022\""),
+                    new Step(ElementID.TicketSearch, "Search", "Click the button to search for departures. "),
+                    new Step(ElementID.ChooseSeat, "Choose the seat", "Click the button to continue."),
+                    new Step(ElementID.Wagon1, "Choose the wagon", "Click the button to choose the wagon."),
+                    new Step(ElementID.Seat1, "Choose the seat", "Click the button to choose the seat."),
+                    new Step(ElementID.BuyTicketButton, "Buy", "Click the button to buy the ticket."),
+                    new Step(ElementID.ConfirmPurchase, "Confirm", "Click the button to confirm the purchase."),
+
+
+                }
+            };
+
+            tour.Start();
+        }
 
     }
 }

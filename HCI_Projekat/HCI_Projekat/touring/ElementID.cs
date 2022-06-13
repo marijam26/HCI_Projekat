@@ -39,5 +39,15 @@ namespace HCI_Projekat.touring
         public static readonly string WagonClass = "WagonClass";
         public static readonly string ButtonFinish = "ButtonFinish";
 
+        // Tickets
+        public static readonly string TicketFrom = "TicketFrom";
+        public static readonly string TicketTo = "TicketTo";
+        public static readonly string TicketDate = "TicketDate";
+        public static readonly string TicketSearch = "TicketSearch";
+        public static readonly string ChooseSeat = "ChooseSeat";
+        public static readonly string Wagon1 = "Wagon1";
+        public static readonly string Seat1 = "Seat1";
+        public static readonly string BuyTicketButton = "BuyTicketButton";
+        public static readonly string ConfirmPurchase = "ConfirmPurchase";
     }
 }

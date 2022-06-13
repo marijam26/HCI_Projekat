@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat.help;
 using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -34,8 +37,15 @@ namespace HCI_Projekat.Pages
         public String placeNum { get; set; }
         public String relation { get; set; }
 
-        public ChooseSeat(Data database, TicketDTO ticketDTO,String placeNum)
+        public Control wagon1 { get; set; }
+        public Control seat1 { get; set; }
+
+        public bool tour = false;
+
+
+        public ChooseSeat(Data database, TicketDTO ticketDTO,String placeNum, bool tour=false)
         {
+            this.tour = tour;
             InitializeComponent();
             this.database = database;
             this.date = date;
@@ -89,6 +99,23 @@ namespace HCI_Projekat.Pages
                     btn_next.Visibility = Visibility.Hidden;
 
                 }
+
+                if (tour)
+                {
+                    if(wagonCounter == 1)
+                    {
+                        this.wagon1 = wagonBtn;
+                        var navigator = FeatureTour.GetNavigator();
+                        wagonBtn.SetValue(TourHelper.ElementIDProperty, ElementID.Wagon1);
+                        navigator.OnStepEntered(ElementID.Wagon1).Execute(s => wagonBtn.Focus());
+                        wagonBtn.Click += wagonClick;
+                    }
+                    else
+                    {
+                        wagonBtn.IsEnabled = false;
+                    }
+                }
+
             }
                 if (placeNum == "first" && ticketDTO.wagonBtns.Count !=0) {
                     previousSelectedWagonBtn = ticketDTO.wagonBtns[0];
@@ -107,7 +134,45 @@ namespace HCI_Projekat.Pages
                 btn_wagon_Click(ticketDTO.wagonBtns[1], new RoutedEventArgs());
                     btn_seat_Click(ticketDTO.seatBtns[1], new RoutedEventArgs());
                 }
+
+            if (tour)
+            {
+                btn_buy.IsEnabled = false;
+                btn_reserve.IsEnabled = false;
+                btn_back.IsEnabled = false;
+            }
             
+        }
+
+        public void wagonClick(object sender, RoutedEventArgs e)
+        {
+            this.wagon1.IsEnabled = false;
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.Wagon1).GoNext();
+        }
+
+        public void seatClick(object sender, RoutedEventArgs e)
+        {
+            this.seat1.IsEnabled = false;
+            btn_buy.IsEnabled = true;
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.Seat1).GoNext();
+        }
+
+
+        public void ContinueTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+            ((Button)wagon1).SetValue(TourHelper.ElementIDProperty, ElementID.Wagon1);
+            navigator.OnStepEntered(ElementID.Wagon1).Execute(s => ((Button)wagon1).Focus());
+            ((Button)wagon1).Click += wagonClick;
+            btn_buy.Click += Btn_buy_Click;
+        }
+
+        private void Btn_buy_Click(object sender, RoutedEventArgs e)
+        {
+            //var navigator = FeatureTour.GetNavigator();
+            //navigator.IfCurrentStepEquals(ElementID.BuyTicketButton).GoNext();     // ***
         }
 
         private string formRelation()
@@ -197,6 +262,22 @@ namespace HCI_Projekat.Pages
                 Grid.SetRow(seatBtn, row);
                 Grid.SetColumn(seatBtn, column);
                 seatGrid.Children.Add(seatBtn);
+
+                if (tour)
+                {
+                    if (i == 1)
+                    {
+                        this.seat1 = seatBtn;
+                        var navigator = FeatureTour.GetNavigator();
+                        seatBtn.SetValue(TourHelper.ElementIDProperty, ElementID.Seat1);
+                        navigator.OnStepEntered(ElementID.Seat1).Execute(s => seatBtn.Focus());
+                        seatBtn.Click += seatClick;
+                    }
+                    else
+                    {
+                        seatBtn.IsEnabled = false;
+                    }
+                }
             }
         }
 
@@ -222,7 +303,7 @@ namespace HCI_Projekat.Pages
             private void buy_ticket(object sender, RoutedEventArgs e)
         {
             if (previousSelectedSeat == -1) {
-                MessageBox.Show("Must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             currentlySaveSeat();
@@ -231,11 +312,29 @@ namespace HCI_Projekat.Pages
             TicketShowDTO ticketShowDTO = new TicketShowDTO( ticketDTO,loggedUser,false);
             int oldTicketsNum = loggedUser.tickets.Count;
             int oldReservationsNum = loggedUser.reservations.Count;
-            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO,ticket,loggedUser)
+
+            ReserveBuyConfirmDialog d = new ReserveBuyConfirmDialog(ticketShowDTO, ticket, loggedUser, tour)
             {
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
+
             };
-            d.ShowDialog();
+            d.Owner = (ClientHomepage)Window.GetWindow(this);
+
+            if (!tour)
+            {
+                d.ShowDialog();
+            }
+           
+           
+            if (tour)
+            {
+                d.Show();
+                d.BringIntoView();
+                d.ContinueTour();
+            }
+            
+
+
             if (oldReservationsNum == loggedUser.reservations.Count && oldTicketsNum == loggedUser.tickets.Count)
             {
                 ChooseSeat r;
@@ -255,6 +354,8 @@ namespace HCI_Projekat.Pages
                 ReserveBuyTicket r = new ReserveBuyTicket(database, loggedUser);
                 ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
                 window.clientHomepage.Navigate(r);
+
+                //
             }
         }
 
@@ -275,7 +376,7 @@ namespace HCI_Projekat.Pages
         {
             if (previousSelectedSeat == -1)
             {
-                MessageBox.Show("Must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

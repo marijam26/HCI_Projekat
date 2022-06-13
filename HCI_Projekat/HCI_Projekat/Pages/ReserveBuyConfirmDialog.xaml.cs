@@ -1,4 +1,5 @@
 ﻿using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -24,7 +26,7 @@ namespace HCI_Projekat.Pages
         public Ticket ticket { get; set; }
         public User loggedUser { get; set; }
         
-        public ReserveBuyConfirmDialog(TicketShowDTO ticketDTO,Ticket ticket,User loggedUser)
+        public ReserveBuyConfirmDialog(TicketShowDTO ticketDTO,Ticket ticket,User loggedUser, bool tour = false)
         {
             InitializeComponent();
             Uri uri = new Uri("../../Images/icon.png", UriKind.RelativeOrAbsolute);
@@ -40,6 +42,13 @@ namespace HCI_Projekat.Pages
                 titleLabel.Content = "Confirm purchase";
             }
             DataContext = this;
+
+            if (tour)
+            {
+              //  var navigator = FeatureTour.GetNavigator();
+               // btn_confirm.Click += btnConfirmClick;
+               // btn_cancel.IsEnabled = false;
+            }
         }
 
         private void btn_confirm_Click(object sender, RoutedEventArgs e)
@@ -61,6 +70,22 @@ namespace HCI_Projekat.Pages
             }
             Close();
 
+        }
+
+        public void ContinueTour()
+        {
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.BuyTicketButton).GoNext();
+            navigator.OnStepEntered(ElementID.ConfirmPurchase).Execute(s => btn_confirm.Focus());
+            btn_confirm.Click += btnConfirmClick;
+            btn_cancel.IsEnabled = false;
+        }
+
+
+        private void btnConfirmClick(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.ConfirmPurchase).Close();
         }
 
         public void btn_cancel_Click(object sender, RoutedEventArgs e)

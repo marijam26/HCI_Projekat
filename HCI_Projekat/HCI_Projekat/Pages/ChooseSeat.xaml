@@ -5,6 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:HCI_Projekat.Pages"
       mc:Ignorable="d" 
+      xmlns:app="clr-namespace:HCI_Projekat.touring"
+      xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="ChooseSeat">
@@ -42,7 +44,9 @@
         </Grid.RowDefinitions>
         
 
-        <Button ToolTip="Click to buy the ticket." x:Name="btn_buy" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Background="DarkCyan"  HorizontalAlignment="Right" Margin="0,10,30,0" Width="90" Height="30" FontSize="15" BorderThickness="0" Content="Buy" Click="buy_ticket">
+        <Button ToolTip="Click to buy the ticket." x:Name="btn_buy" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" Background="DarkCyan"  HorizontalAlignment="Right" Margin="0,10,30,0" Width="90" Height="30" FontSize="15" BorderThickness="0" Content="Buy" Click="buy_ticket"
+               featureTouring:TourHelper.Placement="TopRight"
+               featureTouring:TourHelper.ElementID="{x:Static app:ElementID.BuyTicketButton}" >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="5"></Setter>

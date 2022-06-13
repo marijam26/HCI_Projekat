@@ -1,5 +1,6 @@
 ﻿using HCI_Projekat.help;
 using HCI_Projekat.Model;
+using HCI_Projekat.touring;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ThinkSharp.FeatureTouring.Navigation;
 
 namespace HCI_Projekat.Pages
 {
@@ -27,6 +29,10 @@ namespace HCI_Projekat.Pages
         public User loggedUser { get; set; }
         String transferPlace = "";
 
+        public bool tour = false;
+
+        public List<Control> controlList { get; set; }
+
         public ReserveBuyTicket(Data database, User user)
         {
             InitializeComponent();
@@ -35,6 +41,8 @@ namespace HCI_Projekat.Pages
             fromPlace.ItemsSource = getStations();
             toPlace.ItemsSource = getStations();
             btn_chooseSeat.IsEnabled = false;
+
+            this.controlList = new List<Control>() { fromPlace, toPlace, startDatePick, btn_search, btn_tutorial};
         }
 
         private IEnumerable getStations()
@@ -82,9 +90,13 @@ namespace HCI_Projekat.Pages
             foreach (Timetable table in t.timetables) {
                 ticketInfo.trains.Add(table.train);
             }
-            ChooseSeat r = new ChooseSeat(dataBase, ticketInfo ,"first");
+            ChooseSeat r = new ChooseSeat(dataBase, ticketInfo ,"first", tour);
             ClientHomepage window = (ClientHomepage)Window.GetWindow(this);
             window.clientHomepage.Navigate(r);
+            if (tour)
+            {
+                r.ContinueTour();
+            }
 
         }
 
@@ -287,6 +299,89 @@ namespace HCI_Projekat.Pages
             {
                 //string str = HelpProvider.GetHelpKey((DependencyObject)focusedControl);
                 HelpProvider.ShowHelp("reserveBuy", (ClientHomepage)Window.GetWindow(this));
+            }
+        }
+
+
+        private void btn_tutorial_Click(object sender, RoutedEventArgs e)
+        {
+            tour = true;
+            var navigator = FeatureTour.GetNavigator();
+
+            navigator.ForStep(ElementID.TicketFrom).AttachDoable(s => fromPlace.SelectedItem = "Novi Sad");
+            navigator.ForStep(ElementID.TicketTo).AttachDoable(s => toPlace.SelectedItem = "Beograd");
+
+
+            navigator.OnStepEntered(ElementID.TicketFrom).Execute(s => fromPlace.Focus());
+            navigator.OnStepEntered(ElementID.TicketTo).Execute(s => toPlace.Focus());
+            navigator.OnStepEntered(ElementID.TicketDate).Execute(s => startDatePick.Focus());
+            navigator.OnStepEntered(ElementID.TicketSearch).Execute(s => btn_search.Focus());
+            navigator.OnStepLeft(ElementID.TicketSearch).Execute(s => timetable_table.Focus());
+            navigator.OnStepEntered(ElementID.ChooseSeat).Execute(s => btn_chooseSeat.Focus());
+
+
+            fromPlace.SelectionChanged += fromPlaceSelectionChanged;
+            toPlace.SelectionChanged += toPlaceSelectionChanged;
+            startDatePick.SelectedDateChanged += dateSelectionChanged;
+            btn_search.Click += searchClicked;
+            btn_chooseSeat.Click += chooseSeatClicked;
+
+
+            foreach (Control c in this.controlList)
+            {
+                c.IsEnabled = false;
+            }
+
+            fromPlace.IsEnabled = true;
+            TourStarter.StartTicketTour();
+        }
+
+        private void chooseSeatClicked(object sender, RoutedEventArgs e)
+        {
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.ChooseSeat).GoNext();
+        }
+
+        private void searchClicked(object sender, RoutedEventArgs e)
+        {
+            btn_search.IsEnabled = false;
+            btn_chooseSeat.IsEnabled = true;
+            var navigator = FeatureTour.GetNavigator();
+            navigator.IfCurrentStepEquals(ElementID.TicketSearch).GoNext();
+        }
+
+        private void dateSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DateTime date = (DateTime)startDatePick.SelectedDate;
+            //MessageBox.Show(date.ToString("MM/dd/yyyy"), "aaa");
+            if (date.ToString("MM/dd/yyyy") == "06-20-2022")
+            {
+                startDatePick.IsEnabled = false;
+                btn_search.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.TicketDate).GoNext();
+            }
+        }
+
+        private void toPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (toPlace.SelectedItem.ToString() == "Beograd")
+            {
+                toPlace.IsEnabled = false;
+                startDatePick.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.TicketTo).GoNext();
+            }
+        }
+
+        private void fromPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (fromPlace.SelectedItem.ToString() == "Novi Sad")
+            {
+                fromPlace.IsEnabled = false;
+                toPlace.IsEnabled = true;
+                var navigator = FeatureTour.GetNavigator();
+                navigator.IfCurrentStepEquals(ElementID.TicketFrom).GoNext();
             }
         }
     }
