@@ -123,5 +123,11 @@ namespace HCI_Projekat
             var p = this.managerHomepage.Content as Page;
             HelpProvider.ShowHelp(p.Title, this);
         }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            var p = this.managerHomepage.Content as Page;
+            HelpProvider.ShowHelp(p.Title, this);
+        }
     }
 }

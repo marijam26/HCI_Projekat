@@ -6,6 +6,11 @@
         xmlns:local="clr-namespace:HCI_Projekat"
         mc:Ignorable="d"
         Title="ticketView" Height="650" Width="1200" Background="Wheat">
+
+    <Window.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Window.CommandBindings>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.08*"></RowDefinition>

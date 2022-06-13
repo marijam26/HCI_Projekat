@@ -13,9 +13,6 @@
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
       Title="timetableView" l:HelpProvider.HelpKey="timetableView">
 
-    <Page.CommandBindings>
-        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
-    </Page.CommandBindings>
     
     <Page.Resources>
         <Style TargetType="Border" x:Key="radius">
