@@ -103,7 +103,7 @@
 
                 <Button ToolTip="Click to search the departures." x:Name="btn_search" Grid.Row="0" Grid.Column="4" VerticalAlignment="Top" HorizontalAlignment="Right" 
                         Margin="0,7,30,0"  BorderThickness="0"  Width="100" Height="28" FontSize="15" Background="DarkCyan" Content="Search" Click="searchStations" 
-                         featureTouring:TourHelper.Placement="BottomLeft"
+                         featureTouring:TourHelper.Placement="BottomRight"
                          featureTouring:TourHelper.ElementID="{x:Static app:ElementID.TicketSearch}">
                 </Button>
             </Grid>
@@ -129,7 +129,7 @@
 
             <Button ToolTip="Click to choose a seat for the ride." x:Name="btn_chooseSeat" Grid.Row="3" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right" 
                     Margin="0,0,50,0"   Width="160" Height="40" FontSize="20" Background="DarkCyan" BorderThickness="0" Content="Choose seat" Click="btn_chooseSeat_Click" 
-                    featureTouring:TourHelper.Placement="BottomLeft"
+                    featureTouring:TourHelper.Placement="TopRight"
                     featureTouring:TourHelper.ElementID="{x:Static app:ElementID.ChooseSeat}">
             </Button>
 
