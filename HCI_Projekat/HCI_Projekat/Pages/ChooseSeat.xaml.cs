@@ -300,7 +300,7 @@ namespace HCI_Projekat.Pages
 
         }
 
-            private void buy_ticket(object sender, RoutedEventArgs e)
+        private void buy_ticket(object sender, RoutedEventArgs e)
         {
             if (previousSelectedSeat == -1) {
                 MessageBox.Show("You must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -327,13 +327,13 @@ namespace HCI_Projekat.Pages
             if (!tour)
             {
                 d.ShowDialog();
+                
             }
            
            
             if (tour)
             {
                 d.Show();
-                d.BringIntoView();
                 d.ContinueTour();
             }
             
@@ -362,6 +362,7 @@ namespace HCI_Projekat.Pages
                 //
             }
         }
+
 
         private Timetable formTimetablefromDTO(TimetableDTO timetable)
         {

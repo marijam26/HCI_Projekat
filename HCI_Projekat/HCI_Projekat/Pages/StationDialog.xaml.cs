@@ -141,13 +141,14 @@ namespace HCI_Projekat.Pages
             
             if (parentPage == "add")
             {
-                if (tour)
-                {
-                    
-                }
+              
                 AddTrainLine addTrainLine = new AddTrainLine(this.dataBase,this.trainLine, tour);
                 window.managerHomepage.Navigate(addTrainLine);
-                addTrainLine.ContinueTour();
+                if (tour)
+                {
+                    addTrainLine.ContinueTour();
+                }
+               
             }
             else
             {
@@ -203,19 +204,30 @@ namespace HCI_Projekat.Pages
         public void ContinueTour()
         {
             var navigator = FeatureTour.GetNavigator();
+            
+
             navigator.IfCurrentStepEquals(ElementID.PinStart).GoNext();
             navigator.IfCurrentStepEquals(ElementID.PinEnd).GoNext();
             navigator.IfCurrentStepEquals(ElementID.Pin).GoNext();
 
             navigator.OnStepEntered(ElementID.StationName).Execute(s => station_name.Focus());
+            if (trainLine.stations.Count == 0)
+            {
+                navigator.ForStep(ElementID.StationName).AttachDoable(s => station_name.Text = "Novi Sad");
+            }
+
             if (trainLine.stations.Count == 1)
             {
                 time_before.IsEnabled = false;
+                navigator.ForStep(ElementID.StationName).AttachDoable(s => station_name.Text = "Loznica");
+
             }
             if (trainLine.stations.Count == 2)
             {
                 time_before.IsEnabled = false;
                 time_after.IsEnabled = false;
+                navigator.ForStep(ElementID.StationName).AttachDoable(s => station_name.Text = "Sabac");
+
             }
             station_name.SelectionChanged += Station_name_SelectionChanged;
             time_before.TextChanged += Time_before_TextChanged;

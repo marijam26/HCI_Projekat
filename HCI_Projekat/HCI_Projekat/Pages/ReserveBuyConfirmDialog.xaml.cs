@@ -25,6 +25,8 @@ namespace HCI_Projekat.Pages
         public TicketShowDTO ticketShowDTO { get; set; }
         public Ticket ticket { get; set; }
         public User loggedUser { get; set; }
+
+        public bool tour = false;
         
         public ReserveBuyConfirmDialog(TicketShowDTO ticketDTO,Ticket ticket,User loggedUser, bool tour = false)
         {
@@ -43,12 +45,8 @@ namespace HCI_Projekat.Pages
             }
             DataContext = this;
 
-            if (tour)
-            {
-              //  var navigator = FeatureTour.GetNavigator();
-               // btn_confirm.Click += btnConfirmClick;
-               // btn_cancel.IsEnabled = false;
-            }
+            this.tour = tour;
+
         }
 
         private void btn_confirm_Click(object sender, RoutedEventArgs e)
@@ -69,7 +67,6 @@ namespace HCI_Projekat.Pages
                 MessageBox.Show("You have successfully bought your ticket.", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             Close();
-
         }
 
         public void ContinueTour()
