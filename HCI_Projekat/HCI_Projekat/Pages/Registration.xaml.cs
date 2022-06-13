@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -81,6 +82,14 @@ namespace HCI_Projekat.Pages
                 return;
             }
 
+        }
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                HelpProvider.ShowHelp("register", (MainWindow)Window.GetWindow(this));
+            }
         }
     }
 }

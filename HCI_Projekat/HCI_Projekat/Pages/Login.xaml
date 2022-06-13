@@ -10,6 +10,12 @@
       d:DesignHeight="650" d:DesignWidth="1200"
       Title="Login">
 
+
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Page.CommandBindings>
+
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/back3.jpg" Stretch="UniformToFill"/>

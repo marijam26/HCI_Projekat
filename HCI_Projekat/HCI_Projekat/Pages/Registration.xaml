@@ -9,6 +9,10 @@
       d:DesignHeight="650" d:DesignWidth="1200"
       Title="Registration" Background="DarkCyan">
 
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Page.CommandBindings>
+
     <Grid>
         <Grid.Background>
             <ImageBrush ImageSource="/Images/back4.jpg" Stretch="UniformToFill"/>

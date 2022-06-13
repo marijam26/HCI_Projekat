@@ -9,6 +9,10 @@
       d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
       Title="ClientTicketView">
 
+    <Page.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>
+    </Page.CommandBindings>
+
     <Grid>
 
         <Grid.RowDefinitions>

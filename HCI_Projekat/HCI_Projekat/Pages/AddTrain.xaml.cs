@@ -135,6 +135,8 @@ namespace HCI_Projekat.Pages
             }
             else {
                 t = this.newTrain;
+                t.name = tb_name.Text.Trim();
+                t.rang = (bool)rb_simple.IsChecked ? Rang.obicni : Rang.Soko;
             }
             WagonCRUD r = new WagonCRUD(t,this.dataBase,"add");
             ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);

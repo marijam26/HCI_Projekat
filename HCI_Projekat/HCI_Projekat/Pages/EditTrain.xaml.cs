@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -85,6 +86,15 @@ namespace HCI_Projekat.Pages
             TrainCRUD r = new TrainCRUD(this.dataBase);
             ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             window.managerHomepage.Navigate(r);
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            IInputElement focusedControl = FocusManager.GetFocusedElement(Application.Current.Windows[0]);
+            if (focusedControl is DependencyObject)
+            {
+                HelpProvider.ShowHelp("trainEdit", (ManagerHomepage)Window.GetWindow(this));
+            }
         }
     }
 }
