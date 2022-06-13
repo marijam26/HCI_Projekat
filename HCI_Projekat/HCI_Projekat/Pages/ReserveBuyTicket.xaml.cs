@@ -74,7 +74,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select the timetable.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select the timetable.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -130,22 +130,22 @@ namespace HCI_Projekat.Pages
             String end = toPlace.Text.Trim().ToLower();
             DateTime? date = startDatePick.SelectedDate;
             if (date == null) { 
-                MessageBox.Show("You must enter the date of departure.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter the date of departure.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             DateTime startDate = (DateTime)date;
             if (startDate < DateTime.Now) {
-                MessageBox.Show("Departure date can't be in the past.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Departure date can't be in the past.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
 
             }
             if (start == "") { 
-                MessageBox.Show("You must choose a start station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a start station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             
             if (end == "") { 
-                MessageBox.Show("You must choose an end station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose an end station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             List<TimetableDTO> timetables = new List<TimetableDTO>();

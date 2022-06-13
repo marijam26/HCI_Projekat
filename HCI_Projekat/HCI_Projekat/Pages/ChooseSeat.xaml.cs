@@ -303,7 +303,7 @@ namespace HCI_Projekat.Pages
         private void buy_ticket(object sender, RoutedEventArgs e)
         {
             if (previousSelectedSeat == -1) {
-                MessageBox.Show("You must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select your seat.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             currentlySaveSeat();
@@ -381,7 +381,7 @@ namespace HCI_Projekat.Pages
         {
             if (previousSelectedSeat == -1)
             {
-                MessageBox.Show("You must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select your seat.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -395,7 +395,7 @@ namespace HCI_Projekat.Pages
             Ticket ticket = new Ticket(id,ticketDTO.timetableDTO.timetables, ticketDTO.dateReserved, ticketDTO.wagons, ticketDTO.seats,ticketDTO.transferPlace,DateTime.Now);
             TicketShowDTO ticketShowDTO = new TicketShowDTO(ticketDTO, loggedUser, true);
             if ((date - DateTime.Now).TotalDays >= 5) {
-                MessageBox.Show("Reservation is not possible more than 5 days before departure date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Reservation is not possible more than 5 days before departure date.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             int oldTicketsNum = loggedUser.tickets.Count;
@@ -450,7 +450,7 @@ namespace HCI_Projekat.Pages
         {
             if (previousSelectedSeat == -1)
             {
-                MessageBox.Show("Must select your seat.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Must select your seat.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             ClientHomepage window = (ClientHomepage)Window.GetWindow(this);

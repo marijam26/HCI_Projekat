@@ -68,16 +68,16 @@ namespace HCI_Projekat.Pages
             int selectedCells = station_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Must select station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if(this.stationsList.Count == 1)
             {
-                MessageBox.Show("You cannot delete stations.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("You cannot delete stations.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to delete station?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to delete station?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 stationDto sdto = (stationDto)station_table.SelectedItem;

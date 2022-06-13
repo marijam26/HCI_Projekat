@@ -108,12 +108,12 @@ namespace HCI_Projekat.Pages
             String name = tb_name.Text.Trim();
             if (name == "")
             {
-                MessageBox.Show("You must enter a name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a name.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             if (rb_simple.IsChecked == false && rb_soko.IsChecked == false)
             {
-                MessageBox.Show("You must choose a rang.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a rang.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             return true;

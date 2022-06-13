@@ -79,11 +79,11 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select a reservation for canceling.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a reservation for canceling.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to cancel reservation?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to cancel reservation?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 TicketShowDTO ticket = (TicketShowDTO)timetable_table.SelectedItem;
@@ -93,7 +93,7 @@ namespace HCI_Projekat.Pages
                         break;
                     }
                 }
-                MessageBox.Show("Reservation is successfully canceled.", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Reservation is successfully canceled.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
                 timetable_table.ItemsSource = null;
                 timetable_table.ItemsSource = formTicketShowDTO(loggedUser.reservations);
             }
@@ -104,11 +104,11 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select a reservation for confirmation.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a reservation for confirmation.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to confirm reservation?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to confirm reservation?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 TicketShowDTO ticket = (TicketShowDTO)timetable_table.SelectedItem;
@@ -119,7 +119,7 @@ namespace HCI_Projekat.Pages
                         break;
                     }
                 }
-                MessageBox.Show("Reservation is successfully confirmed.", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Reservation is successfully confirmed.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
                 timetable_table.ItemsSource = null;
                 timetable_table.ItemsSource = formTicketShowDTO(loggedUser.reservations);
             }

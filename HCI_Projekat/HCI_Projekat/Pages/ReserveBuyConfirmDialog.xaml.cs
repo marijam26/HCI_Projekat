@@ -59,12 +59,12 @@ namespace HCI_Projekat.Pages
             if (ticketShowDTO.isReservation)
             {
                 loggedUser.reservations.Add(ticket);
-                MessageBox.Show("You have successfully reserved your ticket.", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You have successfully reserved your ticket.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
                 loggedUser.tickets.Add(ticket);
-                MessageBox.Show("You have successfully bought your ticket.", "Successful", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("You have successfully bought your ticket.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             Close();
         }

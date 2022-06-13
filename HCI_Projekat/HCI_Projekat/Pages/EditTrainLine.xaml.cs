@@ -128,7 +128,7 @@ namespace HCI_Projekat.Pages
 
         private void bt_cancle_Click(object sender, RoutedEventArgs e)
         {
-            var res = MessageBox.Show("Are you sure you want to quit?", "Check", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var res = MessageBox.Show("Are you sure you want to quit?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (res == MessageBoxResult.Yes)
             {
                 this.dataBase.trainLines.Remove(this.TrainLine);
@@ -141,7 +141,7 @@ namespace HCI_Projekat.Pages
 
         private void bt_save_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Successfully changed train line!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Successfully changed train line!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
             ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
             window.managerHomepage.Navigate(tc);

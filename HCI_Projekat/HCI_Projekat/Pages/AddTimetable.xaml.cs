@@ -95,7 +95,7 @@ namespace HCI_Projekat.Pages
             }
             if(line == null)
             {
-                MessageBox.Show("There is no line with chosen stations.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("There is no line with chosen stations.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -111,7 +111,7 @@ namespace HCI_Projekat.Pages
 
             if(t == null)
             {
-                MessageBox.Show("Invalid train name chosen.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Invalid train name chosen.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -120,7 +120,7 @@ namespace HCI_Projekat.Pages
                                                 line = line, train = t};     // ... 
             this.dataBase.timetables.Add(this.NewTimetable);
 
-            MessageBox.Show("Successfully added a new departure time!", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Successfully added a new departure time!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
             TimetableCRUD tc = new TimetableCRUD(this.dataBase);
 
             ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
@@ -133,14 +133,14 @@ namespace HCI_Projekat.Pages
             String from = fromPlace.Text.Trim().ToLower();
             if(from == "")
             {
-                MessageBox.Show("You must choose a start station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a start station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             String to = toPlace.Text.Trim().ToLower();
             if (to == "")
             {
-                MessageBox.Show("You must choose an end station.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose an end station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
@@ -149,14 +149,14 @@ namespace HCI_Projekat.Pages
             String t = train.Text.Trim().ToLower();
             if (t == "")
             {
-                MessageBox.Show("You must choose a train.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a train.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             String time = tb_time.Text.Trim();
             if(time == "")
             {
-                MessageBox.Show("You must enter a departure time.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a departure time.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
@@ -165,26 +165,26 @@ namespace HCI_Projekat.Pages
             DateTime? validSince = tb_valid_since.SelectedDate;
             if(validSince == null)
             {
-                MessageBox.Show("You must choose a validity start date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a validity start date.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             DateTime? validUntil = tb_valid_until.SelectedDate;
             if (validUntil == null)
             {
-                MessageBox.Show("You must choose a validity end date.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a validity end date.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             if(rb_weekday.IsChecked == false && rb_weekend.IsChecked == false)
             {
-                MessageBox.Show("You must choose between a weekday and a weekend.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose between a weekday and a weekend.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             if(validSince < DateTime.Now || validUntil < DateTime.Now)
             {
-                MessageBox.Show("You must choose a validity period in the future.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a validity period in the future.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 

@@ -64,17 +64,17 @@ namespace HCI_Projekat.Pages
             bool t2 = int.TryParse(time_after.Text, out res2);
             if((!t1 && time_before.IsEnabled) || (!t2 && time_after.IsEnabled ))
             {
-                MessageBox.Show("Time must be a number.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Time must be a number.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if(name == "")
             {
-                MessageBox.Show("You must enter a name.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a name.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             if (this.trainLine.stations.Select(x => x.name).ToArray().Contains(name))
             {
-                MessageBox.Show("Station name already exists.", "Invalid", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Station name already exists.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -136,7 +136,7 @@ namespace HCI_Projekat.Pages
 
             this.isSaved = true;
             this.Close();
-            MessageBox.Show("Successfully added station!", "Success",MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show("Successfully added station!", "Serbian Raliways", MessageBoxButton.OK,MessageBoxImage.Information);
             ManagerHomepage window = (ManagerHomepage)App.Current.Windows[App.Current.Windows.Count-1];
             
             if (parentPage == "add")
