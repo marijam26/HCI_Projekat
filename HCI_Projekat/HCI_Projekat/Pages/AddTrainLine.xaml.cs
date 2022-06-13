@@ -269,7 +269,7 @@ namespace HCI_Projekat.Pages
 
         private void bt_cancle_Click(object sender, RoutedEventArgs e)
         {
-            var res = MessageBox.Show("Are you sure you want to quit?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var res = MessageBox.Show("Are you sure you want to quit?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if(res == MessageBoxResult.Yes)
             {
                 this.dataBase.trainLines.Remove(this.trainLine);
@@ -284,11 +284,11 @@ namespace HCI_Projekat.Pages
         {
             if(this.trainLine.stations.Count < 2)
             {
-                MessageBox.Show("You must add at least two stations!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("You must add at least two stations!", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            MessageBox.Show("Successfully added train line!", "Serbian Raliways", MessageBoxButton.OK,MessageBoxImage.Information);
+            MessageBox.Show("Successfully added train line!", "Serbian Railways", MessageBoxButton.OK,MessageBoxImage.Information);
             ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             TrainLineCRUD tc = new TrainLineCRUD(window.dataBase);
             window.managerHomepage.Navigate(tc);

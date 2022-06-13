@@ -85,7 +85,7 @@ namespace HCI_Projekat.Pages
 
         private void fromPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(fromPlace.SelectedItem.ToString() == "novi sad")
+            if(fromPlace.SelectedItem.ToString() == "Novi Sad")
             {
                 fromPlace.IsEnabled = false;
                 toPlace.IsEnabled = true;
@@ -96,7 +96,7 @@ namespace HCI_Projekat.Pages
 
         private void toPlaceSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (toPlace.SelectedItem.ToString() == "beograd")
+            if (toPlace.SelectedItem.ToString() == "Beograd")
             {
                 toPlace.IsEnabled = false;
                 rb_weekend.IsEnabled = true;
@@ -110,11 +110,11 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("Must select timetable.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select an item first.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to delete timetable?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to delete the timetable?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 Timetable t = (Timetable)timetable_table.SelectedItem;
@@ -136,8 +136,8 @@ namespace HCI_Projekat.Pages
         {
             var navigator = FeatureTour.GetNavigator();
 
-            navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "novi sad");
-            navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "beograd");
+            navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "Novi Sad");
+            navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "Beograd");
 
 
             navigator.OnStepEntered(ElementID.ComboBoxFrom).Execute(s => fromPlace.Focus());
@@ -164,7 +164,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = timetable_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select a timetable first.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select an item first.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

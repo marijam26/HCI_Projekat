@@ -55,11 +55,11 @@ namespace HCI_Projekat.Pages
             int selectedCells = trainLine_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select a train line.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a train line.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to delete the train line?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to delete the train line?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 TrainLine t = (TrainLine)trainLine_table.SelectedItem;
@@ -88,7 +88,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = trainLine_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select train line.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select train line.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
             TrainLine t = (TrainLine)trainLine_table.SelectedItem;
@@ -103,20 +103,8 @@ namespace HCI_Projekat.Pages
         private void btn_tutorial_Click(object sender, RoutedEventArgs e)
         {
             var navigator = FeatureTour.GetNavigator();
-
-            //navigator.ForStep(ElementID.ComboBoxFrom).AttachDoable(s => fromPlace.SelectedItem = "beograd");
-            //navigator.ForStep(ElementID.ComboBoxTo).AttachDoable(s => toPlace.SelectedItem = "novi sad");
-
-
             navigator.OnStepEntered(ElementID.TrainLineButtonAdd).Execute(s => btn_add.Focus());
 
-            //navigator.OnStepEntered(ElementID.PinStart).Execute(s => pinSta.Focus());
-           // navigator.OnStepEntered(ElementID.RadioWeekend).Execute(s => rb_weekend.Focus());
-           // navigator.OnStepEntered(ElementID.ButtonSearch).Execute(s => btn_search.Focus());
-
-            //toPlace.SelectionChanged += toPlaceSelectionChanged;
-            //rb_weekend.Checked += Rb_weekend_Checked;
-            //btn_search.Click += searchClicked;
             this.tour = true;
 
             foreach (Control c in this.controlList)

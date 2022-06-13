@@ -108,7 +108,7 @@ namespace HCI_Projekat.Pages
             }
             if (line == null)
             {
-                MessageBox.Show("There is no line with chosen stations.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("There is no line with chosen stations.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -136,7 +136,7 @@ namespace HCI_Projekat.Pages
                     break;
                 }
             }
-            MessageBox.Show("Successfully edited the timetable!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show("Successfully edited the timetable!", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Information);
             TimetableCRUD tc = new TimetableCRUD(this.Database);
             ManagerHomepage window = (ManagerHomepage)Window.GetWindow(this);
             window.managerHomepage.Navigate(tc);
@@ -154,14 +154,14 @@ namespace HCI_Projekat.Pages
             String from = fromPlace.Text.Trim().ToLower();
             if (from == "")
             {
-                MessageBox.Show("You must choose a start station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a start station.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             String to = toPlace.Text.Trim().ToLower();
             if (to == "")
             {
-                MessageBox.Show("You must choose an end station.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose an end station.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
@@ -170,14 +170,14 @@ namespace HCI_Projekat.Pages
             String t = train.Text.Trim().ToLower();
             if (t == "")
             {
-                MessageBox.Show("You must choose a train.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a train.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             String time = tb_time.Text.Trim();
             if (time == "")
             {
-                MessageBox.Show("You must enter a departure time.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must enter a departure time.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
@@ -186,20 +186,20 @@ namespace HCI_Projekat.Pages
             DateTime? validSince = tb_valid_since.SelectedDate;
             if (validSince == null)
             {
-                MessageBox.Show("You must choose a validity start date.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a validity start date.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             DateTime? validUntil = tb_valid_until.SelectedDate;
             if (validUntil == null)
             {
-                MessageBox.Show("You must choose a validity end date.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a validity end date.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 
             if (rb_weekday.IsChecked == false && rb_weekend.IsChecked == false)
             {
-                MessageBox.Show("You must choose between a weekday and a weekend.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose between a weekday and a weekend.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
 

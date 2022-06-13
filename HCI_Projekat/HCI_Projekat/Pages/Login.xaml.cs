@@ -41,7 +41,7 @@ namespace HCI_Projekat.Pages
 
             if (username == "" || password == "")
             {
-                MessageBox.Show("Please enter username and password.", "Serbian Raliways", MessageBoxButton.OK,MessageBoxImage.Warning);
+                MessageBox.Show("Please enter username and password.", "Serbian Railways", MessageBoxButton.OK,MessageBoxImage.Warning);
                 return;
             }
             else
@@ -58,7 +58,7 @@ namespace HCI_Projekat.Pages
 
                 if (!found)
                 {
-                    MessageBox.Show("Invalid username and password..", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Invalid username and password..", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
             }

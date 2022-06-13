@@ -54,7 +54,7 @@ namespace HCI_Projekat.Pages
             }
             else
             {
-                MessageBox.Show("Please fill in all the fields.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please fill in all the fields.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -64,21 +64,21 @@ namespace HCI_Projekat.Pages
                 {
                     User newUser = new User(username,password,name,surname, usertype);
                     this.dataBase.users.Add(newUser);
-                    MessageBox.Show("Successfully registered.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Successfully registered.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Information);
                     MainWindow window = (MainWindow)Window.GetWindow(this);
                     Login r = new Login(this.dataBase);
                     window.Content = r;
                 }
                 else
                 {
-                    MessageBox.Show("Username already exists.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    MessageBox.Show("Username already exists.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
                 
             }
             else
             {
-                MessageBox.Show("Please fill in all the fields.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Please fill in all the fields.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 

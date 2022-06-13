@@ -118,7 +118,7 @@ namespace HCI_Projekat.Pages
             }
 
 
-            var Result = MessageBox.Show("Do you want to add new wagon?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to add new wagon?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 Wagon wagon = new Wagon();
@@ -140,7 +140,7 @@ namespace HCI_Projekat.Pages
             int selectedCells = trainWagons_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select a wagon.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a wagon.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
@@ -173,16 +173,16 @@ namespace HCI_Projekat.Pages
             int selectedCells = trainWagons_table.SelectedCells.Count();
             if (selectedCells == 0)
             {
-                MessageBox.Show("You must select a wagon.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must select a wagon.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
             if (train.wagons.Count == 1) {
-                MessageBox.Show("Can't delete the wagon! Train must have at least one wagon.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Can't delete the wagon! Train must have at least one wagon.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            var Result = MessageBox.Show("Do you want to delete the wagon?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to delete the wagon?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 Wagon t = (Wagon)trainWagons_table.SelectedItem;
@@ -200,12 +200,12 @@ namespace HCI_Projekat.Pages
             bool num = int.TryParse(tb_capacity.Text, out res);
             if (!num)
             {
-                MessageBox.Show("Capacity must be a number.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Capacity must be a number.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             if (rb_first.IsChecked == false && rb_second.IsChecked == false)
             {
-                MessageBox.Show("You must choose a class.", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("You must choose a class.", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return false;
             }
             return true;
@@ -218,7 +218,7 @@ namespace HCI_Projekat.Pages
             {
                 return;
             }
-            var Result = MessageBox.Show("Do you want to change the wagons ?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var Result = MessageBox.Show("Do you want to change the wagons ?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (Result == MessageBoxResult.Yes)
             {
                 Wagon t = (Wagon)trainWagons_table.SelectedItem;
@@ -232,7 +232,7 @@ namespace HCI_Projekat.Pages
                 }
                 trainWagons_table.ItemsSource = null;
                 trainWagons_table.ItemsSource = train.wagons;
-                MessageBox.Show("Successfully changed wagon!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
+                MessageBox.Show("Successfully changed wagon!", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Information);
 
             }
 
@@ -272,15 +272,15 @@ namespace HCI_Projekat.Pages
         {
             if (this.action == "add")
             {
-                var Result = MessageBox.Show("Do you want to add the train?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var Result = MessageBox.Show("Do you want to add the train?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (Result == MessageBoxResult.Yes)
                 {
                     this.dataBase.trains.Add(this.train);
-                    MessageBox.Show("Successfully added train!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Successfully added train!", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             else {
-                var Result = MessageBox.Show("Do you want to change the train?", "Serbian Raliways", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                var Result = MessageBox.Show("Do you want to change the train?", "Serbian Railways", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (Result == MessageBoxResult.Yes)
                 {
                     foreach (Train t in dataBase.trains)
@@ -292,7 +292,7 @@ namespace HCI_Projekat.Pages
                             t.wagons = train.wagons;
                         }
                     }
-                    MessageBox.Show("Successfully changed train!", "Serbian Raliways", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MessageBox.Show("Successfully changed train!", "Serbian Railways", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             }
             TrainCRUD r = new TrainCRUD(this.dataBase);
