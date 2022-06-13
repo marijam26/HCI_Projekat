@@ -39,14 +39,14 @@
                 <Canvas x:Name="start" >
                     <Image x:Name="pin_start" Grid.Column="0" Canvas.Top="7" Canvas.Left="30" Source="/Images/start.png"  MouseMove="pin_start_MouseMove" PreviewMouseLeftButtonDown="pin_start_PreviewMouseLeftButtonDown" Width="55"                   
                       featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinStart}"
-                       featureTouring:TourHelper.Placement="TopRight"
+                       featureTouring:TourHelper.Placement="BottomRight"
                            ToolTip="Start station mark"/>
                 </Canvas>
 
                 <Canvas x:Name="endd" Grid.Column="1" >
                     <Image x:Name="pin_end" Grid.Column="1" Canvas.Top="7" Canvas.Left="30" Source="/Images/end.png"  MouseMove="pin_end_MouseMove" PreviewMouseLeftButtonDown="pin_end_PreviewMouseLeftButtonDown" Width="55" 
                        featureTouring:TourHelper.ElementID="{x:Static app:ElementID.PinEnd}"
-                       featureTouring:TourHelper.Placement="TopRight"
+                       featureTouring:TourHelper.Placement="BottomRight"
                            ToolTip="End station mark"/>  
                 </Canvas>
                 
