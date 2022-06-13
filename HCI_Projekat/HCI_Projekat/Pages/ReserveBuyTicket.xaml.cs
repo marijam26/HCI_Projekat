@@ -302,6 +302,7 @@ namespace HCI_Projekat.Pages
 
             navigator.ForStep(ElementID.TicketFrom).AttachDoable(s => fromPlace.SelectedItem = "Novi Sad");
             navigator.ForStep(ElementID.TicketTo).AttachDoable(s => toPlace.SelectedItem = "Beograd");
+            navigator.ForStep(ElementID.TicketDate).AttachDoable(s => startDatePick.SelectedDate = new DateTime(2022, 6, 20));
 
 
             navigator.OnStepEntered(ElementID.TicketFrom).Execute(s => fromPlace.Focus());
@@ -346,7 +347,7 @@ namespace HCI_Projekat.Pages
         {
             DateTime date = (DateTime)startDatePick.SelectedDate;
             //MessageBox.Show(date.ToString("MM/dd/yyyy"), "aaa");
-            if (date.ToString("MM/dd/yyyy") == "06-20-2022")
+            if ((date.ToString("MM/dd/yyyy") == "06-20-2022") || (date.ToString("MM/dd/yyyy") == "06/20/2022"))
             {
                 startDatePick.IsEnabled = false;
                 btn_search.IsEnabled = true;
