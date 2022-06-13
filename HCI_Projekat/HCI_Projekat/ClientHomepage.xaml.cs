@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using HCI_Projekat.Pages;
 using System;
 using System.Collections.Generic;
@@ -117,6 +118,12 @@ namespace HCI_Projekat
                 window.Show();
                 Close();
             }
+        }
+
+        private void help_Click(object sender, RoutedEventArgs e)
+        {
+            var p = this.clientHomepage.Content as Page;
+            HelpProvider.ShowHelp(p.Title, this);
         }
     }
 }

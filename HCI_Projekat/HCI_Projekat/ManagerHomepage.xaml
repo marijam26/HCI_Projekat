@@ -55,7 +55,7 @@
                 </MenuItem>
 
 
-                <MenuItem x:Name="help" Header="Help" Grid.Column="6" HorizontalAlignment="Right" Height="41" FontFamily="Century Gothic" Background="DarkGoldenrod"/>
+                <MenuItem x:Name="help" Header="Help" Grid.Column="6" HorizontalAlignment="Right" Height="41" Click="help_Click" FontFamily="Century Gothic" Background="DarkGoldenrod"/>
 
             </Menu>
             

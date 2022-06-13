@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="450" d:DesignWidth="800" Background="Wheat"
-      Title="ClientTicketView">
+      Title="ticketView">
 
     <Page.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

@@ -9,7 +9,7 @@
       mc:Ignorable="d" 
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="TrainLineCRUD">
+      Title="trainLineView">
    
     <Grid>
         <Grid.RowDefinitions>

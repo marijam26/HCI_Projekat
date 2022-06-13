@@ -9,7 +9,7 @@
       xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="ReserveBuyTicket">
+      Title="reserveBuy">
 
     <Page.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

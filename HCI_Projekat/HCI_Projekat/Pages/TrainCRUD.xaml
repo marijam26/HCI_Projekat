@@ -9,7 +9,7 @@
       xmlns:featureTouring="clr-namespace:ThinkSharp.FeatureTouring;assembly=ThinkSharp.FeatureTour"
       xmlns:app="clr-namespace:HCI_Projekat.touring"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="TrainCRUD">
+      Title="trainView">
 
     <Page.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

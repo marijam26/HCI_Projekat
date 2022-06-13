@@ -9,7 +9,7 @@
       TextElement.FontFamily="Century Gothic"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="AddTrain">
+      Title="trainAdd">
 
     <Page.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

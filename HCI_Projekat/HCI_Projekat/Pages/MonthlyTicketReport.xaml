@@ -7,7 +7,7 @@
       TextElement.FontFamily="Century Gothic"
       mc:Ignorable="d" 
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="MonthlyTicketReport">
+      Title="MonthlyReport">
 
     <Grid>
         <Grid.RowDefinitions>

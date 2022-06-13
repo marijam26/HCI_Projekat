@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HCI_Projekat"
         mc:Ignorable="d"
-        Title="ClientHomepage" Height="650" Width="1200" Background="Wheat">
+        Title="ticketView" Height="650" Width="1200" Background="Wheat">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.08*"></RowDefinition>
@@ -39,11 +39,9 @@
                 
                 <MenuItem Name="logout" Header="Logout" Height="41" Click="logout_Click" FontFamily="Century Gothic">
                 </MenuItem>
-                
-                
-                <MenuItem Header="Help" Height="41" FontFamily="Century Gothic" HorizontalAlignment="Right">
-                    <MenuItem Header="nesto" Click="MenuItem_Click_report_timetable" ></MenuItem>
-                </MenuItem>
+
+
+                <MenuItem Header="Help" Height="41" FontFamily="Century Gothic" Click="help_Click" HorizontalAlignment="Right"></MenuItem>
 
             </Menu>
             <Grid DockPanel.Dock="Bottom" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">

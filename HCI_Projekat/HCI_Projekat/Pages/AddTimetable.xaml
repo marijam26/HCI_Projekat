@@ -7,7 +7,7 @@
       mc:Ignorable="d"
       TextElement.FontFamily="Century Gothic"
       d:DesignHeight="650" d:DesignWidth="1200" Background="Wheat"
-      Title="AddTimetable">
+      Title="timetableAdd">
 
      <Page.CommandBindings>
         <CommandBinding Command="ApplicationCommands.Help" Executed="CommandBinding_Executed"/>

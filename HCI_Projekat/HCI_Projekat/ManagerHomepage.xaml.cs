@@ -1,4 +1,5 @@
-﻿using HCI_Projekat.Model;
+﻿using HCI_Projekat.help;
+using HCI_Projekat.Model;
 using HCI_Projekat.Pages;
 using System;
 using System.Collections.Generic;
@@ -115,6 +116,12 @@ namespace HCI_Projekat
         {
             AddTimetable r = new AddTimetable(dataBase);
             this.managerHomepage.Navigate(r);
+        }
+
+        private void help_Click(object sender, RoutedEventArgs e)
+        {
+            var p = this.managerHomepage.Content as Page;
+            HelpProvider.ShowHelp(p.Title, this);
         }
     }
 }
